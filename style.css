@@ -1,0 +1,402 @@
+/* --- 全域設定 --- */
+html {
+    scroll-behavior: smooth; /* 讓錨點連結有平滑滾動效果 */
+}
+
+body {
+    font-family: 'Noto Sans TC', 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    
+    /* 1. 黏性頁尾設定 Part 1 */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+   color: #1a237e;  /* 深藍色標題，專業感 */
+}
+
+a {
+    text-decoration: none;
+    color: #2962ff; /* 藍色連結 */
+}
+
+/* 1. 黏性頁尾設定 Part 2 */
+main {
+    flex: 1;
+}
+
+/* --- 3. Header Logo & 公司名 --- */
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    color: #1a237e;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.logo-img {
+    height: 80px; /* Logo 圖片高度 */
+    margin-right: 10px;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 50px;
+}
+
+.nav-links a {
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    font-size: 23px; /* <-- 加入這一行來調整文字大小 */
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #484891;
+}
+
+/* ... (其餘 .hero, .btn, .page-header 等樣式保持不變，此處省略以節省篇幅) ... */
+/* --- 頁首 Header / Hero Section --- */
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 120px 20px;
+}
+.hero h1 { font-size: 3em; margin-bottom: 20px; color: #fff; }
+.hero p { font-size: 1.2em; max-width: 600px; margin: 0 auto 30px auto; }
+.btn { background-color: #2962ff; color: #fff; padding: 12px 25px; border-radius: 5px; font-weight: bold; transition: background-color 0.3s ease; }
+.btn:hover { background-color: #0039cb; }
+.page-header { background-color: #e8eaf6; text-align: center; padding: 60px 20px; }
+.page-header h1 { font-size: 2.5em; margin: 0; }
+.content-section { padding: 60px 0; }
+.content-section h2 { text-align: center; font-size: 2em; margin-bottom: 40px; }
+.grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
+.card { background-color: #fff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease; }
+.card:hover { transform: translateY(-5px); }
+.card img { width: 100%; height: 220px; object-fit: cover; }
+.card-content { padding: 25px; }
+.card-content h3 { margin-top: 0; }
+.about-content { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; }
+.about-text { flex: 1; min-width: 300px; }
+.about-image { flex: 1; min-width: 300px; }
+.about-image img { width: 100%; border-radius: 8px; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.contact-info, .contact-form { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 5px; }
+.form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+.submit-btn { width: 100%; padding: 15px; border: none; border-radius: 5px; background-color: #1a237e; color: #fff; font-size: 1.1em; cursor: pointer; transition: background-color 0.3s; }
+.submit-btn:hover { background-color: #000051; }
+
+/* --- 關於我們頁面 - 公司理念樣式 --- */
+.company-philosophy {
+    text-align: center; /* 文字置中 */
+    font-size: 1.5em;  /* 加大字體 (em是相對單位，1.25倍的意思) */
+    font-weight: 500;   /* 讓字體稍微加粗一些 */
+    margin-top: 10px;
+    margin-bottom: 10px; /* 增加與下方段落的間距，讓它更獨立 */
+    /*color: #1a237e;      讓文字顏色跟標題一樣，更醒目 */
+}
+/* --- 關於我們頁面 - 段落文字左右對齊 --- */
+.about-text p {
+    text-align: justify;
+}
+/* ==================== 更新後的 Banner CSS 樣式 ==================== */
+
+/* --- Banner 主容器設定 --- */
+.hero-slider {
+    position: relative; /* 關鍵！讓內部的絕對定位元素有參考基準 */
+    width: 100%;
+    /* margin-bottom 已不需要，因為點點隱藏了 */
+}
+
+/* --- Swiper 圖片容器設定 --- */
+.swiper-container {
+    width: 100%;
+    height: 70vh; /* 您可以調整 Banner 高度 */
+    max-height: 700px;
+    overflow: hidden;
+}
+
+/* --- 單張輪播圖片設定 --- */
+.swiper-slide {
+    background-size: cover;
+    background-position: center;
+    
+    /* 效果2：預設為灰階 */
+    filter: grayscale(100%);
+    
+    /* 效果3：讓顏色變化有平滑的過渡效果 */
+    transition: filter 0.5s ease-in-out;
+}
+
+/* 效果3：當滑鼠移入整個 Banner 區域時，圖片恢復色彩 */
+.hero-slider:hover .swiper-slide {
+    filter: grayscale(0%);
+}
+
+/* --- 效果1：將點點(Pagination)徹底隱藏 --- */
+.swiper-pagination {
+    display: none !important;
+}
+
+/* --- 固定的文字內容層設定 --- */
+.hero-content {
+    /* 關鍵！使用絕對定位將文字層疊在圖片層之上 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10; /* 確保文字在最上層 */
+    
+    /* 其他文字樣式 */
+    width: 90%; /* 避免文字在小螢幕上貼邊 */
+    max-width: 800px; /* 文字區塊最大寬度 */
+    color: #fff;
+    text-align: center;
+    padding: 0 20px;
+    
+    /* 加上文字陰影讓它在任何背景下都清晰可見 */
+    text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.hero-content h1 {
+    font-size: 3.2em;
+    color: #fff;
+    margin-bottom: 20px;
+}
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+/* --- 響應式網頁調整 --- */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.4em; /* 手機版標題稍小 */
+    }
+    .hero-content p {
+        font-size: 1.1em;
+    }
+    .swiper-container {
+        height: 80vh; /* 手機版可以高一點，視覺衝擊力更強 */
+    }
+}
+/* =================================================================== */
+
+/* --- 更新後的頁尾 Footer --- */
+.footer {
+    background-color: #003060;
+    color: #e8eaf6;
+    padding: 30px 0 0 0;
+}
+
+.footer-main {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- 公司資訊 & 社群圖示 --- */
+.footer-info {
+    flex: 2; /* 讓資訊區塊佔比較大空間 */
+    min-width: 300px;
+}
+
+.footer-info-top {
+    display: flex;
+    justify-content: space-between; /* 電腦版此設定無作用，手機版會讓 logo 和 icon 分散對齊 */
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.footer-logo {
+    height: 80px;
+}
+
+.footer-social {
+    display: flex;
+    gap: 15px; /* 圖示間距 */
+}
+
+.footer-social img {
+    width: 50px;
+    height: 50px;
+    transition: opacity 0.3s ease;
+}
+
+.footer-social img:hover {
+    opacity: 0.8;
+}
+
+.footer-info h3 {
+    color: #fff;
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.footer-info p {
+    margin: 8px 0;
+    font-size: 0.95em;
+    line-height: 1.8;
+    color: #c5cae9;
+}
+
+/* --- 地圖 --- */
+.footer-map {
+    flex: 1.5; /* 讓地圖區塊佔比較小空間 */
+    min-width: 300px;
+}
+
+.footer-map iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 280px;
+    border: 0;
+    border-radius: 8px;
+}
+
+/* --- Copyright --- */
+.footer-bottom {
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+    border-top: 1px solid #303f9f;
+    font-size: 0.9em;
+    color: #9fa8da;
+}
+
+/* --- 響應式佈局調整 --- */
+@media (max-width: 992px) {
+    /* 在平板尺寸，先讓社群圖示回到LOGO下方 */
+    .footer-info-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-main {
+        flex-direction: column; /* 資訊區塊和地圖改為垂直堆疊 */
+    }
+    
+    /* 在手機上，讓Logo和社群圖示並排 */
+    .footer-info-top {
+        flex-direction: row;
+        justify-content: space-between; /* logo靠左，icon靠右 */
+        margin-bottom: 5px;
+    }
+    
+    .footer-social img {
+        width: 40px; /* 手機上圖示稍小一點 */
+        height: 40px;
+    }
+}
+
+/* 在響應式區塊中，調整 Footer 佈局 */
+@media (max-width: 768px) {
+    .footer-main {
+        flex-direction: column; /* 改為垂直堆疊 */
+    }
+}
+
+/* --- 原有的其他 CSS ... --- */
+.footer p { margin: 0; }
+
+/* --- 漢堡選單圖示 --- */
+.hamburger { display: none; cursor: pointer; }
+.hamburger .line { width: 25px; height: 3px; background-color: #333; margin: 5px 0; transition: all 0.3s ease; }
+
+/* --- 2. 回頂端按鈕 (Back to Top) --- */
+#back-to-top-btn {
+    display: none; /* 預設隱藏 */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    border: none;
+    outline: none;
+    background-color: #2962ff;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+#back-to-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- 響應式設計 RWD --- */
+@media (max-width: 768px) {
+     .nav-links {
+   	position: fixed;
+	top: 65px;
+    	right: 0;
+   	background-color: #fff;
+	width: 60%;
+	height: 100vh;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 20px;
+	box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+	transform: translateX(100%);
+	transition: transform 0.3s ease-in-out;
+	z-index: 999; /* <-- 新增：確保選單在最上層(僅次於navbar) */
+    }
+    .nav-links.nav-active {
+        transform: translateX(0);
+    }
+    .nav-links li {
+        margin: 20px 0;
+    }
+    .hamburger {
+        display: block;
+    }
+    .logo-text {
+        font-size: 1em; /* 手機版 Logo 文字稍小 */
+    }
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}

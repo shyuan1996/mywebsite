@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於我們 - 祥鉞餐飲設備股份有限公司</title>
+    <link rel="icon" type="image/png" href="images/logo.png"> 
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="container">
+            <a href="index.html" class="logo-container">
+                <img src="images/logo.png" alt="祥鉞餐飲設備 Logo" class="logo-img">
+                <span class="logo-text"></span>
+            </a>
+            <ul class="nav-links">
+            <li><a href="index.html">首頁</a></li>
+            <li><a href="about.html" class="active">關於我們</a></li>
+            <li><a href="services.html">服務項目</a></li>
+            <li><a href="portfolio.html">作品集</a></li>
+            <li><a href="contact.html">聯絡我們</a></li>
+        </ul>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </div>
+</header>
+<main>
+    <section class="page-header">
+        <h1>關於祥鉞</h1>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>我們的故事與堅持</h2>
+                    <p class="company-philosophy"><strong></strong>打造高效廚房，成就美味未來。</p>
+                    <p>
+                        祥鉞餐飲設備股份有限公司成立於1996年，在台中擁有近30年餐飲設備製造經驗，專注於中西式廚房設備的設計、製造與安裝。
+                    </p>
+                    <p>
+我們不僅是設備製造商，更是全方位的解決方案提供者，致力於為餐飲行業打造高效、優質的廚房環境。
+憑藉專業的不鏽鋼加工經驗，祥鉞手工打造每一件產品，確保高品質與客製化需求。我們與多家知名連鎖餐飲品牌及連鎖飲料店合作，幫助無數業者實現夢想中的理想廚房，並提供完善的售後服務，成為業界信賴的合作夥伴。
+</p><p>
+我們熱忱歡迎對餐飲設備製造充滿熱情、願意接受挑戰的專業人才加入祥鉞團隊，與我們攜手打造卓越的餐飲解決方案，共同開創更美好的未來！
+                    </p>
+                </div>
+                <div class="about-image">
+                    <img src="images/company-photo.jpg" alt="祥鉞餐飲設備公司照片">
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+ <footer class="footer">
+        <div class="footer-main">
+            <div class="footer-info">
+                <div class="footer-info-top">
+                    <img src="images/logo.png" alt="祥鉞餐飲設備 Logo" class="footer-logo">
+                    
+                    <div class="footer-social">
+ 			<a href="https://lin.ee/3jDucIo" target="_blank" title="Line">
+   		    	    <img src="images/icon-line.png" alt="Line">
+			</a>
+                        <a href="https://www.facebook.com/1996shyuan/" target="_blank" title="Facebook">
+                            <img src="images/icon-fb.png" alt="Facebook">
+                        </a>
+                        <a href="https://www.instagram.com/sy19921014" target="_blank" title="Instagram">
+                            <img src="images/icon-ig.png" alt="Instagram">
+                        </a>
+                        <a href="https://www.threads.com/@shyuan0901" target="_blank" title="Threads">
+                            <img src="images/icon-threads.png" alt="Threads">
+                        </a>
+                    </div>
+                </div>
+
+                <h3>祥鉞餐飲設備股份有限公司</h3>
+                <p>地址：406 台中市北屯區水景里水景街8號</p>
+                <p>電話：04-2436-5774</p>
+                <p>傳真：04-2437-4738</p>
+                <p>統一編號：89872485</p>
+		<p>E-mail：sy.shyuan950101@shyuan.com.tw</p>
+
+            </div>
+            
+            <div class="footer-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.03991188224!2d120.7116465!3d24.170333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346917f62933555d%3A0x8c0a1081bbe04a3c!2z56Wl6Yme5LiN6Y-96Yu86aSQ6aOy6Kit5YKZL-S4jemPvemLvOijveWTgeWuouijveWMlg!5e0!3m2!1szh-TW!2stw!4v1758519111833!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 祥鉞餐飲設備股份有限公司. All Rights Reserved.</p>
+        </div>
+    </footer>
+ <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+        });
+// --- 回到頂端按鈕控制 ---
+        const backToTopButton = document.querySelector('#back-to-top-btn');
+
+        window.addEventListener('scroll', () => {
+            // 當垂直滾動超過 200px 時
+            if (window.scrollY > 200) {
+                if (window.innerWidth <= 768) { // 只在手機版寬度顯示
+                    backToTopButton.classList.add('show');
+                }
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault(); // 防止 a 標籤的預設跳轉行為
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
