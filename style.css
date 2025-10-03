@@ -97,97 +97,7 @@ main {
 .page-header h1 { font-size: 2.5em; margin: 0; }
 .content-section { padding: 60px 0; }
 .content-section h2 { text-align: center; font-size: 2em; margin-bottom: 40px; }
-/* ==================== 服務項目 - 自訂網格佈局 ==================== */
-
-.grid-layout {
-    display: grid;
-    /* 定義一個五欄的網格，每欄寬度均分 */
-    grid-template-columns: repeat(5, 1fr);
-    gap: 30px;
-}
-
-/* --- 手動指定第一排(前5個項目)的視覺位置 --- */
-/* 您的HTML順序：A B C D E */
-/* 您要的視覺順序：C B D A E */
-
-/* C (第3個項目) 放到視覺上的第 1 格 */
-.grid-layout .card:nth-child(3) {
-    grid-column: 1;
-}
-/* B (第2個項目) 放到視覺上的第 2 格 */
-.grid-layout .card:nth-child(2) {
-    grid-column: 2;
-}
-/* D (第4個項目) 放到視覺上的第 3 格 (中間) */
-.grid-layout .card:nth-child(4) {
-    grid-column: 3;
-}
-/* A (第1個項目) 放到視覺上的第 4 格 */
-.grid-layout .card:nth-child(1) {
-    grid-column: 4;
-}
-/* E (第5個項目) 放到視覺上的第 5 格 */
-.grid-layout .card:nth-child(5) {
-    grid-column: 5;
-}
-
-
-/* --- 手動指定第二排以後的項目，從中間開始放 --- */
-
-/* 第 6 個項目，放在第 2 排的正中間 (第3欄) */
-.grid-layout .card:nth-child(6) {
-    grid-row: 2;
-    grid-column: 3;
-}
-
-/* 第 7 個項目，放在第 2 排的 B 位置 (第2欄) */
-.grid-layout .card:nth-child(7) {
-    grid-row: 2;
-    grid-column: 2;
-}
-
-/* 第 8 個項目，放在第 2 排的 D 位置 (第4欄) */
-.grid-layout .card:nth-child(8) {
-    grid-row: 2;
-    grid-column: 4;
-}
-
-/* 第 9 個項目，放在第 2 排的 C 位置 (第1欄) */
-.grid-layout .card:nth-child(9) {
-    grid-row: 2;
-    grid-column: 1;
-}
-
-/* 第 10 個項目，放在第 2 排的 E 位置 (第5欄) */
-.grid-layout .card:nth-child(10) {
-    grid-row: 2;
-    grid-column: 5;
-}
-
-
-/* --- 響應式網頁調整：在小螢幕上取消自訂佈局，恢復正常排列 --- */
-
-/* 在平板尺寸 (寬度小於992px)，改為兩欄式 */
-@media (max-width: 992px) {
-    .grid-layout {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    /* 關鍵：取消所有手動指定的位置，讓項目自動流動排列 */
-    .grid-layout .card:nth-child(n) {
-        grid-column: auto;
-        grid-row: auto;
-    }
-}
-
-/* 在手機尺寸 (寬度小於768px)，改為單欄式 */
-@media (max-width: 768px) {
-    .grid-layout {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* ================================================================= */
+.grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
 .card { background-color: #fff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease; }
 .card:hover { transform: translateY(-5px); }
 .card img { width: 100%; height: 220px; object-fit: cover; }
@@ -491,3 +401,4 @@ main {
     }
 
 }
+
