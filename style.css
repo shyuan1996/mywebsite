@@ -484,15 +484,10 @@ main {
         min-height: auto; /* 在垂直排列時，取消最小高度限制 */
     }
 
-    /* 重新繪製垂直的連接線 */
+    /* 在小螢幕上，隱藏步驟之間的連接線 */
     .process-step:not(:last-child)::after {
-        top: 60px; /* 從圖示正下方開始 */
-        left: 50%;
-        transform: translateX(-50%);
-        width: 2px; /* 垂直線的寬度 */
-        height: 100%; /* 讓線延伸到下一個項目的間距 */
-        background-color: #c5cae9;
+        display: none;
     }
 }
-/* ======================================================================== */
+
 
