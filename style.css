@@ -403,7 +403,7 @@ main {
 }
 /* ==================== 服務項目頁面 - 服務流程圖樣式 ==================== */
 .process-flow-section {
-    padding: 20px 0;
+    padding: 10px 0;
     background-color: #fff; /* 給一個白色背景和上下的區塊做區分 */
 }
 
@@ -489,6 +489,7 @@ main {
         display: none;
     }
 }
+
 
 
 
