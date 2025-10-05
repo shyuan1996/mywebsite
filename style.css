@@ -401,4 +401,98 @@ main {
     }
 
 }
+/* ==================== 服務項目頁面 - 服務流程圖樣式 ==================== */
+.process-flow-section {
+    padding: 60px 0;
+    background-color: #fff; /* 給一個白色背景和上下的區塊做區分 */
+}
+
+.process-flow-section h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 60px;
+}
+
+.process-flow {
+    display: flex;
+    justify-content: space-between;
+    position: relative; /* 作為連接線的定位基準 */
+}
+
+.process-step {
+    flex: 1; /* 讓每個步驟平分寬度 */
+    text-align: center;
+    padding: 0 15px;
+    position: relative; /* 作為連接線的起點 */
+}
+
+.step-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #e8eaf6; /* 淡藍色背景 */
+    border: 2px solid #1a237e; /* 深藍色邊框 */
+    color: #1a237e;
+    font-size: 1.8em;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px auto; /* 置中並與下方文字產生間距 */
+    position: relative;
+    z-index: 5; /* 讓數字圖示在連接線之上 */
+}
+
+.process-step h4 {
+    font-size: 1.1em;
+    color: #1a237e;
+    margin-bottom: 10px;
+    min-height: 44px; /* 給一個最小高度，讓標題即使換行也能對齊 */
+}
+
+.process-step p {
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* --- 繪製步驟之間的連接線 --- */
+.process-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 30px; /* 讓線條在圖示的垂直置中位置 */
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background-color: #c5cae9; /* 連接線顏色 */
+    z-index: 1; /* 讓線在圖示下方 */
+}
+
+
+/* --- 響應式網頁調整：在小螢幕上，流程圖改為垂直排列 --- */
+@media (max-width: 992px) {
+    .process-flow {
+        flex-direction: column; /* 改為垂直排列 */
+        align-items: center; /* 讓所有項目在中間對齊 */
+        gap: 40px; /* 垂直排列時的間距 */
+    }
+
+    .process-step {
+        max-width: 400px; /* 限制最大寬度，避免在平板上文字過長 */
+    }
+
+    .process-step h4 {
+        min-height: auto; /* 在垂直排列時，取消最小高度限制 */
+    }
+
+    /* 重新繪製垂直的連接線 */
+    .process-step:not(:last-child)::after {
+        top: 60px; /* 從圖示正下方開始 */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px; /* 垂直線的寬度 */
+        height: 100%; /* 讓線延伸到下一個項目的間距 */
+        background-color: #c5cae9;
+    }
+}
+/* ======================================================================== */
 
