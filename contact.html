@@ -12,16 +12,16 @@
 
 <header class="navbar">
     <div class="container">
-            <a href="index.html" class="logo-container">
+            <a href="https://www.shyuan.com.tw/" class="logo-container">
                 <img src="images/logo.png" alt="祥鉞餐飲設備 Logo" class="logo-img">
                 <span class="logo-text"></span>
             </a>
             <ul class="nav-links">
             <li><a href="https://www.shyuan.com.tw/">首頁</a></li>
-            <li><a href="about.html">關於我們</a></li>
-            <li><a href="services.html">服務項目</a></li>
-            <li><a href="portfolio.html">作品集</a></li>
-            <li><a href="contact.html" class="active">聯絡我們</a></li>
+            <li><a href="https://www.shyuan.com.tw/about">關於我們</a></li>
+            <li><a href="https://www.shyuan.com.tw/services">服務項目</a></li>
+            <li><a href="https://www.shyuan.com.tw/portfolio">作品集</a></li>
+            <li><a href="https://www.shyuan.com.tw/contact" class="active">聯絡我們</a></li>
         </ul>
         <div class="hamburger">
             <div class="line"></div>
@@ -111,26 +111,29 @@
             <p>© 2025 祥鉞餐飲設備股份有限公司. All Rights Reserved.</p>
         </div>
     </footer>
- <script>
+    <a id="back-to-top-btn" href="#top" title="回到頂端">
+    <img src="images/arrow-up.png" alt="回到頂端">
+    </a>
+<script>
+        // --- 漢堡選單控制 ---
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
 
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('nav-active');
         });
-// --- 回到頂端按鈕控制 ---
+
+        // --- 回到頂端按鈕控制 ---
         const backToTopButton = document.querySelector('#back-to-top-btn');
 
-        window.addEventListener('scroll', () => {
-            // 當垂直滾動超過 200px 時
-            if (window.scrollY > 0) {
-                if (window.innerWidth <= 768) { // 只在手機版寬度顯示
-                    backToTopButton.classList.add('show');
-                }
-            } else {
-                backToTopButton.classList.remove('show');
-            }
-        });
+window.addEventListener('scroll', () => {
+    // 當垂直滾動超過 100px 時
+    if (window.scrollY > 100) {
+        backToTopButton.classList.add('show');
+    } else {
+        backToTopButton.classList.remove('show');
+    }
+});
 
         backToTopButton.addEventListener('click', (e) => {
             e.preventDefault(); // 防止 a 標籤的預設跳轉行為
@@ -139,7 +142,21 @@
                 behavior: 'smooth'
             });
         });
+// ... 原本的漢堡選單和回到頂端按鈕的 JS ...
+
+// Swiper 初始化
+var swiper = new Swiper('.swiper-container', {
+    loop: true,
+    autoplay: {
+        delay: 5000, // 5秒切換一次
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+});
     </script>
+
 </body>
 </html>
 
