@@ -499,5 +499,48 @@ main {
 
 
 
+/* ==================== 作品集 - 篩選按鈕樣式 ==================== */
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    padding: 8px 20px;
+    border: 1px solid #1a237e;
+    border-radius: 20px;
+    background-color: #fff;
+    color: #1a237e;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: #e8eaf6;
+}
+
+.filter-btn.active {
+    background-color: #1a237e;
+    color: #fff;
+}
+
+.loading-text {
+    text-align: center;
+    width: 100%;
+    color: #777;
+}
+
+/* 讓卡片顯示/隱藏時有淡入淡出效果 */
+#portfolio-grid .card {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+/* ================================================================ */
+
+
 
 

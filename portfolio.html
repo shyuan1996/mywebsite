@@ -9,6 +9,121 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <meta name="description" content="與多家全台知名連鎖飲料店、餐飲店合作，百貨美食街專櫃施工，帶給客戶滿意的服務">
 </head>
+<script>
+    // --- 請在這裡填入您的三把鑰匙 ---
+    const AIRTABLE_TOKEN = 'patAVi1taApkwv3RP.98ed758b9f9fa2fd9df86a1e1150b471038ed349e2481824a06667a80aed3e61'; // ⚠️ 貼上您剛剛複製的 Personal Access Token
+    const BASE_ID = 'appWtvyd8MgJ3cmrW';     // ⚠️ 貼上您的 Base ID
+    const TABLE_NAME = 'Table 1';                // ⚠️ 如果您的資料表名稱不是 "Table 1"，請修改
+
+    // --- DOM 元素 ---
+    const portfolioGrid = document.getElementById('portfolio-grid');
+    const filterButtonsContainer = document.getElementById('filter-buttons');
+    const loadingText = document.querySelector('.loading-text');
+
+    // --- API URL ---
+    // 我們加上了篩選和排序的參數
+    // filterByFormula: 只抓取狀態為 "發布" 的作品
+    // sort[0][field]: 根據 "排序" 欄位來排序
+    // sort[0][direction]: 升冪排序 (數字小的在前面)
+    const url = `https://api.airtable.com/v0/${BASE_ID}/${encodeURIComponent(TABLE_NAME)}?filterByFormula={狀態}='發布 (Published)'&sort%5B0%5D%5Bfield%5D=排序&sort%5B0%5D%5Bdirection%5D=asc`;
+
+    // --- 主程式：從 Airtable 取得資料並渲染到頁面 ---
+    async function fetchPortfolioData() {
+        try {
+            const response = await fetch(url, {
+                headers: {
+                    'Authorization': `Bearer ${AIRTABLE_TOKEN}`
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP 錯誤！ 狀態: ${response.status}`);
+            }
+
+            const data = await response.json();
+            const records = data.records;
+
+            // 清空載入中的文字
+            portfolioGrid.innerHTML = '';
+            
+            if (records.length === 0) {
+                portfolioGrid.innerHTML = '<p>目前尚無作品。</p>';
+                return;
+            }
+
+            // 渲染作品卡片
+            renderCards(records);
+            // 渲染篩選按鈕
+            renderFilterButtons(records);
+
+        } catch (error) {
+            console.error('無法從 Airtable 取得資料:', error);
+            portfolioGrid.innerHTML = '<p>作品載入失敗，請稍後再試。</p>';
+        }
+    }
+
+    // --- 渲染所有作品卡片 ---
+    function renderCards(records) {
+        records.forEach(record => {
+            const fields = record.fields;
+            // 跳過沒有專案名稱或主圖的資料
+            if (!fields.專案名稱 || !fields.專案主圖) return;
+
+            const cardHTML = `
+                <div class="card" data-category="${fields.分類 || '未分類'}">
+                    <img src="${fields.專案主圖[0].url}" alt="${fields.專案名稱}">
+                    <div class="card-content">
+                        <h3>${fields.專案名稱}</h3>
+                        <p>${fields.專案簡介 || ''}</p>
+                    </div>
+                </div>
+            `;
+            portfolioGrid.innerHTML += cardHTML;
+        });
+    }
+    
+    // --- 渲染篩選按鈕 ---
+    function renderFilterButtons(records) {
+        // 取得所有不重複的分類
+        const categories = ['所有作品', ...new Set(records.map(r => r.fields.分類).filter(Boolean))];
+        
+        filterButtonsContainer.innerHTML = categories.map(category => 
+            `<button class="filter-btn ${category === '所有作品' ? 'active' : ''}" data-filter="${category}">${category}</button>`
+        ).join('');
+
+        // 加上按鈕的點擊事件
+        addFilterEventListeners();
+    }
+    
+    // --- 篩選按鈕的事件監聽 ---
+    function addFilterEventListeners() {
+        const buttons = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('#portfolio-grid .card');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // 更新按鈕的 active 狀態
+                buttons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+
+                // 篩選卡片
+                cards.forEach(card => {
+                    if (filter === '所有作品' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+
+    // --- 執行主程式 ---
+    fetchPortfolioData();
+
+</script>
 <body>
 
 <header class="navbar">
@@ -38,29 +153,11 @@
 
     <section class="content-section">
         <div class="container">
-            <div class="grid-layout">
-                <div class="card">
-                    <img src="images/project1.jpg" alt="作品一照片">
-                    <div class="card-content">
-                        <h3>[專案名稱] - 例如：連鎖咖啡廳吧檯</h3>
-                        <p>客戶：[客戶名稱] <br> 簡介：[在這裡簡單描述專案內容，例如為客戶打造了兼具美觀與效率的工作吧檯。]</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/project2.jpg" alt="作品二照片">
-                    <div class="card-content">
-                        <h3>[專案名稱] - 例如：五星飯店廚房</h3>
-                        <p>客戶：[客戶名稱] <br> 簡介：[在這裡簡單描述專案內容。]</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/project3.jpg" alt="作品三照片">
-                    <div class="card-content">
-                        <h3>[專案名稱] - 例如：中央廚房排煙系統</h3>
-                        <p>客戶：[客戶名稱] <br> 簡介：[在這裡簡單描述專案內容。]</p>
-                    </div>
-                </div>
-                </div>
+            <div id="filter-buttons" class="filter-buttons"></div>
+
+            <div id="portfolio-grid" class="grid-layout">
+                <p class="loading-text">作品載入中，請稍候...</p>
+            </div>
         </div>
     </section>
 </main>
