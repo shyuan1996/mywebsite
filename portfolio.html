@@ -122,7 +122,47 @@
 
     // --- 執行主程式 ---
     fetchPortfolioData();
+	
+ // --- 漢堡選單控制 ---
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
 
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+        });
+
+        // --- 回到頂端按鈕控制 ---
+        const backToTopButton = document.querySelector('#back-to-top-btn');
+
+window.addEventListener('scroll', () => {
+    // 當垂直滾動超過 100px 時
+    if (window.scrollY > 100) {
+        backToTopButton.classList.add('show');
+    } else {
+        backToTopButton.classList.remove('show');
+    }
+});
+
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault(); // 防止 a 標籤的預設跳轉行為
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+// ... 原本的漢堡選單和回到頂端按鈕的 JS ...
+
+// Swiper 初始化
+var swiper = new Swiper('.swiper-container', {
+    loop: true,
+    autoplay: {
+        delay: 5000, // 5秒切換一次
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+});
 </script>
 <body>
 
@@ -202,50 +242,8 @@
     <a id="back-to-top-btn" href="#top" title="回到頂端">
     <img src="images/arrow-up.png" alt="回到頂端">
     </a>
-    <script>
-        // --- 漢堡選單控制 ---
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('nav-active');
-        });
-
-        // --- 回到頂端按鈕控制 ---
-        const backToTopButton = document.querySelector('#back-to-top-btn');
-
-window.addEventListener('scroll', () => {
-    // 當垂直滾動超過 100px 時
-    if (window.scrollY > 100) {
-        backToTopButton.classList.add('show');
-    } else {
-        backToTopButton.classList.remove('show');
-    }
-});
-
-        backToTopButton.addEventListener('click', (e) => {
-            e.preventDefault(); // 防止 a 標籤的預設跳轉行為
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-// ... 原本的漢堡選單和回到頂端按鈕的 JS ...
-
-// Swiper 初始化
-var swiper = new Swiper('.swiper-container', {
-    loop: true,
-    autoplay: {
-        delay: 5000, // 5秒切換一次
-    },
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-});
-    </script>
-
 </body>
 
 </html>
+
 
