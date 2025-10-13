@@ -8,10 +8,13 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <meta name="description" content="與多家全台知名連鎖飲料店、餐飲店合作，百貨美食街專櫃施工，帶給客戶滿意的服務">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </head>
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    // --- 請在這裡填入您的三把鑰匙 ---
+document.addEventListener('DOMContentLoaded', () => {
+
+    // --- Airtable 設定 ---
     const AIRTABLE_TOKEN = 'patPNmpA7lKl117x1.d884e411d90c73761fcd2aeb399502f9b9bd12d3ea4f21088405420ac0e222c7';
     const BASE_ID = 'appWtvyd8MgJ3cmrW';
     const TABLE_NAME = 'Table 1';
@@ -19,136 +22,134 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- DOM 元素 ---
     const portfolioGrid = document.getElementById('portfolio-grid');
     const filterButtonsContainer = document.getElementById('filter-buttons');
-    const loadingText = document.querySelector('.loading-text');
+    const modal = document.getElementById('modal-gallery');
+    const modalCloseBtn = document.getElementById('modal-close');
+    const modalOverlay = document.getElementById('modal-overlay');
+    const swiperWrapper = document.getElementById('swiper-wrapper');
+    let modalSwiper = null; // 用來存放 Swiper 實體
 
+    // --- Airtable API URL ---
     const url = `https://api.airtable.com/v0/${BASE_ID}/${encodeURIComponent(TABLE_NAME)}?filterByFormula={狀態 (Status)}='發布 (Published)'&sort%5B0%5D%5Bfield%5D=排序 (SortOrder)&sort%5B0%5D%5Bdirection%5D=asc`;
 
+    // --- 函式：從 Airtable 取得資料 ---
     async function fetchPortfolioData() {
+        if (!portfolioGrid) return; // 如果不在作品集頁面，就停止
+        portfolioGrid.innerHTML = '<p class="loading-text">作品載入中，請稍候...</p>';
         try {
-            const response = await fetch(url, {
-                headers: {
-                    'Authorization': `Bearer ${AIRTABLE_TOKEN}`
-                }
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP 錯誤！ 狀態: ${response.status}`);
-            }
-
+            const response = await fetch(url, { headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}` } });
+            if (!response.ok) throw new Error(`HTTP 錯誤！ 狀態: ${response.status}`);
             const data = await response.json();
-            const records = data.records;
-
-            portfolioGrid.innerHTML = '';
-            
-            if (records.length === 0) {
-                portfolioGrid.innerHTML = '<p>目前尚無已發布的作品，或所有作品仍在草稿狀態。</p>';
-                return;
-            }
-
-            renderCards(records);
-            renderFilterButtons(records);
-
+            renderCards(data.records);
+            renderFilterButtons(data.records);
         } catch (error) {
             console.error('無法從 Airtable 取得資料:', error);
-            portfolioGrid.innerHTML = '<p>作品載入失敗，請按 F12 打開主控台(Console)檢查錯誤訊息。</p>';
+            portfolioGrid.innerHTML = '<p>作品載入失敗，請按 F12 檢查錯誤訊息。</p>';
         }
     }
 
+    // --- 函式：渲染作品卡片 ---
     function renderCards(records) {
+        portfolioGrid.innerHTML = '';
+        if (records.length === 0) {
+            portfolioGrid.innerHTML = '<p>目前尚無已發布的作品。</p>';
+            return;
+        }
         records.forEach(record => {
             const fields = record.fields;
-            const projectName = fields['專案名稱 (ProjectName)'];
-            const mainImage = fields['專案主圖 (MainImage)'];
-            const category = fields['分類 (Category)'];
-            const description = fields['專案簡介 (Description)'];
+            if (!fields['專案名稱 (ProjectName)'] || !fields['專案主圖 (MainImage)']) return;
 
-            if (!projectName || !mainImage) return;
-
-            const cardHTML = `
-                <div class="card" data-category="${category || '未分類'}">
-                    <img src="${mainImage[0].url}" alt="${projectName}">
-                    <div class="card-content">
-                        <h3>${projectName}</h3>
-                        <p>${description || ''}</p>
-                    </div>
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.setAttribute('data-category', fields['分類 (Category)'] || '未分類');
+            card.innerHTML = `
+                <img src="${fields['專案主圖 (MainImage)'][0].thumbnails.large.url}" alt="${fields['專案名稱 (ProjectName)']}">
+                <div class="card-content">
+                    <h3>${fields['專案名稱 (ProjectName)']}</h3>
+                    <p>${fields['專案簡介 (Description)'] || ''}</p>
                 </div>
             `;
-            portfolioGrid.innerHTML += cardHTML;
+            // 為卡片加上點擊事件，用來打開 Modal
+            card.addEventListener('click', () => openModalGallery(fields));
+            portfolioGrid.appendChild(card);
         });
     }
 
-    function renderFilterButtons(records) {
-        const categories = ['所有作品', ...new Set(records.map(r => r.fields['分類 (Category)']).filter(Boolean))];
-        
-        filterButtonsContainer.innerHTML = categories.map(category => 
-            `<button class="filter-btn ${category === '所有作品' ? 'active' : ''}" data-filter="${category}">${category}</button>`
-        ).join('');
+    // --- 函式：渲染篩選按鈕 ---
+    function renderFilterButtons(records) { /* ... 內容不變 ... */ }
 
-        addFilterEventListeners();
-    }
+    // --- 函式：篩選按鈕事件 ---
+    function addFilterEventListeners() { /* ... 內容不變 ... */ }
 
-    function addFilterEventListeners() {
-        const buttons = document.querySelectorAll('.filter-btn');
-        const cards = document.querySelectorAll('#portfolio-grid .card');
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                buttons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                const filter = button.getAttribute('data-filter');
-                cards.forEach(card => {
-                    if (filter === '所有作品' || card.getAttribute('data-category') === filter) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
+    // --- 函式：打開 Modal 燈箱並初始化 Swiper ---
+    function openModalGallery(fields) {
+        const images = fields['專案主圖 (MainImage)'];
+        if (!images || images.length === 0) return;
+
+        // 填入圖片
+        swiperWrapper.innerHTML = images.map(img => `
+            <div class="swiper-slide"><img src="${img.url}" alt="${fields['專案名稱 (ProjectName)']}"></div>
+        `).join('');
+
+        // 顯示 Modal
+        modal.classList.add('active');
+
+        // 【修正】初始化或更新 Swiper
+        if (modalSwiper) {
+            modalSwiper.destroy(true, true); // 銷毀舊的
+        }
+        modalSwiper = new Swiper('.main-swiper', {
+            loop: true,
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+            pagination: { el: '.swiper-pagination', clickable: true },
         });
+        modalSwiper.update(); // 更新輪播
     }
 
+    // --- 函式：關閉 Modal 燈箱 ---
+    function closeModal() {
+        modal.classList.remove('active');
+        if (modalSwiper) {
+            modalSwiper.destroy(true, true); // 關閉時銷毀
+            modalSwiper = null;
+        }
+    }
+    
+    // --- 執行 Airtable 資料抓取 ---
     fetchPortfolioData();
-});
 
-        /* --- 漢堡選單控制 ---
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
+    // --- 為 Modal 加上關閉事件 ---
+    modalCloseBtn.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', closeModal);
 
+    // ---【加回來】漢堡選單控制 ---
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    if (hamburger) {
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('nav-active');
         });
-
-        // --- 回到頂端按鈕控制 ---
-        const backToTopButton = document.querySelector('#back-to-top-btn');
-
-window.addEventListener('scroll', () => {
-    // 當垂直滾動超過 100px 時
-    if (window.scrollY > 100) {
-        backToTopButton.classList.add('show');
-    } else {
-        backToTopButton.classList.remove('show');
     }
-});
 
-        backToTopButton.addEventListener('click', (e) => {
-            e.preventDefault(); // 防止 a 標籤的預設跳轉行為
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+    // ---【加回來】回到頂端按鈕控制 ---
+    const backToTopButton = document.querySelector('#back-to-top-btn');
+    if (backToTopButton) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
         });
-// ... 原本的漢堡選單和回到頂端按鈕的 JS ...
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 
-// Swiper 初始化
-var swiper = new Swiper('.swiper-container', {
-    loop: true,
-    autoplay: {
-        delay: 5000, // 5秒切換一次
-    },
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-});*/
+    // (renderFilterButtons 和 addFilterEventListeners 的內容跟之前一樣，為節省篇幅省略，實際貼上時請包含它們)
+    function renderFilterButtons(records) { const categories = ['所有作品', ...new Set(records.map(r => r.fields['分類 (Category)']).filter(Boolean))]; filterButtonsContainer.innerHTML = categories.map(category => `<button class="filter-btn ${category === '所有作品' ? 'active' : ''}" data-filter="${category}">${category}</button>`).join(''); addFilterEventListeners();}
+    function addFilterEventListeners() { const buttons = document.querySelectorAll('.filter-btn'); const cards = document.querySelectorAll('#portfolio-grid .card'); buttons.forEach(button => { button.addEventListener('click', () => { buttons.forEach(btn => btn.classList.remove('active')); button.classList.add('active'); const filter = button.getAttribute('data-filter'); cards.forEach(card => { if (filter === '所有作品' || card.getAttribute('data-category') === filter) { card.style.display = 'block'; } else { card.style.display = 'none'; } }); }); }); }
+});
 </script>
 <body>
 
@@ -228,6 +229,19 @@ var swiper = new Swiper('.swiper-container', {
     <a id="back-to-top-btn" href="#top" title="回到頂端">
     <img src="images/arrow-up.png" alt="回到頂端">
     </a>
+<div id="modal-gallery" class="modal-gallery">
+  <div class="modal-overlay" id="modal-overlay"></div>
+  <div class="modal-content">
+    <button id="modal-close" class="modal-close">&times;</button>
+    <div class="swiper-container main-swiper">
+      <div class="swiper-wrapper" id="swiper-wrapper"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</div>
+
 
 
 </body>
