@@ -10,22 +10,19 @@
     <meta name="description" content="與多家全台知名連鎖飲料店、餐飲店合作，百貨美食街專櫃施工，帶給客戶滿意的服務">
 </head>
 <script>
+document.addEventListener("DOMContentLoaded", () => {
     // --- 請在這裡填入您的三把鑰匙 ---
-    const AIRTABLE_TOKEN = 'patPNmpA7lKl117x1.d884e411d90c73761fcd2aeb399502f9b9bd12d3ea4f21088405420ac0e222c7'; /* ⚠️ 貼上您剛剛複製的 Personal Access Token*/
-    const BASE_ID = 'appWtvyd8MgJ3cmrW';     /* ⚠️ 貼上您的 Base ID*/
-    const TABLE_NAME = 'Table 1';                /* ⚠️ 如果您的資料表名稱不是 "Table 1"，請修改*/
+    const AIRTABLE_TOKEN = 'patPNmpA7lKl117x1.d884e411d90c73761fcd2aeb399502f9b9bd12d3ea4f21088405420ac0e222c7';
+    const BASE_ID = 'appWtvyd8MgJ3cmrW';
+    const TABLE_NAME = 'Table 1';
 
     // --- DOM 元素 ---
     const portfolioGrid = document.getElementById('portfolio-grid');
     const filterButtonsContainer = document.getElementById('filter-buttons');
     const loadingText = document.querySelector('.loading-text');
 
-    // --- API URL (已更新欄位名稱) ---
-    // filterByFormula: 只抓取【狀態 (Status)】為 "發布 (Published)" 的作品
-    // sort[0][field]: 根據【排序 (SortOrder)】欄位來排序
     const url = `https://api.airtable.com/v0/${BASE_ID}/${encodeURIComponent(TABLE_NAME)}?filterByFormula={狀態 (Status)}='發布 (Published)'&sort%5B0%5D%5Bfield%5D=排序 (SortOrder)&sort%5B0%5D%5Bdirection%5D=asc`;
 
-    // --- 主程式：從 Airtable 取得資料並渲染到頁面 ---
     async function fetchPortfolioData() {
         try {
             const response = await fetch(url, {
@@ -57,11 +54,9 @@
         }
     }
 
-    // --- 渲染所有作品卡片 (已更新欄位名稱) ---
     function renderCards(records) {
         records.forEach(record => {
             const fields = record.fields;
-            // 使用中括號 [] 來讀取包含特殊字元(如括號和空格)的欄位名稱
             const projectName = fields['專案名稱 (ProjectName)'];
             const mainImage = fields['專案主圖 (MainImage)'];
             const category = fields['分類 (Category)'];
@@ -81,8 +76,7 @@
             portfolioGrid.innerHTML += cardHTML;
         });
     }
-    
-    // --- 渲染篩選按鈕 (已更新欄位名稱) ---
+
     function renderFilterButtons(records) {
         const categories = ['所有作品', ...new Set(records.map(r => r.fields['分類 (Category)']).filter(Boolean))];
         
@@ -92,10 +86,8 @@
 
         addFilterEventListeners();
     }
-    
-    // --- 篩選按鈕的事件監聽 (無需修改) ---
+
     function addFilterEventListeners() {
-        // ... (這段函式內容不變) ...
         const buttons = document.querySelectorAll('.filter-btn');
         const cards = document.querySelectorAll('#portfolio-grid .card');
         buttons.forEach(button => {
@@ -114,8 +106,8 @@
         });
     }
 
-    // --- 執行主程式 ---
     fetchPortfolioData();
+});
 
         /* --- 漢堡選單控制 ---
         const hamburger = document.querySelector('.hamburger');
@@ -241,4 +233,5 @@ var swiper = new Swiper('.swiper-container', {
 </body>
 
 </html>
+
 
