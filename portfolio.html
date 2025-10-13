@@ -11,21 +11,19 @@
 </head>
 <script>
     // --- 請在這裡填入您的三把鑰匙 ---
-    const AIRTABLE_TOKEN = 'patAVi1taApkwv3RP.98ed758b9f9fa2fd9df86a1e1150b471038ed349e2481824a06667a80aed3e61'; // ⚠️ 貼上您剛剛複製的 Personal Access Token
-    const BASE_ID = 'appWtvyd8MgJ3cmrW';     // ⚠️ 貼上您的 Base ID
-    const TABLE_NAME = 'Table 1';                // ⚠️ 如果您的資料表名稱不是 "Table 1"，請修改
+    const AIRTABLE_TOKEN = 'patPNmpA7lKl117x1.d884e411d90c73761fcd2aeb399502f9b9bd12d3ea4f21088405420ac0e222c7'; /* ⚠️ 貼上您剛剛複製的 Personal Access Token*/
+    const BASE_ID = 'appWtvyd8MgJ3cmrW';     /* ⚠️ 貼上您的 Base ID*/
+    const TABLE_NAME = 'Table 1';                /* ⚠️ 如果您的資料表名稱不是 "Table 1"，請修改*/
 
     // --- DOM 元素 ---
     const portfolioGrid = document.getElementById('portfolio-grid');
     const filterButtonsContainer = document.getElementById('filter-buttons');
     const loadingText = document.querySelector('.loading-text');
 
-    // --- API URL ---
-    // 我們加上了篩選和排序的參數
-    // filterByFormula: 只抓取狀態為 "發布" 的作品
-    // sort[0][field]: 根據 "排序" 欄位來排序
-    // sort[0][direction]: 升冪排序 (數字小的在前面)
-    const url = `https://api.airtable.com/v0/${BASE_ID}/${encodeURIComponent(TABLE_NAME)}?filterByFormula={狀態}='發布 (Published)'&sort%5B0%5D%5Bfield%5D=排序&sort%5B0%5D%5Bdirection%5D=asc`;
+    // --- API URL (已更新欄位名稱) ---
+    // filterByFormula: 只抓取【狀態 (Status)】為 "發布 (Published)" 的作品
+    // sort[0][field]: 根據【排序 (SortOrder)】欄位來排序
+    const url = `https://api.airtable.com/v0/${BASE_ID}/${encodeURIComponent(TABLE_NAME)}?filterByFormula={狀態 (Status)}='發布 (Published)'&sort%5B0%5D%5Bfield%5D=排序 (SortOrder)&sort%5B0%5D%5Bdirection%5D=asc`;
 
     // --- 主程式：從 Airtable 取得資料並渲染到頁面 ---
     async function fetchPortfolioData() {
@@ -43,38 +41,40 @@
             const data = await response.json();
             const records = data.records;
 
-            // 清空載入中的文字
             portfolioGrid.innerHTML = '';
             
             if (records.length === 0) {
-                portfolioGrid.innerHTML = '<p>目前尚無作品。</p>';
+                portfolioGrid.innerHTML = '<p>目前尚無已發布的作品，或所有作品仍在草稿狀態。</p>';
                 return;
             }
 
-            // 渲染作品卡片
             renderCards(records);
-            // 渲染篩選按鈕
             renderFilterButtons(records);
 
         } catch (error) {
             console.error('無法從 Airtable 取得資料:', error);
-            portfolioGrid.innerHTML = '<p>作品載入失敗，請稍後再試。</p>';
+            portfolioGrid.innerHTML = '<p>作品載入失敗，請按 F12 打開主控台(Console)檢查錯誤訊息。</p>';
         }
     }
 
-    // --- 渲染所有作品卡片 ---
+    // --- 渲染所有作品卡片 (已更新欄位名稱) ---
     function renderCards(records) {
         records.forEach(record => {
             const fields = record.fields;
-            // 跳過沒有專案名稱或主圖的資料
-            if (!fields.專案名稱 || !fields.專案主圖) return;
+            // 使用中括號 [] 來讀取包含特殊字元(如括號和空格)的欄位名稱
+            const projectName = fields['專案名稱 (ProjectName)'];
+            const mainImage = fields['專案主圖 (MainImage)'];
+            const category = fields['分類 (Category)'];
+            const description = fields['專案簡介 (Description)'];
+
+            if (!projectName || !mainImage) return;
 
             const cardHTML = `
-                <div class="card" data-category="${fields.分類 || '未分類'}">
-                    <img src="${fields.專案主圖[0].url}" alt="${fields.專案名稱}">
+                <div class="card" data-category="${category || '未分類'}">
+                    <img src="${mainImage[0].url}" alt="${projectName}">
                     <div class="card-content">
-                        <h3>${fields.專案名稱}</h3>
-                        <p>${fields.專案簡介 || ''}</p>
+                        <h3>${projectName}</h3>
+                        <p>${description || ''}</p>
                     </div>
                 </div>
             `;
@@ -82,33 +82,27 @@
         });
     }
     
-    // --- 渲染篩選按鈕 ---
+    // --- 渲染篩選按鈕 (已更新欄位名稱) ---
     function renderFilterButtons(records) {
-        // 取得所有不重複的分類
-        const categories = ['所有作品', ...new Set(records.map(r => r.fields.分類).filter(Boolean))];
+        const categories = ['所有作品', ...new Set(records.map(r => r.fields['分類 (Category)']).filter(Boolean))];
         
         filterButtonsContainer.innerHTML = categories.map(category => 
             `<button class="filter-btn ${category === '所有作品' ? 'active' : ''}" data-filter="${category}">${category}</button>`
         ).join('');
 
-        // 加上按鈕的點擊事件
         addFilterEventListeners();
     }
     
-    // --- 篩選按鈕的事件監聽 ---
+    // --- 篩選按鈕的事件監聽 (無需修改) ---
     function addFilterEventListeners() {
+        // ... (這段函式內容不變) ...
         const buttons = document.querySelectorAll('.filter-btn');
         const cards = document.querySelectorAll('#portfolio-grid .card');
-
         buttons.forEach(button => {
             button.addEventListener('click', () => {
-                // 更新按鈕的 active 狀態
                 buttons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
-
                 const filter = button.getAttribute('data-filter');
-
-                // 篩選卡片
                 cards.forEach(card => {
                     if (filter === '所有作品' || card.getAttribute('data-category') === filter) {
                         card.style.display = 'block';
@@ -122,8 +116,8 @@
 
     // --- 執行主程式 ---
     fetchPortfolioData();
-	
- /* --- 漢堡選單控制 ---
+
+        /* --- 漢堡選單控制 ---
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
 
@@ -242,9 +236,8 @@ var swiper = new Swiper('.swiper-container', {
     <a id="back-to-top-btn" href="#top" title="回到頂端">
     <img src="images/arrow-up.png" alt="回到頂端">
     </a>
+
+
 </body>
 
 </html>
-
-
-
