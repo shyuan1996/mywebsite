@@ -22,133 +22,133 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- DOM 元素 ---
     const portfolioGrid = document.getElementById('portfolio-grid');
     const filterButtonsContainer = document.getElementById('filter-buttons');
-    const modal = document.getElementById('modal-gallery');
-    const modalCloseBtn = document.getElementById('modal-close');
-    const modalOverlay = document.getElementById('modal-overlay');
-    const swiperWrapper = document.getElementById('swiper-wrapper');
-    let modalSwiper = null; // 用來存放 Swiper 實體
+    const paginationContainer = document.getElementById('pagination-container');
+    // ... (Modal 相關的 DOM 元素)
+
+    // --- 全域變數 ---
+    let allRecords = [];        // 儲存從 Airtable 抓到的所有資料
+    let filteredRecords = [];   // 儲存當前篩選後的資料
+    let currentPage = 1;        // 當前頁碼
 
     // --- Airtable API URL ---
     const url = `https://api.airtable.com/v0/${BASE_ID}/${encodeURIComponent(TABLE_NAME)}?filterByFormula={狀態 (Status)}='發布 (Published)'&sort%5B0%5D%5Bfield%5D=排序 (SortOrder)&sort%5B0%5D%5Bdirection%5D=asc`;
 
-    // --- 函式：從 Airtable 取得資料 ---
     async function fetchPortfolioData() {
-        if (!portfolioGrid) return; // 如果不在作品集頁面，就停止
-        portfolioGrid.innerHTML = '<p class="loading-text">作品載入中，請稍候...</p>';
+        if (!portfolioGrid) return;
+        portfolioGrid.innerHTML = '<p class="loading-text">載入中，請稍候...</p>';
         try {
             const response = await fetch(url, { headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}` } });
             if (!response.ok) throw new Error(`HTTP 錯誤！ 狀態: ${response.status}`);
             const data = await response.json();
-            renderCards(data.records);
-            renderFilterButtons(data.records);
+            
+            allRecords = data.records;      // 儲存所有資料
+            filteredRecords = allRecords;   // 預設篩選結果為全部資料
+            
+            renderFilterButtons();
+            displayPage(1); // 顯示第一頁
+
         } catch (error) {
             console.error('無法從 Airtable 取得資料:', error);
-            portfolioGrid.innerHTML = '<p>作品載入失敗，請按 F12 檢查錯誤訊息。</p>';
+            portfolioGrid.innerHTML = '<p>作品載入失敗，請檢查 F12 Console。</p>';
         }
     }
 
-    // --- 函式：渲染作品卡片 ---
+    // --- 函式：顯示特定頁面的內容 ---
+    function displayPage(page) {
+        currentPage = page;
+        portfolioGrid.innerHTML = ''; // 清空現有內容
+
+        // 根據螢幕寬度決定每頁顯示數量
+        const itemsPerPage = window.innerWidth <= 768 ? 6 : 9;
+        
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const paginatedItems = filteredRecords.slice(startIndex, endIndex);
+
+        renderCards(paginatedItems);
+        setupPagination();
+    }
+
+    // --- 函式：設定分頁按鈕 ---
+    function setupPagination() {
+        paginationContainer.innerHTML = '';
+        const itemsPerPage = window.innerWidth <= 768 ? 6 : 9;
+        const pageCount = Math.ceil(filteredRecords.length / itemsPerPage);
+
+        if (pageCount <= 1) return; // 如果只有一頁或沒有內容，就不顯示分頁
+
+        for (let i = 1; i <= pageCount; i++) {
+            const btn = document.createElement('button');
+            btn.innerText = i;
+            if (i === currentPage) {
+                btn.classList.add('active');
+            }
+            btn.addEventListener('click', () => {
+                displayPage(i);
+            });
+            paginationContainer.appendChild(btn);
+        }
+    }
+
+    // --- 函式：渲染卡片 (只負責渲染傳入的資料) ---
     function renderCards(records) {
-        portfolioGrid.innerHTML = '';
         if (records.length === 0) {
-            portfolioGrid.innerHTML = '<p>目前尚無已發布的作品。</p>';
+            portfolioGrid.innerHTML = '<p>此分類下尚無作品。</p>';
             return;
         }
         records.forEach(record => {
+            // ... (renderCards 的內部邏輯與之前相同)
             const fields = record.fields;
             if (!fields['專案名稱 (ProjectName)'] || !fields['專案主圖 (MainImage)']) return;
-
             const card = document.createElement('div');
             card.className = 'card';
             card.setAttribute('data-category', fields['分類 (Category)'] || '未分類');
-            card.innerHTML = `
-                <img src="${fields['專案主圖 (MainImage)'][0].thumbnails.large.url}" alt="${fields['專案名稱 (ProjectName)']}">
-                <div class="card-content">
-                    <h3>${fields['專案名稱 (ProjectName)']}</h3>
-                    <p>${fields['專案簡介 (Description)'] || ''}</p>
-                </div>
-            `;
-            // 為卡片加上點擊事件，用來打開 Modal
+            card.innerHTML = `<img src="${fields['專案主圖 (MainImage)'][0].thumbnails.large.url}" alt="${fields['專案名稱 (ProjectName)']}"><div class="card-content"><h3>${fields['專案名稱 (ProjectName)']}</h3><p>${fields['專案簡介 (Description)'] || ''}</p></div>`;
             card.addEventListener('click', () => openModalGallery(fields));
             portfolioGrid.appendChild(card);
         });
     }
 
-    // --- 函式：渲染篩選按鈕 ---
-    function renderFilterButtons(records) { /* ... 內容不變 ... */ }
-
-    // --- 函式：篩選按鈕事件 ---
-    function addFilterEventListeners() { /* ... 內容不變 ... */ }
-
-    // --- 函式：打開 Modal 燈箱並初始化 Swiper ---
-    function openModalGallery(fields) {
-        const images = fields['專案主圖 (MainImage)'];
-        if (!images || images.length === 0) return;
-
-        // 填入圖片
-        swiperWrapper.innerHTML = images.map(img => `
-            <div class="swiper-slide"><img src="${img.url}" alt="${fields['專案名稱 (ProjectName)']}"></div>
-        `).join('');
-
-        // 顯示 Modal
-        modal.classList.add('active');
-
-        // 【修正】初始化或更新 Swiper
-        if (modalSwiper) {
-            modalSwiper.destroy(true, true); // 銷毀舊的
-        }
-        modalSwiper = new Swiper('.main-swiper', {
-            loop: true,
-            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-            pagination: { el: '.swiper-pagination', clickable: true },
-        });
-        modalSwiper.update(); // 更新輪播
-    }
-
-    // --- 函式：關閉 Modal 燈箱 ---
-    function closeModal() {
-        modal.classList.remove('active');
-        if (modalSwiper) {
-            modalSwiper.destroy(true, true); // 關閉時銷毀
-            modalSwiper = null;
-        }
+    // --- 函式：渲染篩選按鈕 (現在只執行一次) ---
+    function renderFilterButtons() {
+        const categories = ['所有作品', ...new Set(allRecords.map(r => r.fields['分類 (Category)']).filter(Boolean))];
+        filterButtonsContainer.innerHTML = categories.map(category => `<button class="filter-btn ${category === '所有作品' ? 'active' : ''}" data-filter="${category}">${category}</button>`).join('');
+        addFilterEventListeners();
     }
     
-    // --- 執行 Airtable 資料抓取 ---
+    // --- 函式：篩選按鈕事件 (已更新邏輯) ---
+    function addFilterEventListeners() {
+        const buttons = document.querySelectorAll('.filter-btn');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                buttons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                const filter = button.getAttribute('data-filter');
+                if (filter === '所有作品') {
+                    filteredRecords = allRecords;
+                } else {
+                    filteredRecords = allRecords.filter(record => record.fields['分類 (Category)'] === filter);
+                }
+                
+                displayPage(1); // 篩選後，永遠回到第一頁
+            });
+        });
+    }
+
+    // --- 執行主程式 ---
     fetchPortfolioData();
 
-    // --- 為 Modal 加上關閉事件 ---
-    modalCloseBtn.addEventListener('click', closeModal);
-    modalOverlay.addEventListener('click', closeModal);
-
-    // ---【加回來】漢堡選單控制 ---
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    if (hamburger) {
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('nav-active');
-        });
-    }
-
-    // ---【加回來】回到頂端按鈕控制 ---
-    const backToTopButton = document.querySelector('#back-to-top-btn');
-    if (backToTopButton) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 200) {
-                backToTopButton.classList.add('show');
-            } else {
-                backToTopButton.classList.remove('show');
-            }
-        });
-        backToTopButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
-
-    // (renderFilterButtons 和 addFilterEventListeners 的內容跟之前一樣，為節省篇幅省略，實際貼上時請包含它們)
-    function renderFilterButtons(records) { const categories = ['所有作品', ...new Set(records.map(r => r.fields['分類 (Category)']).filter(Boolean))]; filterButtonsContainer.innerHTML = categories.map(category => `<button class="filter-btn ${category === '所有作品' ? 'active' : ''}" data-filter="${category}">${category}</button>`).join(''); addFilterEventListeners();}
-    function addFilterEventListeners() { const buttons = document.querySelectorAll('.filter-btn'); const cards = document.querySelectorAll('#portfolio-grid .card'); buttons.forEach(button => { button.addEventListener('click', () => { buttons.forEach(btn => btn.classList.remove('active')); button.classList.add('active'); const filter = button.getAttribute('data-filter'); cards.forEach(card => { if (filter === '所有作品' || card.getAttribute('data-category') === filter) { card.style.display = 'block'; } else { card.style.display = 'none'; } }); }); }); }
+    // ... (漢堡選單、回到頂端按鈕、Modal 燈箱的程式碼與之前相同，請保留它們) ...
+    // --- Modal 燈箱相關程式碼 ---
+    const modal = document.getElementById('modal-gallery'); const modalCloseBtn = document.getElementById('modal-close'); const modalOverlay = document.getElementById('modal-overlay'); const swiperWrapper = document.getElementById('swiper-wrapper'); let modalSwiper = null;
+    function openModalGallery(fields) { const images = fields['專案主圖 (MainImage)']; if (!images || images.length === 0) return; swiperWrapper.innerHTML = images.map(img => `<div class="swiper-slide"><img src="${img.url}" alt="${fields['專案名稱 (ProjectName)']}"></div>`).join(''); modal.classList.add('active'); if (modalSwiper) { modalSwiper.destroy(true, true); } modalSwiper = new Swiper('.main-swiper', { loop: true, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, pagination: { el: '.swiper-pagination', clickable: true }, }); modalSwiper.update(); }
+    function closeModal() { modal.classList.remove('active'); if (modalSwiper) { modalSwiper.destroy(true, true); modalSwiper = null; } }
+    modalCloseBtn.addEventListener('click', closeModal); modalOverlay.addEventListener('click', closeModal);
+    // --- 漢堡選單控制 ---
+    const hamburger = document.querySelector('.hamburger'); const navLinks = document.querySelector('.nav-links'); if (hamburger) { hamburger.addEventListener('click', () => { navLinks.classList.toggle('nav-active'); }); }
+    // --- 回到頂端按鈕控制 ---
+    const backToTopButton = document.querySelector('#back-to-top-btn'); if (backToTopButton) { window.addEventListener('scroll', () => { if (window.scrollY > 200) { backToTopButton.classList.add('show'); } else { backToTopButton.classList.remove('show'); } }); backToTopButton.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }); }
 });
 </script>
 <body>
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <li><a href="https://www.shyuan.com.tw/">首頁</a></li>
             <li><a href="https://www.shyuan.com.tw/about">關於我們</a></li>
             <li><a href="https://www.shyuan.com.tw/services">服務項目</a></li>
-            <li><a href="https://www.shyuan.com.tw/portfolio" class="active">作品集</a></li>
+            <li><a href="https://www.shyuan.com.tw/portfolio" class="active">客戶案例</a></li>
             <li><a href="https://www.shyuan.com.tw/contact">聯絡我們</a></li>
         </ul>
         <div class="hamburger">
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </header>
 <main>
     <section class="page-header">
-        <h1>我們的成功案例</h1>
+        <h1>祥鉞客戶案例</h1>
     </section>
 
     <section class="content-section">
@@ -185,8 +185,10 @@ document.addEventListener('DOMContentLoaded', () => {
             <div id="portfolio-grid" class="grid-layout">
                 <p class="loading-text">作品載入中，請稍候...</p>
             </div>
+		    <div id="pagination-container" class="pagination"></div>
             </div>
     </section>
+
 </main>
  <footer class="footer">
         <div class="footer-main">
