@@ -195,7 +195,13 @@ main {
 }
 
 .hero-content h1 {
-    font-size: 3.2em;
+    /* 使用 clamp() 函式來設定一個動態的字體大小 */
+    /* 最小2rem, 理想大小為1.5rem + 2vw, 最大不超過3.2rem */
+    font-size: clamp(2rem, 1.5rem + 2vw, 3.2rem);
+    
+    /* 作為雙重保險，確保在任何情況下都不會換行 */
+    white-space: nowrap; 
+    
     color: #fff;
     margin-bottom: 20px;
 }
@@ -723,5 +729,6 @@ main {
 #portfolio-grid .card-content {
     padding: 1px 20px; /* 調整上下(15px)和左右(20px)的內距 */
 }
+
 
 /* ======================================================================== */
