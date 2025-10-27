@@ -671,34 +671,76 @@ main {
 }
 /* ======================================================================== */
 
-/* ==================== 作品集 - 分頁功能樣式 ==================== */
-.pagination {
+/* ==================== 作品集 - 專業分頁器樣式 ==================== */
+
+.pagination-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
     margin-top: 50px;
 }
 
-.pagination button {
-    padding: 8px 15px;
+.pagination-list {
+    display: flex;
+    list-style: none; /* 移除 <ul> 的預設圓點 */
+    padding: 0;
+    margin: 0;
+    gap: 8px; /* 按鈕間的間距 */
+}
+
+.pagination-list li {
+    margin: 0;
+}
+
+/* 統一設定所有按鈕的樣式 */
+.pagination-list a,
+.pagination-list span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 50px;
     background-color: #fff;
     color: #333;
     cursor: pointer;
+    text-decoration: none;
     transition: all 0.3s ease;
+    font-size: 1.5em;
 }
 
-.pagination button:hover {
+/* 滑鼠移上去的樣式 */
+.pagination-list a:hover {
     background-color: #e8eaf6;
     border-color: #1a237e;
 }
 
-.pagination button.active {
+/* 當前頁面 (Active) 的樣式 */
+.pagination-list li.active a,
+.pagination-list li.active span {
     background-color: #1a237e;
     color: #fff;
     border-color: #1a237e;
+    font-weight: bold;
+}
+
+/* "..." 省略符號的樣式 */
+.pagination-list li.disabled span {
+    background-color: #f9f9f9;
+    color: #ccc;
+    border-color: #eee;
+    cursor: default;
+}
+
+/* "上一頁/下一頁" 按鈕被禁用的樣式 */
+.pagination-list li.disabled a {
+    background-color: #f9f9f9;
+    color: #ccc;
+    border-color: #eee;
+    cursor: default;
+    pointer-events: none; /* 讓它不能被點擊 */
 }
 /* ================================================================ */
 

@@ -39,86 +39,94 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Airtable 設定 ---
+    // --- Airtable 設定 (保持不變) ---
     const AIRTABLE_TOKEN = 'patPNmpA7lKl117x1.d884e411d90c73761fcd2aeb399502f9b9bd12d3ea4f21088405420ac0e222c7';
     const BASE_ID = 'appWtvyd8MgJ3cmrW';
     const TABLE_NAME = 'Table 1';
 
-    // --- DOM 元素 ---
+    // --- DOM 元素 (保持不變) ---
     const portfolioGrid = document.getElementById('portfolio-grid');
     const filterButtonsContainer = document.getElementById('filter-buttons');
-    const paginationContainer = document.getElementById('pagination-container');
+    const paginationContainer = document.getElementById('pagination-list');
     
-    // --- 全域變數 ---
+    // --- 全域變數 (保持不變) ---
     let allRecords = [];
     let filteredRecords = [];
     let currentPage = 1;
 
-    // --- Airtable API URL ---
+    // --- Airtable API URL (保持不變) ---
     const url = `https://api.airtable.com/v0/${BASE_ID}/${encodeURIComponent(TABLE_NAME)}?filterByFormula={狀態 (Status)}='發布 (Published)'&sort%5B0%5D%5Bfield%5D=排序 (SortOrder)&sort%5B0%5D%5Bdirection%5D=asc`;
 
-    async function fetchPortfolioData() {
-        if (!portfolioGrid) return;
-        portfolioGrid.innerHTML = '<p class="loading-text">作品載入中，請稍候...</p>';
-        try {
-            const response = await fetch(url, { headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}` } });
-            if (!response.ok) throw new Error(`HTTP 錯誤！ 狀態: ${response.status}`);
-            const data = await response.json();
-            
-            allRecords = data.records;
-            filteredRecords = allRecords;
-            
-            renderFilterButtons();
-            displayPage(1);
+    // --- 函式：fetchPortfolioData (保持不變) ---
+    async function fetchPortfolioData() { /* ... 內容不變 ... */ }
 
-        } catch (error) {
-            console.error('無法從 Airtable 取得資料:', error);
-            portfolioGrid.innerHTML = '<p>作品載入失敗，請檢查 F12 Console。</p>';
-        }
-    }
+    // --- 函式：displayPage (保持不變) ---
+    function displayPage(page) { /* ... 內容不變 ... */ }
 
-    // --- 函式：顯示特定頁面的內容 ---
-    function displayPage(page) {
-        // ▼▼▼ 【關鍵修正】點擊分頁時，平滑滾動到頁面頂端 ▼▼▼
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        // ▲▲▲ 【關鍵修正】▲▲▲
-
-        currentPage = page;
-        portfolioGrid.innerHTML = '';
-
-        const itemsPerPage = window.innerWidth <= 992 ? 6 : 9;
-        
-        const startIndex = (currentPage - 1) * itemsPerPage;
-        const endIndex = startIndex + itemsPerPage;
-        const paginatedItems = filteredRecords.slice(startIndex, endIndex);
-
-        renderCards(paginatedItems);
-        setupPagination();
-    }
-
-    // --- 函式：設定分頁按鈕 ---
+    // --- 函式：setupPagination (保持不變) ---
     function setupPagination() {
         paginationContainer.innerHTML = '';
         const itemsPerPage = window.innerWidth <= 992 ? 6 : 9;
-        const pageCount = Math.ceil(filteredRecords.length / itemsPerPage);
+        const totalPages = Math.ceil(filteredRecords.length / itemsPerPage);
 
-        if (pageCount <= 1) return;
+        if (totalPages <= 1) return;
 
-        for (let i = 1; i <= pageCount; i++) {
-            const btn = document.createElement('button');
-            btn.innerText = i;
-            if (i === currentPage) {
-                btn.classList.add('active');
-            }
-            btn.addEventListener('click', () => {
-                displayPage(i);
+        const maxPagesToShow = window.innerWidth <= 768 ? 3 : 5;
+        const paginationHTML = createPagination(totalPages, currentPage, maxPagesToShow);
+        paginationContainer.innerHTML = paginationHTML;
+
+        paginationContainer.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = parseInt(a.getAttribute('data-page'));
+                if (page !== currentPage) {
+                    displayPage(page);
+                }
             });
-            paginationContainer.appendChild(btn);
-        }
+        });
     }
 
+    // --- 【關鍵修正】函式：createPagination (已替換按鈕) ---
+    function createPagination(totalPages, page, maxPagesToShow) {
+        let liTag = '';
+        let active;
+
+        // === 1. 按鈕：【已換成】最前頁 ===
+        liTag += `<li class="${(page > 1) ? '' : 'disabled'}">
+                    <a href="#" data-page="1" aria-label="最前頁">&laquo;</a>
+                  </li>`;
+
+        // === 2. 中間的數字頁碼 (邏輯不變) ===
+        let start, end;
+        if (totalPages <= maxPagesToShow) {
+            start = 1;
+            end = totalPages;
+        } else {
+            start = Math.max(1, page - Math.floor(maxPagesToShow / 2));
+            end = Math.min(totalPages, start + maxPagesToShow - 1);
+            if (end - start < maxPagesToShow - 1) {
+                start = Math.max(1, end - maxPagesToShow + 1);
+            }
+        }
+        for (let i = start; i <= end; i++) {
+            active = (i === page) ? 'active' : '';
+            liTag += `<li class="numb ${active}"><a href="#" data-page="${i}">${i}</a></li>`;
+        }
+        // === 數字頁碼結束 ===
+
+        // === 3. 按鈕：【已換成】最後頁 ===
+        liTag += `<li class="${(page < totalPages) ? '' : 'disabled'}">
+                    <a href="#" data-page="${totalPages}" aria-label="最後頁">&raquo;</a>
+                  </li>`;
+
+        return liTag;
+    }
+    // --- 【關鍵修正完畢】 ---
+
+
     // --- (此處省略 renderCards, renderFilterButtons, addFilterEventListeners, Modal 相關, 漢堡選單, 回到頂端按鈕的程式碼，因為它們內容不變) ---
-    // --- 您在貼上時，請確保這些函式都還在 ---
+    async function fetchPortfolioData() { if (!portfolioGrid) return; portfolioGrid.innerHTML = '<p class="loading-text">作品載入中，請稍候...</p>'; try { const response = await fetch(url, { headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}` } }); if (!response.ok) throw new Error(`HTTP 錯誤！ 狀態: ${response.status}`); const data = await response.json(); allRecords = data.records; filteredRecords = allRecords; renderFilterButtons(); displayPage(1); } catch (error) { console.error('無法從 Airtable 取得資料:', error); portfolioGrid.innerHTML = '<p>作品載入失敗，請檢查 F12 Console。</p>'; } }
+    function displayPage(page) { window.scrollTo({ top: 0, behavior: 'smooth' }); currentPage = page; portfolioGrid.innerHTML = ''; const itemsPerPage = window.innerWidth <= 992 ? 6 : 9; const startIndex = (currentPage - 1) * itemsPerPage; const endIndex = startIndex + itemsPerPage; const paginatedItems = filteredRecords.slice(startIndex, endIndex); renderCards(paginatedItems); setupPagination(); }
     function renderCards(records) { if (records.length === 0) { portfolioGrid.innerHTML = '<p>此分類下尚無作品。</p>'; return; } records.forEach(record => { const fields = record.fields; if (!fields['專案名稱 (ProjectName)'] || !fields['專案主圖 (MainImage)']) return; const card = document.createElement('div'); card.className = 'card'; card.setAttribute('data-category', fields['分類 (Category)'] || '未分類'); card.innerHTML = `<img src="${fields['專案主圖 (MainImage)'][0].thumbnails.large.url}" alt="${fields['專案名稱 (ProjectName)']}"><div class="card-content"><h3>${fields['專案名稱 (ProjectName)']}</h3><p>${fields['專案簡介 (Description)'] || ''}</p></div>`; card.addEventListener('click', () => openModalGallery(fields)); portfolioGrid.appendChild(card); }); }
     function renderFilterButtons() { const categories = ['所有作品', ...new Set(allRecords.map(r => r.fields['分類 (Category)']).filter(Boolean))]; filterButtonsContainer.innerHTML = categories.map(category => `<button class="filter-btn ${category === '所有作品' ? 'active' : ''}" data-filter="${category}">${category}</button>`).join(''); addFilterEventListeners(); }
     function addFilterEventListeners() { const buttons = document.querySelectorAll('.filter-btn'); buttons.forEach(button => { button.addEventListener('click', () => { buttons.forEach(btn => btn.classList.remove('active')); button.classList.add('active'); const filter = button.getAttribute('data-filter'); if (filter === '所有作品') { filteredRecords = allRecords; } else { filteredRecords = allRecords.filter(record => record.fields['分類 (Category)'] === filter); } displayPage(1); }); }); }
@@ -167,7 +175,10 @@ document.addEventListener('DOMContentLoaded', () => {
             <div id="portfolio-grid" class="grid-layout">
                 <p class="loading-text">作品載入中，請稍候...</p>
             </div>
-		    <div id="pagination-container" class="pagination"></div>
+				<nav class="pagination-container" aria-label="作品集分頁導覽">
+                <ul id="pagination-list" class="pagination-list">
+                    </ul>
+            </nav>			
             </div>
     </section>
 
