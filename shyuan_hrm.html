@@ -12,10 +12,8 @@
             font-family: 'Noto Sans TC', sans-serif; 
             background-color: #f3f4f6; 
             overflow: hidden; 
-            /* 增加頂部安全距離，避免手機瀏海/狀態列遮擋 */
             padding-top: env(safe-area-inset-top, 20px); 
         }
-        /* 針對手機版增加額外的頂部 padding */
         @media (max-width: 640px) {
             body { padding-top: 40px; }
         }
@@ -40,21 +38,23 @@
         .badge-system { background-color: #f3f4f6; color: #1f2937; }
         .btn-disabled { background-color: #9ca3af !important; cursor: not-allowed; opacity: 0.7; }
         
-        /* 統一輸入框樣式與高度 */
+        /* 統一輸入框樣式 */
         input, select, textarea { 
             border: 1px solid #d1d5db !important; 
             outline: none; 
-            height: 42px; /* 固定高度，解決排版不一 */
+            height: 42px; 
             padding: 0 10px;
+            background-color: #f9fafb; /* 統一灰底 bg-gray-50 */
+            border-radius: 0.5rem;
         }
-        textarea { height: auto; padding: 8px 10px; } /* textarea 自動高度 */
+        textarea { height: auto; padding: 8px 10px; } 
         input:focus, select:focus, textarea:focus { border-color: #3b82f6 !important; ring: 2px; }
         
-        /* 修復 Date Input 在 iOS 上的默認外觀 */
+        /* 修復 iOS Date Input */
         input[type="date"] {
             -webkit-appearance: none;
             appearance: none;
-            background-color: #fff;
+            background-color: #f9fafb; 
         }
     </style>
 </head>
@@ -75,11 +75,13 @@
                 <div class="text-center mb-6">
                     <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-building text-white text-2xl"></i></div>
                     <h1 class="text-2xl font-bold text-gray-800">員工考勤系統</h1>
+                    <!-- 隱藏的時間狀態 -->
+                    <div class="hidden" id="network-time-status"></div> 
                 </div>
                 <form id="login-form" onsubmit="handleLogin(event)">
-                    <div class="mb-4"><label class="block text-gray-700 text-sm font-bold mb-2">帳號</label><input class="w-full px-3 py-3 rounded-lg border-gray-300 bg-gray-50 text-base" id="username" type="text" placeholder="請輸入帳號" required></div>
-                    <div class="mb-2"><label class="block text-gray-700 text-sm font-bold mb-2">密碼</label><input class="w-full px-3 py-3 rounded-lg border-gray-300 bg-gray-50 text-base" id="password" type="password" placeholder="請輸入密碼" required></div>
-                    <div class="flex items-center justify-between mb-6"><label class="flex items-center text-sm text-gray-600 cursor-pointer"><input type="checkbox" id="remember-me" class="mr-2 form-checkbox text-blue-600 rounded"> 記住帳號 (30天免登入)</label></div>
+                    <div class="mb-4"><label class="block text-gray-700 text-sm font-bold mb-2">帳號</label><input class="w-full" id="username" type="text" placeholder="請輸入帳號" required></div>
+                    <div class="mb-2"><label class="block text-gray-700 text-sm font-bold mb-2">密碼</label><input class="w-full" id="password" type="password" placeholder="請輸入密碼" required></div>
+                    <div class="flex items-center justify-between mb-6"><label class="flex items-center text-sm text-gray-600 cursor-pointer"><input type="checkbox" id="remember-me" class="mr-2 form-checkbox text-blue-600 rounded"> 記住帳號密碼</label></div>
                     <div id="login-error" class="hidden mb-4 p-3 bg-red-50 text-red-600 text-sm rounded border border-red-200 flex items-center"><i class="fas fa-exclamation-triangle mr-2 flex-shrink-0"></i> <span>帳號或密碼輸入錯誤</span></div>
                     <div id="login-inactive-error" class="hidden mb-4 p-3 bg-orange-50 text-orange-600 text-sm rounded border border-orange-200 flex items-center"><i class="fas fa-user-slash mr-2 flex-shrink-0"></i> <span>此帳號已被停用</span></div>
                     <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200 text-base" type="submit">登入系統</button>
@@ -392,6 +394,8 @@
         </div>
     </div>
 
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="hidden fixed inset-0 bg-white/90 z-[9999] flex flex-col justify-center items-center"><div class="w-10 h-10 border-4 border-gray-200 border-t-blue-600 rounded-full animate-spin mb-4"></div><div class="text-gray-600 font-bold" id="loading-text">資料同步中...</div></div>
     <!-- Sync -->
     <div id="sync-status" class="fixed bottom-2 right-2 text-xs text-gray-400 z-50 bg-white/80 px-2 py-1 rounded pointer-events-none"><i class="fas fa-cloud"></i> 準備就緒</div>
 
@@ -409,12 +413,28 @@
         let watchId = null; let idleTimer = null; let hardDeleteTargetId = null; let deleteTimer = null;
         let state = {
             currentUser: null, currentView: 'overview', adminLeavePage: 1, distance: null, pendingVerifyCallback: null,
+            timeOffset: 0,
             holidays: [{ id: 1, date: '2023-01-01', note: '元旦' }, { id: 2, date: '2026-01-01', note: '元旦(2026)' }],
             users: [{ id: 'admin', pass: '123', name: '系統管理員', role: 'admin', dept: 'HR' }, { id: 'emp', pass: '123', name: '王小明', role: 'employee', dept: 'IT部' }],
             records: [], leaves: [], announcements: [], pendingAction: null,
             pwdTargetId: null, settings: { lat: 24.1702930000, lng: 120.7117220000, radius: 50 },
             settingTargetId: null
         };
+
+        // --- TIME SYNC ---
+        async function syncNetworkTime() {
+            try {
+                const response = await fetch('https://worldtimeapi.org/api/timezone/Asia/Taipei');
+                if (!response.ok) throw new Error('Time API Error');
+                const data = await response.json();
+                const serverTime = new Date(data.datetime).getTime();
+                const localTime = Date.now();
+                state.timeOffset = serverTime - localTime;
+            } catch (e) {
+                console.warn('Network time sync failed, using local time.', e);
+                state.timeOffset = 0; 
+            }
+        }
 
         // --- GLOBAL & UI FUNCTIONS (HOISTED) ---
         function closeModal(id) { 
@@ -434,7 +454,7 @@
         }
         function execCmd(c,v=null){document.execCommand(c,false,v);}
         function toggleLoading(show, text="資料同步中...") {
-            // Placeholder: Loading removed as requested
+            // Placeholder
         }
         function updateSyncStatus(status) {
             const el = document.getElementById('sync-status');
@@ -443,9 +463,9 @@
             else if(status === 'error') el.innerHTML = '<i class="fas fa-exclamation-triangle text-red-500"></i> 同步失敗';
         }
         function getLocalISOString() {
-            const now = new Date();
-            const offset = now.getTimezoneOffset() * 60000;
-            return new Date(now.getTime() - offset).toISOString().split('T')[0];
+            const now = new Date(Date.now() + state.timeOffset);
+            const offset = 480 * 60000; // UTC+8 always
+            return new Date(now.getTime() + offset).toISOString().split('T')[0];
         }
         function getFullDateString(dateObj) {
             const y = dateObj.getFullYear() - 1911;
@@ -503,7 +523,6 @@
         function startLocationWatch() {
             if (!navigator.geolocation) { updateLocationUI(null, "不支援定位"); return; }
             
-            // Check for insecure context
             if (!window.isSecureContext && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
                 updateLocationUI(null, "定位失敗 (請使用 HTTPS)");
                 return;
@@ -511,7 +530,6 @@
 
             updateLocationUI(null, "定位中...");
             
-            // Options tweaked for mobile
             const options = {
                 enableHighAccuracy: true,
                 timeout: 10000,
@@ -527,7 +545,6 @@
                 },
                 (err) => {
                     console.warn("Watch failed, retrying single shot...", err);
-                    // Retry with single shot if watch fails immediately
                     navigator.geolocation.getCurrentPosition(
                         (pos) => {
                             const dist = getDistanceFromLatLonInM(pos.coords.latitude, pos.coords.longitude, state.settings.lat, state.settings.lng);
@@ -550,7 +567,6 @@
         
         function updateLocationUI(dist, overrideText=null) {
             const bar = document.getElementById('location-bar'); const txt = document.getElementById('location-text'); if(!bar) return;
-            // Add click-to-retry functionality
             bar.onclick = () => { if(overrideText || dist === null) startLocationWatch(); };
             
             if (overrideText) { 
@@ -576,7 +592,6 @@
         async function attemptPunch(type) {
             if(type === 'in' && (state.distance === null || state.distance > state.settings.radius)) { 
                 showToast(`上班打卡需在公司範圍內 (${state.settings.radius}公尺)`, "error"); 
-                // Try to refresh location
                 startLocationWatch();
                 return; 
             }
@@ -600,7 +615,7 @@
         function checkMath(type, sel, ans) {
             document.getElementById(`math-overlay-${type}`).classList.add('hidden');
             if(sel !== ans) return showToast('驗證錯誤', 'error');
-            const now = new Date();
+            const now = new Date(Date.now() + state.timeOffset);
             const timeStr = now.toLocaleTimeString('zh-TW', {hour12:false});
             const dateStr = getLocalISOString();
             const recordLat = state.currentPos ? state.currentPos.lat : (state.settings ? state.settings.lat : 0);
@@ -773,16 +788,6 @@
         function saveSession() {
             if (state.currentUser) {
                 localStorage.setItem(SESSION_KEY, JSON.stringify({ user: state.currentUser, view: state.currentView }));
-                // Remember Me
-                const rememberMe = document.getElementById('remember-me');
-                if(rememberMe && rememberMe.checked) {
-                    const expiry = Date.now() + (30 * 24 * 60 * 60 * 1000);
-                    localStorage.setItem('auth_auto_login', JSON.stringify({ id: state.currentUser.id, pass: state.currentUser.pass, expiry: expiry }));
-                    localStorage.setItem('saved_username', state.currentUser.id);
-                } else {
-                    localStorage.removeItem('auth_auto_login');
-                    localStorage.removeItem('saved_username');
-                }
             }
             else localStorage.removeItem(SESSION_KEY);
         }
@@ -802,12 +807,11 @@
                 else {
                     const rememberMe = document.getElementById('remember-me').checked;
                     if (rememberMe) {
-                        const expiry = Date.now() + (30 * 24 * 60 * 60 * 1000);
-                        localStorage.setItem('auth_auto_login', JSON.stringify({ id: user.id, pass: user.pass, expiry: expiry }));
                         localStorage.setItem('saved_username', user.id);
+                        localStorage.setItem('saved_password', btoa(user.pass)); // Simple encoding for demo
                     } else {
-                        localStorage.removeItem('auth_auto_login');
                         localStorage.removeItem('saved_username');
+                        localStorage.removeItem('saved_password');
                     }
                     performLogin(user); 
                 }
@@ -1390,6 +1394,7 @@
         }
 
         async function init() {
+            await syncNetworkTime(); // Start time sync first
             try {
                 await loadData();
             } catch (err) {
@@ -1400,23 +1405,19 @@
             
             // Auto fill remembered username
             const savedUser = localStorage.getItem('saved_username');
+            const savedPass = localStorage.getItem('saved_password');
             if(savedUser && document.getElementById('username')) {
                 document.getElementById('username').value = savedUser;
                 document.getElementById('remember-me').checked = true;
             }
-
-            // Check Auto Login
-            const autoAuth = JSON.parse(localStorage.getItem('auth_auto_login'));
-            let autoLoggedIn = false;
-            if (autoAuth && autoAuth.expiry > Date.now()) {
-                const user = state.users.find(u => u.id === autoAuth.id && u.pass === autoAuth.pass && !u.deleted);
-                if (user) {
-                    performLogin(user, 'overview');
-                    autoLoggedIn = true;
-                }
+            if(savedPass && document.getElementById('password')) {
+                // Decode base64 (simple obfuscation)
+                try { document.getElementById('password').value = atob(savedPass); } catch(e){}
             }
 
-            if (!autoLoggedIn && session) performLogin(session.user, session.view);
+            // Removed Auto Login Check
+
+            if (session) performLogin(session.user, session.view);
             updateClock();
             setInterval(updateClock, 1000);
             populateTimeSelects();
