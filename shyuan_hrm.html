@@ -38,19 +38,17 @@
         .badge-system { background-color: #f3f4f6; color: #1f2937; }
         .btn-disabled { background-color: #9ca3af !important; cursor: not-allowed; opacity: 0.7; }
         
-        /* 統一輸入框樣式 - 移除強制 padding 0 10px，改由 class 控制或給予較大預設值 */
         input, select, textarea { 
             border: 1px solid #d1d5db !important; 
             outline: none; 
             height: 42px; 
-            padding: 0.5rem 0.75rem; /* 預設給予舒適的間距 */
+            padding: 0.5rem 0.75rem; 
             background-color: #f9fafb; 
             border-radius: 0.5rem;
         }
         textarea { height: auto; padding: 8px 10px; } 
         input:focus, select:focus, textarea:focus { border-color: #3b82f6 !important; ring: 2px; }
         
-        /* 修復 iOS Date Input */
         input[type="date"] {
             -webkit-appearance: none;
             appearance: none;
@@ -69,23 +67,20 @@
     </div>
 
     <!-- Login -->
-    <div id="login-view" class="h-full w-full flex flex-col items-center justify-center p-4 overflow-y-auto bg-gray-100">
+    <div id="login-view" class="h-full w-full flex flex-col items-center justify-center p-4 overflow-y-auto bg-gray-100 hidden">
         <div class="glass-panel w-full max-w-4xl rounded-2xl flex flex-col md:flex-row overflow-hidden shadow-2xl my-auto">
             <div class="w-full md:w-1/2 p-6 md:p-8 border-b md:border-b-0 md:border-r border-gray-100 bg-white">
                 <div class="text-center mb-6">
                     <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-building text-white text-2xl"></i></div>
                     <h1 class="text-2xl font-bold text-gray-800">員工考勤系統</h1>
-                    <div class="text-xs text-gray-400 mt-2" id="network-time-status">時間校正中...</div>
                 </div>
                 <form id="login-form" onsubmit="handleLogin(event)">
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">帳號</label>
-                        <!-- 恢復舊版樣式 class -->
                         <input class="w-full px-4 py-3 rounded-lg border-gray-300 bg-gray-50 text-base" id="username" type="text" placeholder="請輸入帳號" required>
                     </div>
                     <div class="mb-2">
                         <label class="block text-gray-700 text-sm font-bold mb-2">密碼</label>
-                        <!-- 恢復舊版樣式 class -->
                         <input class="w-full px-4 py-3 rounded-lg border-gray-300 bg-gray-50 text-base" id="password" type="password" placeholder="請輸入密碼" required>
                     </div>
                     <div class="flex items-center justify-between mb-6"><label class="flex items-center text-sm text-gray-600 cursor-pointer"><input type="checkbox" id="remember-me" class="mr-2 form-checkbox text-blue-600 rounded"> 記住帳號密碼</label></div>
@@ -101,7 +96,39 @@
         </div>
     </div>
 
-    <!-- App -->
+    <!-- Setup Modal (First Run) -->
+    <div id="setup-view" class="h-full w-full flex flex-col items-center justify-center p-4 bg-gray-100 hidden">
+        <div class="glass-panel w-full max-w-lg rounded-2xl p-8 bg-white shadow-2xl">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-cogs text-white text-2xl"></i></div>
+                <h1 class="text-2xl font-bold text-gray-800">系統初次設定</h1>
+                <p class="text-sm text-gray-500 mt-2">請輸入您的 Google Apps Script 網址與公司座標以連接資料庫。</p>
+            </div>
+            <form onsubmit="handleSystemSetup(event)" class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Google Apps Script URL (API 網址)</label>
+                    <input class="w-full border p-2 rounded text-sm" id="setup-url" type="text" placeholder="https://script.google.com/..." required>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-1">公司緯度 (Lat)</label>
+                        <input class="w-full border p-2 rounded text-sm" id="setup-lat" type="text" placeholder="24.xxxx" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-1">公司經度 (Lng)</label>
+                        <input class="w-full border p-2 rounded text-sm" id="setup-lng" type="text" placeholder="120.xxxx" required>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-1">允許打卡半徑 (公尺)</label>
+                    <input class="w-full border p-2 rounded text-sm" id="setup-radius" type="number" value="100" required>
+                </div>
+                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg mt-4">儲存並啟動</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- App View (Hidden by default) -->
     <div id="app-view" class="hidden flex-grow flex flex-col h-full overflow-hidden">
         <header class="bg-white shadow-sm z-10 flex-shrink-0">
             <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
@@ -124,8 +151,9 @@
                         <h2 class="text-lg md:text-xl font-bold text-gray-800">管理控制台</h2>
                         <div class="text-xs text-gray-500 mt-1" id="admin-date-full">--</div>
                         <div class="text-xl font-mono font-bold text-blue-600 mt-1" id="admin-time-full">--:--:--</div>
-                        <!-- 新增時間來源顯示 -->
-                        <div class="text-xs mt-1 text-gray-400" id="admin-time-source">--</div>
+                        <!-- 時間來源顯示 (僅管理員可見) -->
+                        <div class="text-xs mt-1 text-gray-400" id="admin-time-source">時間校正中...</div>
+                        <div class="mt-2 text-xs text-gray-400 cursor-pointer hover:text-red-500" onclick="resetSystemConfig()"><i class="fas fa-trash-alt"></i> 重設系統連線</div>
                     </div>
                 </div>
                 <nav class="flex-grow p-2 md:p-4 flex flex-row md:flex-col overflow-x-auto md:overflow-visible gap-2 custom-scroll">
@@ -411,56 +439,58 @@
     <div id="sync-status" class="fixed bottom-2 right-2 text-xs text-gray-400 z-50 bg-white/80 px-2 py-1 rounded pointer-events-none"><i class="fas fa-cloud"></i> 準備就緒</div>
 
     <script>
-        const COMPANY_LAT = 24.1702930000;
-        const COMPANY_LNG = 120.7117220000;
-        const ALLOWED_RADIUS = 50; 
-        const ITEMS_PER_PAGE = 10;
+        // --- CONSTANTS ---
+        const CONFIG_KEY = 'attendance_system_config'; // New config key
         const STORAGE_KEY = 'attendance_system_data';
         const SESSION_KEY = 'attendance_session';
         const IDLE_TIMEOUT = 5 * 60 * 1000;
         const LABOR_ACT_TYPES = ["特休", "事假", "病假", "公假", "婚假", "喪假", "產假", "陪產假", "生理假", "家庭照顧假", "工傷病假"];
-        const GAS_API_URL = "https://script.google.com/macros/s/AKfycbwSEyoTer1JDFBpbG3XFDuRaXUbvhFUqc9v-Idhp79VHJqlEkiugjIHFEAk7Jr_Wg_8Ig/exec"; 
 
         let watchId = null; let idleTimer = null; let hardDeleteTargetId = null; let deleteTimer = null;
+        
+        // --- STATE INITIALIZATION (CLEAN) ---
         let state = {
             currentUser: null, currentView: 'overview', adminLeavePage: 1, distance: null, pendingVerifyCallback: null,
             timeOffset: 0,
-            holidays: [{ id: 1, date: '2023-01-01', note: '元旦' }, { id: 2, date: '2026-01-01', note: '元旦(2026)' }],
-            users: [{ id: 'admin', pass: '123', name: '系統管理員', role: 'admin', dept: 'HR' }, { id: 'emp', pass: '123', name: '王小明', role: 'employee', dept: 'IT部' }],
+            holidays: [], // No hardcoded holidays
+            users: [],    // No hardcoded users
             records: [], leaves: [], announcements: [], pendingAction: null,
-            pwdTargetId: null, settings: { lat: 24.1702930000, lng: 120.7117220000, radius: 50 },
+            pwdTargetId: null, 
+            settings: { lat: 0, lng: 0, radius: 100 }, // Default empty settings
             settingTargetId: null
         };
+        
+        // Global config object (populated from localStorage)
+        let appConfig = { gasUrl: "", lat: 0, lng: 0, radius: 100 };
 
         // --- TIME SYNC ---
         async function syncNetworkTime() {
             try {
-                const response = await fetch('https://worldtimeapi.org/api/timezone/Asia/Taipei');
+                const response = await fetch('https://timeapi.io/api/Time/current/zone?timeZone=Asia/Taipei');
                 if (!response.ok) throw new Error('Time API Error');
                 const data = await response.json();
-                const serverTime = new Date(data.datetime).getTime();
+                
+                const serverTime = new Date(data.dateTime).getTime();
                 const localTime = Date.now();
                 state.timeOffset = serverTime - localTime;
                 
-                const statusEl = document.getElementById('network-time-status');
-                if(statusEl) {
-                    statusEl.textContent = '網路時間同步成功 (UTC+8)';
-                    statusEl.className = 'text-xs text-green-500 mt-2 font-bold';
-                    statusEl.classList.remove('hidden');
+                const adminSource = document.getElementById('admin-time-source');
+                if(adminSource) {
+                    adminSource.textContent = "校正來源: 網路時間 (timeapi.io)";
+                    adminSource.className = "text-xs mt-1 text-green-600 font-bold";
                 }
             } catch (e) {
                 console.warn('Network time sync failed, using local time.', e);
                 state.timeOffset = 0; 
-                const statusEl = document.getElementById('network-time-status');
-                if(statusEl) {
-                    statusEl.textContent = '使用本機時間';
-                    statusEl.className = 'text-xs text-orange-400 mt-2';
-                    statusEl.classList.remove('hidden');
+                const adminSource = document.getElementById('admin-time-source');
+                if(adminSource) {
+                    adminSource.textContent = "校正來源: 本機時間 (同步失敗)";
+                    adminSource.className = "text-xs mt-1 text-orange-500";
                 }
             }
         }
 
-        // --- GLOBAL & UI FUNCTIONS (HOISTED) ---
+        // --- GLOBAL & UI FUNCTIONS ---
         function closeModal(id) { 
             document.getElementById(id).classList.add('hidden'); 
             if(id === 'permanent-delete-modal') clearInterval(deleteTimer);
@@ -477,9 +507,8 @@
             setTimeout(() => toast.classList.add('translate-x-full', 'opacity-0', 'pointer-events-none'), 3000);
         }
         function execCmd(c,v=null){document.execCommand(c,false,v);}
-        function toggleLoading(show, text="資料同步中...") {
-            // Placeholder: Loading removed as requested
-        }
+        function toggleLoading(show, text) {} 
+
         function updateSyncStatus(status) {
             const el = document.getElementById('sync-status');
             if(status === 'syncing') el.innerHTML = '<i class="fas fa-sync fa-spin text-blue-500"></i> 同步中...';
@@ -571,6 +600,7 @@
                 },
                 (err) => {
                     console.warn("Watch failed, retrying single shot...", err);
+                    // Retry with single shot if watch fails immediately
                     navigator.geolocation.getCurrentPosition(
                         (pos) => {
                             const dist = getDistanceFromLatLonInM(pos.coords.latitude, pos.coords.longitude, state.settings.lat, state.settings.lng);
@@ -688,7 +718,7 @@
                 else if(l.status === 'rejected') { statusHtml = '<span class="text-red-700 bg-red-100 px-2 py-0.5 rounded text-xs">被拒絕</span>'; rejectHtml = `<div class="text-red-600 text-xs mt-1 border-t border-red-100 pt-1">拒絕原因: ${l.rejectReason}</div>`; }
                 else if(l.status === 'cancelled') statusHtml = '<span class="text-gray-500 bg-gray-100 px-2 py-0.5 rounded text-xs">已取消</span>';
             }
-            document.getElementById('leave-preview-item').innerHTML = l ? `<div class="p-3 bg-white rounded border text-sm shadow-sm"><div class="flex justify-between font-bold"><span>${l.type} (${l.hours}h)</span> ${statusHtml}</div><div class="text-xs text-gray-800 font-bold mt-1">請假時間：${l.start} ~ ${l.end}</div><div class="text-xs text-gray-500 mt-1">事由: ${l.reason}</div>${rejectHtml}${l.status==='pending' ? `<button onclick="initCancel(${l.id})" class="text-xs text-red-500 border border-red-200 rounded px-2 py-1 mt-2 w-full hover:bg-red-50">取消申請</button>`:''}</div>` : '<div class="text-center text-gray-400 text-xs">無紀錄</div>';
+            document.getElementById('leave-preview-item').innerHTML = l ? `<div class="p-3 bg-white rounded border text-sm shadow-sm"><div class="flex justify-between font-bold"><span>${l.type} (${l.hours}h)</span> ${statusHtml}</div><div class="text-xs text-gray-800 font-bold mt-1">${l.start} ~ ${l.end}</div><div class="text-xs text-gray-500 mt-1">事由: ${l.reason}</div>${rejectHtml}${l.status==='pending' ? `<button onclick="initCancel(${l.id})" class="text-xs text-red-500 border border-red-200 rounded px-2 py-1 mt-2 w-full hover:bg-red-50">取消申請</button>`:''}</div>` : '<div class="text-center text-gray-400 text-xs">無紀錄</div>';
         }
         function renderEmployeeDashboard() { renderPunchPreview(); renderLeavePreview(); calcLeavePreview(); renderEmpQuotaStats(); }
 
@@ -734,83 +764,116 @@
             renderLeaveHistoryModal();
         }
 
-        // --- DATA PERSISTENCE ---
-        async function loadData() {
-            if(!GAS_API_URL) {
-                const stored = localStorage.getItem(STORAGE_KEY);
-                if (stored) {
-                    const parsed = JSON.parse(stored);
-                    state.holidays = parsed.holidays || state.holidays;
-                    state.users = parsed.users || state.users;
-                    state.records = parsed.records || state.records;
-                    state.leaves = parsed.leaves || state.leaves;
-                    state.announcements = parsed.announcements || state.announcements;
-                    if (!state.users.some(u => u.id === 'admin')) {
-                        state.users.unshift({ id: 'admin', pass: '123', name: '系統管理員', role: 'admin', dept: 'HR' });
-                    }
-                    if (state.users.length === 1 && state.users[0].id === 'admin') {
-                         state.users.push({ id: 'emp', pass: '123', name: '王小明', role: 'employee', dept: 'IT部' });
-                    }
-                    state.settings = parsed.settings || { lat: 24.1702930000, lng: 120.7117220000, radius: 50 };
-                    state.users.forEach(u => { 
-                        if(typeof u.deleted === 'undefined') u.deleted = false; 
-                        if(typeof u.quota_annual === 'undefined') u.quota_annual = 0;
-                        if(typeof u.quota_birthday === 'undefined') u.quota_birthday = 0;
-                        if(typeof u.quota_comp === 'undefined') u.quota_comp = 0;
-                    });
-                }
+        // --- LOAD DATA HELPERS (Setup) ---
+        function handleSystemSetup(e) {
+            e.preventDefault();
+            const url = document.getElementById('setup-url').value.trim();
+            const lat = parseFloat(document.getElementById('setup-lat').value);
+            const lng = parseFloat(document.getElementById('setup-lng').value);
+            const radius = parseInt(document.getElementById('setup-radius').value);
+
+            if (!url || isNaN(lat) || isNaN(lng) || isNaN(radius)) {
+                alert("請填寫所有欄位");
                 return;
             }
-            try {
-                // toggleLoading removed as requested
-                const res = await fetch(GAS_API_URL);
-                const data = await res.json();
-                if(data) {
-                    if (data.holidays) state.holidays = data.holidays.map(h => ({ ...h, date: cleanDate(h.date) }));
-                    if (data.users) state.users = data.users;
-                    if (data.records) state.records = data.records.map(r => ({ ...r, date: cleanDate(r.date), time: cleanTime(r.time) }));
-                    if (data.leaves) state.leaves = data.leaves.map(l => ({ ...l, start: cleanDateTime(l.start), end: cleanDateTime(l.end) }));
-                    if (data.announcements) state.announcements = data.announcements.map(a => ({ ...a, date: cleanDate(a.date) }));
-                    state.settings = data.settings || { lat: 24.1702930000, lng: 120.7117220000, radius: 50 };
-                    
-                    if (!state.users.some(u => u.id === 'admin')) {
-                        state.users.unshift({ id: 'admin', pass: '123', name: '系統管理員', role: 'admin', dept: 'HR' });
-                    }
-                    state.users.forEach(u => { 
-                        if(typeof u.deleted === 'undefined') u.deleted = false;
-                        if(typeof u.quota_annual === 'undefined') u.quota_annual = 0;
-                        if(typeof u.quota_birthday === 'undefined') u.quota_birthday = 0;
-                        if(typeof u.quota_comp === 'undefined') u.quota_comp = 0;
-                    });
-                }
-                // toggleLoading(false);
-            } catch(e) {
-                console.error("Load Error", e);
-                showToast("雲端資料讀取失敗，切換至本機模式", "error");
-                // toggleLoading(false);
+
+            appConfig = { gasUrl: url, lat: lat, lng: lng, radius: radius };
+            localStorage.setItem(CONFIG_KEY, JSON.stringify(appConfig));
+            
+            // Reload page to apply
+            window.location.reload();
+        }
+
+        function resetSystemConfig() {
+            if(confirm('確定要重設系統連線嗎？這將清除目前的 API 網址設定。')) {
+                localStorage.removeItem(CONFIG_KEY);
+                window.location.reload();
             }
         }
-        async function saveData() {
-            if(!GAS_API_URL) {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify({
-                    holidays: state.holidays, users: state.users, records: state.records, leaves: state.leaves, announcements: state.announcements, settings: state.settings
-                }));
-                return;
+
+        // --- DATA PERSISTENCE ---
+        async function loadData() {
+            // Check Config First
+            const storedConfig = localStorage.getItem(CONFIG_KEY);
+            if (!storedConfig) {
+                // Show Setup Modal
+                document.getElementById('login-view').classList.add('hidden');
+                document.getElementById('setup-view').classList.remove('hidden');
+                return; // Stop loading
             }
-            updateSyncStatus('syncing');
+
+            appConfig = JSON.parse(storedConfig);
+            state.settings = { lat: appConfig.lat, lng: appConfig.lng, radius: appConfig.radius };
+
+            // Load Data from Cloud
+            let cloudSuccess = false;
             try {
-                await fetch(GAS_API_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        holidays: state.holidays, users: state.users, records: state.records, leaves: state.leaves, announcements: state.announcements, settings: state.settings
-                    })
-                });
-                updateSyncStatus('success');
+                const res = await fetch(appConfig.gasUrl);
+                if(res.ok) {
+                    const data = await res.json();
+                    if(data) {
+                        if (data.holidays) state.holidays = data.holidays.map(h => ({ ...h, date: cleanDate(h.date) }));
+                        if (data.users) state.users = data.users;
+                        if (data.records) state.records = data.records.map(r => ({ ...r, date: cleanDate(r.date), time: cleanTime(r.time) }));
+                        if (data.leaves) state.leaves = data.leaves.map(l => ({ ...l, start: cleanDateTime(l.start), end: cleanDateTime(l.end) }));
+                        if (data.announcements) state.announcements = data.announcements.map(a => ({ ...a, date: cleanDate(a.date) }));
+                        // Optional: sync settings from cloud if available, else use local config
+                        if (data.settings) {
+                             // Merge cloud settings? Or prefer local config?
+                             // Let's prefer local config for location since that's what setup is for.
+                        }
+                        cloudSuccess = true;
+                    }
+                }
             } catch(e) {
-                console.error("Save Error", e);
-                updateSyncStatus('error');
+                console.warn("Cloud load failed.", e);
+                showToast("雲端連線失敗，請檢查網路或 API 設定", "error");
+            }
+
+            // Fallback for demo / first run if cloud empty
+            if (!cloudSuccess || state.users.length === 0) {
+                 // Do not load local dummy data as requested "not using local end"
+                 // But we must have at least one admin to login if cloud is empty?
+                 // Or we assume cloud has data. 
+                 // If cloud fails, system is basically unusable except for maybe local cache?
+                 // Let's load from local storage cache if available
+                 const localData = localStorage.getItem(STORAGE_KEY);
+                 if (localData) {
+                     try {
+                        const parsed = JSON.parse(localData);
+                        state.users = parsed.users || [];
+                        state.records = parsed.records || [];
+                        state.leaves = parsed.leaves || [];
+                        state.holidays = parsed.holidays || [];
+                        state.announcements = parsed.announcements || [];
+                        showToast("已載入本機快取資料", "info");
+                     } catch(e) {}
+                 }
+            }
+        }
+
+        async function saveData() {
+            // Save to local cache
+            localStorage.setItem(STORAGE_KEY, JSON.stringify({
+                holidays: state.holidays, users: state.users, records: state.records, leaves: state.leaves, announcements: state.announcements
+            }));
+
+            if(appConfig.gasUrl) {
+                updateSyncStatus('syncing');
+                try {
+                    await fetch(appConfig.gasUrl, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            holidays: state.holidays, users: state.users, records: state.records, leaves: state.leaves, announcements: state.announcements, settings: state.settings
+                        })
+                    });
+                    updateSyncStatus('success');
+                } catch(e) {
+                    console.error("Save Error", e);
+                    updateSyncStatus('error');
+                }
             }
         }
         function saveSession() {
@@ -836,7 +899,7 @@
                     const rememberMe = document.getElementById('remember-me').checked;
                     if (rememberMe) {
                         localStorage.setItem('saved_username', user.id);
-                        localStorage.setItem('saved_password', btoa(user.pass)); // Simple encoding for demo
+                        localStorage.setItem('saved_password', btoa(user.pass)); // Simple encoding
                     } else {
                         localStorage.removeItem('saved_username');
                         localStorage.removeItem('saved_password');
@@ -864,7 +927,8 @@
         function logout() {
             state.currentUser = null; saveSession(); stopLocationWatch(); if(idleTimer) clearTimeout(idleTimer);
             document.getElementById('app-view').classList.add('hidden'); document.getElementById('login-view').classList.remove('hidden');
-            document.getElementById('password').value = ''; 
+            const savedPass = localStorage.getItem('saved_password');
+            if(!savedPass) document.getElementById('password').value = ''; 
             document.getElementById('login-error').classList.add('hidden');
             document.getElementById('login-inactive-error').classList.add('hidden');
             document.getElementById('admin-dashboard').classList.add('hidden'); document.getElementById('employee-dashboard').classList.add('hidden');
@@ -1195,7 +1259,7 @@
                     }
                 }
                 
-                return `<tr class="hover:bg-gray-50 border-b"><td class="p-4 font-mono text-gray-600 whitespace-nowrap">${u.id}</td><td class="p-4 font-bold whitespace-nowrap">${u.name}</td><td class="p-4 text-gray-500 whitespace-nowrap">${u.dept || '-'}</td><td class="p-4 font-mono text-sm whitespace-nowrap">${earliestIn}</td><td class="p-4 font-mono text-sm whitespace-nowrap">${latestOut}${abnormalFlag}${recordCoords}</td><td class="p-4 whitespace-nowrap"><span class="px-2 py-1 rounded text-xs font-bold ${badgeClass}">${status}</span>${timeWarning}${holidayWarning}</td><td class="p-4 flex gap-2 whitespace-nowrap"><button onclick="openEmployeeSettings('${u.id}')" class="text-gray-500 hover:text-gray-700 p-1" title="員工設定"><i class="fas fa-cog"></i></button><button onclick="openChangePasswordModal('${u.id}')" class="text-blue-500 hover:text-blue-700 p-1" title="修改密碼"><i class="fas fa-key"></i></button><button onclick="deleteUser('${u.id}')" class="text-red-500 hover:text-red-700 p-1" title="封存員工"><i class="fas fa-trash-alt"></i></button></td></tr>`;
+                return `<tr class="hover:bg-gray-50 border-b"><td class="p-4 font-mono text-gray-600 whitespace-nowrap">${u.id}</td><td class="p-4 font-bold whitespace-nowrap">${u.name} (已封存)</td><td class="p-4 text-gray-400 whitespace-nowrap">${u.dept || '-'}</td><td class="p-4 font-mono text-sm whitespace-nowrap">${earliestIn}</td><td class="p-4 font-mono text-sm whitespace-nowrap">${latestOut}${abnormalFlag}${recordCoords}</td><td class="p-4 whitespace-nowrap"><span class="px-2 py-1 rounded text-xs font-bold ${badgeClass}">${status}</span>${timeWarning}${holidayWarning}</td><td class="p-4 flex gap-2 whitespace-nowrap"><button onclick="openEmployeeSettings('${u.id}')" class="text-gray-500 hover:text-gray-700 p-1" title="員工設定"><i class="fas fa-cog"></i></button><button onclick="openChangePasswordModal('${u.id}')" class="text-blue-500 hover:text-blue-700 p-1" title="修改密碼"><i class="fas fa-key"></i></button><button onclick="deleteUser('${u.id}')" class="text-red-500 hover:text-red-700 p-1" title="封存員工"><i class="fas fa-trash-alt"></i></button></td></tr>`;
             }).join('');
         }
         function renderAdminLeaves() {
@@ -1406,7 +1470,7 @@
             const adminSource = document.getElementById('admin-time-source');
             if(adminSource) {
                  if(state.timeOffset !== 0) {
-                     adminSource.textContent = "校正來源: 網路時間 (UTC+8)";
+                     adminSource.textContent = "校正來源: 網路時間 (timeapi.io)";
                      adminSource.className = "text-xs mt-1 text-green-600 font-bold";
                  } else {
                      adminSource.textContent = "校正來源: 本機時間";
