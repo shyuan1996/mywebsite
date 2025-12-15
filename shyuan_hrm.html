@@ -38,6 +38,7 @@
         .badge-system { background-color: #f3f4f6; color: #1f2937; }
         .btn-disabled { background-color: #9ca3af !important; cursor: not-allowed; opacity: 0.7; }
         
+        /* 統一輸入框樣式 */
         input, select, textarea { 
             border: 1px solid #d1d5db !important; 
             outline: none; 
@@ -66,7 +67,40 @@
         </div>
     </div>
 
-    <!-- Login -->
+    <!-- 1. Setup View (First Time Run) -->
+    <div id="setup-view" class="h-full w-full flex flex-col items-center justify-center p-4 bg-gray-100 hidden z-50">
+        <div class="glass-panel w-full max-w-lg rounded-2xl p-8 bg-white shadow-2xl relative">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-cogs text-white text-2xl"></i></div>
+                <h1 class="text-2xl font-bold text-gray-800">系統初次設定</h1>
+                <p class="text-sm text-gray-500 mt-2">歡迎使用！請先設定連線資訊以啟動系統。</p>
+            </div>
+            <form onsubmit="handleSystemSetup(event)" class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-1">Google Apps Script 網址 (API URL)</label>
+                    <input class="w-full border p-2 rounded text-sm" id="setup-url" type="text" placeholder="https://script.google.com/..." required>
+                    <p class="text-xs text-gray-400 mt-1">請輸入部署好的 GAS 應用程式網址</p>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-1">公司緯度 (Lat)</label>
+                        <input class="w-full border p-2 rounded text-sm" id="setup-lat" type="text" placeholder="例如: 24.1702" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-1">公司經度 (Lng)</label>
+                        <input class="w-full border p-2 rounded text-sm" id="setup-lng" type="text" placeholder="例如: 120.7117" required>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-1">打卡允許半徑 (公尺)</label>
+                    <input class="w-full border p-2 rounded text-sm" id="setup-radius" type="number" value="100" required>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg mt-4 shadow-lg transition transform active:scale-95">儲存設定並進入系統</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2. Login View -->
     <div id="login-view" class="h-full w-full flex flex-col items-center justify-center p-4 overflow-y-auto bg-gray-100 hidden">
         <div class="glass-panel w-full max-w-4xl rounded-2xl flex flex-col md:flex-row overflow-hidden shadow-2xl my-auto">
             <div class="w-full md:w-1/2 p-6 md:p-8 border-b md:border-b-0 md:border-r border-gray-100 bg-white">
@@ -87,6 +121,7 @@
                     <div id="login-error" class="hidden mb-4 p-3 bg-red-50 text-red-600 text-sm rounded border border-red-200 flex items-center"><i class="fas fa-exclamation-triangle mr-2 flex-shrink-0"></i> <span>帳號或密碼輸入錯誤</span></div>
                     <div id="login-inactive-error" class="hidden mb-4 p-3 bg-orange-50 text-orange-600 text-sm rounded border border-orange-200 flex items-center"><i class="fas fa-user-slash mr-2 flex-shrink-0"></i> <span>此帳號已被停用</span></div>
                     <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200 text-base" type="submit">登入系統</button>
+                    <div class="text-center mt-4"><button type="button" onclick="resetSystemConfig()" class="text-xs text-gray-400 hover:text-gray-600 underline">重設系統連結</button></div>
                 </form>
             </div>
             <div class="w-full md:w-1/2 bg-gray-50 p-6 md:p-8 flex flex-col">
@@ -96,39 +131,7 @@
         </div>
     </div>
 
-    <!-- Setup Modal (First Run) -->
-    <div id="setup-view" class="h-full w-full flex flex-col items-center justify-center p-4 bg-gray-100 hidden">
-        <div class="glass-panel w-full max-w-lg rounded-2xl p-8 bg-white shadow-2xl">
-            <div class="text-center mb-6">
-                <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-cogs text-white text-2xl"></i></div>
-                <h1 class="text-2xl font-bold text-gray-800">系統初次設定</h1>
-                <p class="text-sm text-gray-500 mt-2">請輸入您的 Google Apps Script 網址與公司座標以連接資料庫。</p>
-            </div>
-            <form onsubmit="handleSystemSetup(event)" class="space-y-4">
-                <div>
-                    <label class="block text-gray-700 text-sm font-bold mb-1">Google Apps Script URL (API 網址)</label>
-                    <input class="w-full border p-2 rounded text-sm" id="setup-url" type="text" placeholder="https://script.google.com/..." required>
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-gray-700 text-sm font-bold mb-1">公司緯度 (Lat)</label>
-                        <input class="w-full border p-2 rounded text-sm" id="setup-lat" type="text" placeholder="24.xxxx" required>
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 text-sm font-bold mb-1">公司經度 (Lng)</label>
-                        <input class="w-full border p-2 rounded text-sm" id="setup-lng" type="text" placeholder="120.xxxx" required>
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-gray-700 text-sm font-bold mb-1">允許打卡半徑 (公尺)</label>
-                    <input class="w-full border p-2 rounded text-sm" id="setup-radius" type="number" value="100" required>
-                </div>
-                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg mt-4">儲存並啟動</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- App View (Hidden by default) -->
+    <!-- 3. App View -->
     <div id="app-view" class="hidden flex-grow flex flex-col h-full overflow-hidden">
         <header class="bg-white shadow-sm z-10 flex-shrink-0">
             <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
@@ -151,9 +154,7 @@
                         <h2 class="text-lg md:text-xl font-bold text-gray-800">管理控制台</h2>
                         <div class="text-xs text-gray-500 mt-1" id="admin-date-full">--</div>
                         <div class="text-xl font-mono font-bold text-blue-600 mt-1" id="admin-time-full">--:--:--</div>
-                        <!-- 時間來源顯示 (僅管理員可見) -->
                         <div class="text-xs mt-1 text-gray-400" id="admin-time-source">時間校正中...</div>
-                        <div class="mt-2 text-xs text-gray-400 cursor-pointer hover:text-red-500" onclick="resetSystemConfig()"><i class="fas fa-trash-alt"></i> 重設系統連線</div>
                     </div>
                 </div>
                 <nav class="flex-grow p-2 md:p-4 flex flex-row md:flex-col overflow-x-auto md:overflow-visible gap-2 custom-scroll">
@@ -161,6 +162,7 @@
                     <button onclick="switchAdminTab('leaves')" id="nav-leaves" class="admin-nav-item flex-shrink-0 w-auto md:w-full text-left px-3 md:px-4 py-2 md:py-3 rounded-lg text-gray-600 hover:bg-gray-50 transition flex items-center justify-between text-sm md:text-base whitespace-nowrap"><div class="flex items-center"><i class="fas fa-tasks w-6 text-center"></i> <span class="ml-2">請假審核</span></div><span id="admin-sidebar-pending-count" class="bg-orange-100 text-orange-600 text-xs px-2 py-0.5 rounded-full hidden ml-1">0</span></button>
                     <button onclick="switchAdminTab('announcements')" id="nav-announcements" class="admin-nav-item flex-shrink-0 w-auto md:w-full text-left px-3 md:px-4 py-2 md:py-3 rounded-lg text-gray-600 hover:bg-gray-50 transition flex items-center text-sm md:text-base whitespace-nowrap"><i class="fas fa-bullhorn w-6 text-center"></i> <span class="ml-2">公告管理</span></button>
                     <button onclick="switchAdminTab('holidays')" id="nav-holidays" class="admin-nav-item flex-shrink-0 w-auto md:w-full text-left px-3 md:px-4 py-2 md:py-3 rounded-lg text-gray-600 hover:bg-gray-50 transition flex items-center text-sm md:text-base whitespace-nowrap"><i class="fas fa-umbrella-beach w-6 text-center"></i> <span class="ml-2">假期設定</span></button>
+                    <button onclick="switchAdminTab('system')" id="nav-system" class="admin-nav-item flex-shrink-0 w-auto md:w-full text-left px-3 md:px-4 py-2 md:py-3 rounded-lg text-gray-600 hover:bg-gray-50 transition flex items-center text-sm md:text-base whitespace-nowrap"><i class="fas fa-sliders-h w-6 text-center"></i> <span class="ml-2">系統參數</span></button>
                 </nav>
             </aside>
             <div class="flex-1 w-full min-w-0 overflow-y-auto p-4 md:p-8 custom-scroll h-full">
@@ -246,6 +248,35 @@
                         <div id="holiday-list" class="space-y-2 max-h-[500px] overflow-y-auto custom-scroll"></div>
                     </div>
                 </div>
+                <!-- System Settings (New) -->
+                <div id="admin-view-system" class="admin-view hidden space-y-6">
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-6 border-b pb-2">系統參數設定</h3>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 max-w-2xl">
+                        <form onsubmit="updateSystemConfig(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-gray-700 text-sm font-bold mb-1">Google Apps Script URL (API)</label>
+                                <input class="w-full border p-2 rounded text-sm bg-gray-50" id="sys-url" type="text" placeholder="https://script.google.com/..." required>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-gray-700 text-sm font-bold mb-1">公司緯度 (Lat)</label>
+                                    <input class="w-full border p-2 rounded text-sm bg-gray-50" id="sys-lat" type="text" placeholder="24.xxxx" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 text-sm font-bold mb-1">公司經度 (Lng)</label>
+                                    <input class="w-full border p-2 rounded text-sm bg-gray-50" id="sys-lng" type="text" placeholder="120.xxxx" required>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 text-sm font-bold mb-1">打卡允許半徑 (公尺)</label>
+                                <input class="w-full border p-2 rounded text-sm bg-gray-50" id="sys-radius" type="number" required>
+                            </div>
+                            <div class="pt-4 border-t flex justify-end">
+                                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow transition">更新設定</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </main>
 
@@ -325,7 +356,7 @@
         </main>
     </div>
 
-    <!-- Modals -->
+    <!-- Modals & Overlays -->
     <div id="add-user-modal" class="fixed inset-0 bg-black bg-opacity-60 z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-xl shadow-2xl max-w-sm w-full p-6 m-4">
             <h3 class="text-lg font-bold text-gray-800 mb-4">新增員工</h3>
@@ -439,29 +470,24 @@
     <div id="sync-status" class="fixed bottom-2 right-2 text-xs text-gray-400 z-50 bg-white/80 px-2 py-1 rounded pointer-events-none"><i class="fas fa-cloud"></i> 準備就緒</div>
 
     <script>
-        // --- CONSTANTS ---
-        const CONFIG_KEY = 'attendance_system_config'; // New config key
+        const CONFIG_KEY = 'attendance_system_config';
         const STORAGE_KEY = 'attendance_system_data';
         const SESSION_KEY = 'attendance_session';
         const IDLE_TIMEOUT = 5 * 60 * 1000;
         const LABOR_ACT_TYPES = ["特休", "事假", "病假", "公假", "婚假", "喪假", "產假", "陪產假", "生理假", "家庭照顧假", "工傷病假"];
 
         let watchId = null; let idleTimer = null; let hardDeleteTargetId = null; let deleteTimer = null;
-        
-        // --- STATE INITIALIZATION (CLEAN) ---
+        let appConfig = null; // Holds dynamic settings
+
         let state = {
             currentUser: null, currentView: 'overview', adminLeavePage: 1, distance: null, pendingVerifyCallback: null,
             timeOffset: 0,
-            holidays: [], // No hardcoded holidays
-            users: [],    // No hardcoded users
+            holidays: [{ id: 1, date: '2023-01-01', note: '元旦' }, { id: 2, date: '2026-01-01', note: '元旦(2026)' }],
+            users: [{ id: 'admin', pass: '123', name: '系統管理員', role: 'admin', dept: 'HR' }, { id: 'emp', pass: '123', name: '王小明', role: 'employee', dept: 'IT部' }],
             records: [], leaves: [], announcements: [], pendingAction: null,
-            pwdTargetId: null, 
-            settings: { lat: 0, lng: 0, radius: 100 }, // Default empty settings
+            pwdTargetId: null, settings: { lat: 0, lng: 0, radius: 100 },
             settingTargetId: null
         };
-        
-        // Global config object (populated from localStorage)
-        let appConfig = { gasUrl: "", lat: 0, lng: 0, radius: 100 };
 
         // --- TIME SYNC ---
         async function syncNetworkTime() {
@@ -576,7 +602,6 @@
         function startLocationWatch() {
             if (!navigator.geolocation) { updateLocationUI(null, "不支援定位"); return; }
             
-            // Check for insecure context
             if (!window.isSecureContext && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
                 updateLocationUI(null, "定位失敗 (請使用 HTTPS)");
                 return;
@@ -584,7 +609,6 @@
 
             updateLocationUI(null, "定位中...");
             
-            // Options tweaked for mobile
             const options = {
                 enableHighAccuracy: true,
                 timeout: 10000,
@@ -600,7 +624,6 @@
                 },
                 (err) => {
                     console.warn("Watch failed, retrying single shot...", err);
-                    // Retry with single shot if watch fails immediately
                     navigator.geolocation.getCurrentPosition(
                         (pos) => {
                             const dist = getDistanceFromLatLonInM(pos.coords.latitude, pos.coords.longitude, state.settings.lat, state.settings.lng);
@@ -623,7 +646,6 @@
         
         function updateLocationUI(dist, overrideText=null) {
             const bar = document.getElementById('location-bar'); const txt = document.getElementById('location-text'); if(!bar) return;
-            // Add click-to-retry functionality
             bar.onclick = () => { if(overrideText || dist === null) startLocationWatch(); };
             
             if (overrideText) { 
@@ -649,7 +671,6 @@
         async function attemptPunch(type) {
             if(type === 'in' && (state.distance === null || state.distance > state.settings.radius)) { 
                 showToast(`上班打卡需在公司範圍內 (${state.settings.radius}公尺)`, "error"); 
-                // Try to refresh location
                 startLocationWatch();
                 return; 
             }
@@ -780,7 +801,6 @@
             appConfig = { gasUrl: url, lat: lat, lng: lng, radius: radius };
             localStorage.setItem(CONFIG_KEY, JSON.stringify(appConfig));
             
-            // Reload page to apply
             window.location.reload();
         }
 
@@ -790,75 +810,137 @@
                 window.location.reload();
             }
         }
+        
+        function updateSystemConfig(e) {
+            e.preventDefault();
+            const url = document.getElementById('sys-url').value.trim();
+            const lat = parseFloat(document.getElementById('sys-lat').value);
+            const lng = parseFloat(document.getElementById('sys-lng').value);
+            const radius = parseInt(document.getElementById('sys-radius').value);
+
+            if (!url || isNaN(lat) || isNaN(lng) || isNaN(radius)) {
+                alert("請填寫所有欄位");
+                return;
+            }
+
+            appConfig = { gasUrl: url, lat: lat, lng: lng, radius: radius };
+            localStorage.setItem(CONFIG_KEY, JSON.stringify(appConfig));
+            state.settings = { lat: lat, lng: lng, radius: radius };
+            saveData();
+            showToast('系統參數已更新', 'success');
+        }
+
+        // --- LOAD DATA HELPERS ---
+        function loadFromLocal() {
+             const stored = localStorage.getItem(STORAGE_KEY);
+             if (stored) {
+                 try {
+                     const parsed = JSON.parse(stored);
+                     if (parsed.holidays) state.holidays = parsed.holidays.map(h => ({ ...h, date: cleanDate(h.date) }));
+                     if (parsed.users) state.users = parsed.users;
+                     if (parsed.records) state.records = parsed.records.map(r => ({ ...r, date: cleanDate(r.date), time: cleanTime(r.time) }));
+                     if (parsed.leaves) state.leaves = parsed.leaves.map(l => ({ ...l, start: cleanDateTime(l.start), end: cleanDateTime(l.end) }));
+                     if (parsed.announcements) state.announcements = parsed.announcements.map(a => ({ ...a, date: cleanDate(a.date) }));
+                     if (parsed.settings) state.settings = parsed.settings;
+                 } catch(e) { console.error("Local parse error", e); }
+             }
+             // Ensure defaults
+             if (!state.users.some(u => u.id === 'admin')) {
+                 state.users.unshift({ id: 'admin', pass: '123', name: '系統管理員', role: 'admin', dept: 'HR' });
+             }
+             if (state.users.length === 1 && state.users[0].id === 'admin') {
+                  state.users.push({ id: 'emp', pass: '123', name: '王小明', role: 'employee', dept: 'IT部' });
+             }
+             // Use appConfig values if available, otherwise defaults
+             state.settings = { 
+                 lat: appConfig ? appConfig.lat : 0, 
+                 lng: appConfig ? appConfig.lng : 0, 
+                 radius: appConfig ? appConfig.radius : 100 
+             };
+             
+             state.users.forEach(u => { 
+                 if(typeof u.deleted === 'undefined') u.deleted = false; 
+                 if(typeof u.quota_annual === 'undefined') u.quota_annual = 0;
+                 if(typeof u.quota_birthday === 'undefined') u.quota_birthday = 0;
+                 if(typeof u.quota_comp === 'undefined') u.quota_comp = 0;
+             });
+        }
 
         // --- DATA PERSISTENCE ---
         async function loadData() {
             // Check Config First
-            const storedConfig = localStorage.getItem(CONFIG_KEY);
+            let storedConfig = localStorage.getItem(CONFIG_KEY);
+            
             if (!storedConfig) {
-                // Show Setup Modal
+                // Show Setup Modal if no config
                 document.getElementById('login-view').classList.add('hidden');
                 document.getElementById('setup-view').classList.remove('hidden');
-                return; // Stop loading
+                return; 
             }
 
-            appConfig = JSON.parse(storedConfig);
-            state.settings = { lat: appConfig.lat, lng: appConfig.lng, radius: appConfig.radius };
+            try {
+                appConfig = JSON.parse(storedConfig);
+                state.settings = { lat: appConfig.lat, lng: appConfig.lng, radius: appConfig.radius };
+                
+                // Populate system settings form
+                if(document.getElementById('sys-url')) document.getElementById('sys-url').value = appConfig.gasUrl;
+                if(document.getElementById('sys-lat')) document.getElementById('sys-lat').value = appConfig.lat;
+                if(document.getElementById('sys-lng')) document.getElementById('sys-lng').value = appConfig.lng;
+                if(document.getElementById('sys-radius')) document.getElementById('sys-radius').value = appConfig.radius;
+                
+            } catch(e) {
+                console.error("Config parse error", e);
+                localStorage.removeItem(CONFIG_KEY);
+                window.location.reload();
+                return;
+            }
 
             // Load Data from Cloud
             let cloudSuccess = false;
-            try {
-                const res = await fetch(appConfig.gasUrl);
-                if(res.ok) {
-                    const data = await res.json();
-                    if(data) {
-                        if (data.holidays) state.holidays = data.holidays.map(h => ({ ...h, date: cleanDate(h.date) }));
-                        if (data.users) state.users = data.users;
-                        if (data.records) state.records = data.records.map(r => ({ ...r, date: cleanDate(r.date), time: cleanTime(r.time) }));
-                        if (data.leaves) state.leaves = data.leaves.map(l => ({ ...l, start: cleanDateTime(l.start), end: cleanDateTime(l.end) }));
-                        if (data.announcements) state.announcements = data.announcements.map(a => ({ ...a, date: cleanDate(a.date) }));
-                        // Optional: sync settings from cloud if available, else use local config
-                        if (data.settings) {
-                             // Merge cloud settings? Or prefer local config?
-                             // Let's prefer local config for location since that's what setup is for.
+            if(appConfig.gasUrl) {
+                try {
+                    const res = await fetch(appConfig.gasUrl);
+                    if(res.ok) {
+                        const data = await res.json();
+                        if(data) {
+                            // Apply cloud data
+                            if (data.holidays) state.holidays = data.holidays.map(h => ({ ...h, date: cleanDate(h.date) }));
+                            if (data.users) state.users = data.users;
+                            if (data.records) state.records = data.records.map(r => ({ ...r, date: cleanDate(r.date), time: cleanTime(r.time) }));
+                            if (data.leaves) state.leaves = data.leaves.map(l => ({ ...l, start: cleanDateTime(l.start), end: cleanDateTime(l.end) }));
+                            if (data.announcements) state.announcements = data.announcements.map(a => ({ ...a, date: cleanDate(a.date) }));
+                            
+                            // Ensure defaults
+                            if (!state.users.some(u => u.id === 'admin')) {
+                                state.users.unshift({ id: 'admin', pass: '123', name: '系統管理員', role: 'admin', dept: 'HR' });
+                            }
+                            state.users.forEach(u => { 
+                                if(typeof u.deleted === 'undefined') u.deleted = false;
+                                if(typeof u.quota_annual === 'undefined') u.quota_annual = 0;
+                                if(typeof u.quota_birthday === 'undefined') u.quota_birthday = 0;
+                                if(typeof u.quota_comp === 'undefined') u.quota_comp = 0;
+                            });
+                            cloudSuccess = true;
                         }
-                        cloudSuccess = true;
                     }
+                } catch(e) {
+                    console.warn("Cloud load failed, falling back to local.", e);
+                    showToast("雲端連線失敗，切換至本機模式", "error");
                 }
-            } catch(e) {
-                console.warn("Cloud load failed.", e);
-                showToast("雲端連線失敗，請檢查網路或 API 設定", "error");
             }
 
-            // Fallback for demo / first run if cloud empty
-            if (!cloudSuccess || state.users.length === 0) {
-                 // Do not load local dummy data as requested "not using local end"
-                 // But we must have at least one admin to login if cloud is empty?
-                 // Or we assume cloud has data. 
-                 // If cloud fails, system is basically unusable except for maybe local cache?
-                 // Let's load from local storage cache if available
-                 const localData = localStorage.getItem(STORAGE_KEY);
-                 if (localData) {
-                     try {
-                        const parsed = JSON.parse(localData);
-                        state.users = parsed.users || [];
-                        state.records = parsed.records || [];
-                        state.leaves = parsed.leaves || [];
-                        state.holidays = parsed.holidays || [];
-                        state.announcements = parsed.announcements || [];
-                        showToast("已載入本機快取資料", "info");
-                     } catch(e) {}
-                 }
+            if (!cloudSuccess) {
+                loadFromLocal();
             }
         }
-
+        
         async function saveData() {
             // Save to local cache
             localStorage.setItem(STORAGE_KEY, JSON.stringify({
-                holidays: state.holidays, users: state.users, records: state.records, leaves: state.leaves, announcements: state.announcements
+                holidays: state.holidays, users: state.users, records: state.records, leaves: state.leaves, announcements: state.announcements, settings: state.settings
             }));
 
-            if(appConfig.gasUrl) {
+            if(appConfig && appConfig.gasUrl) {
                 updateSyncStatus('syncing');
                 try {
                     await fetch(appConfig.gasUrl, {
