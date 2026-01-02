@@ -1,187 +1,65 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>祥鉞餐飲設備股份有限公司 |台中不鏽鋼、客製化、全台服務、廚房規劃、30年經驗 |打造高效廚房，成就美味未來</title>
-    <link rel="icon" type="image/png" href="images/logo.png">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-	<script type="application/ld+json">
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>企業考勤管理系統</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Noto Sans TC"', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+            },
+            colors: {
+              brand: {
+                50: '#eff6ff',
+                100: '#dbeafe',
+                500: '#3b82f6',
+                600: '#2563eb',
+                700: '#1d4ed8',
+                900: '#1e3a8a',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #f3f4f6;
+        -webkit-tap-highlight-color: transparent;
+      }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar { width: 6px; height: 6px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+      ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+  <script type="importmap">
 {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "祥鉞餐飲設備股份有限公司",
-  "url": "https://www.shyuan.com.tw/"
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
+    "recharts": "https://esm.sh/recharts@^3.6.0",
+    "firebase/app": "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js",
+    "firebase/auth": "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js",
+    "firebase/firestore": "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js",
+    "firebase/analytics": "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js",
+    "firebase/": "https://esm.sh/firebase@^12.7.0/"
+  }
 }
 </script>
-    <meta name="description" content="祥鉞餐飲設備是您在台中的不鏽鋼廚房設備專家，提供近30年專業客製化服務。從餐廳廚房吧檯規劃到客製化不鏽鋼設計，我們為您打造最高效、耐用的餐飲空間。全台皆可服務，立即諮詢！">
+<link rel="stylesheet" href="/index.css">
 </head>
-<body>
-
-    <header class="navbar">
-        <div class="container">
-            <a href="https://www.shyuan.com.tw/" class="logo-container">
-                <img src="images/logo.png" alt="祥鉞餐飲設備 Logo" class="logo-img">
-                <span class="logo-text"></span>
-            </a>
-            <ul class="nav-links">
-            <li><a href="https://www.shyuan.com.tw/" class="active">首頁</a></li>
-            <li><a href="https://www.shyuan.com.tw/about">關於我們</a></li>
-            <li><a href="https://www.shyuan.com.tw/services">服務項目</a></li>
-            <li><a href="https://www.shyuan.com.tw/portfolio">客戶案例</a></li>
-            <li><a href="https://www.shyuan.com.tw/contact">聯絡我們</a></li>
-            </ul>
-            <div class="hamburger">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
-        </div>
-    </header>
-
-    <main>
-<section class="hero-slider">
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image: url('images/banner1.jpg');"></div>
-            <div class="swiper-slide" style="background-image: url('images/banner2.jpg');"></div>
-            <div class="swiper-slide" style="background-image: url('images/banner3.jpg');"></div>
-        </div>
-    </div>
-
-    <div class="hero-content">
-    <h1>台中不鏽鋼餐飲設備，客製化您的理想廚房</h1>
-    <p>近30年不鏽鋼專業經驗，從規劃設計到精工製造，為您的事業打造最堅實的後盾。</p>
-        <a href="https://www.shyuan.com.tw/contact" class="btn">免費估價與諮詢</a>
-    </div>
-    </section>
-
-        <section class="content-section">
-            <div class="container">
-                <h2>我們的核心服務</h2>
-                <div class="grid-layout">
-                    <div class="card">
-                        <div class="card-content">
-                            <h3>客製化廚房規劃</h3>
-                            <p>深入了解您的需求，繪製最符合人體工學與作業動線的廚房藍圖。</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content">
-                            <h3>高品質設備製造</h3>
-                            <p>採用SUS304食品級不鏽鋼，注重每個焊接與收邊細節，確保耐用與安全。</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content">
-                            <h3>完善售後服務</h3>
-                            <p>從安裝、調試到後續維護，我們提供全方位的支持，讓您無後顧之憂。</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content">
-                            <h3>相關產業合作</h3>
-                            <p>與廚霸王工業、冷藏冷凍設備業者合作，打造餐飲一條龍服務。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
- <footer class="footer">
-        <div class="footer-main">
-            <div class="footer-info">
-                <div class="footer-info-top">
-                    <img src="images/logo.png" alt="祥鉞餐飲設備 Logo" class="footer-logo">
-                    
-                    <div class="footer-social">
- 			<a href="line://ti/p/@001qownn" target="_blank" title="Line">
-   		    	    <img src="images/icon-line.png" alt="Line">
-			</a>
-                        <a href="https://www.facebook.com/1996shyuan/" target="_blank" title="Facebook">
-                            <img src="images/icon-fb.png" alt="Facebook">
-                        </a>
-                        <a href="https://www.instagram.com/sy19921014" target="_blank" title="Instagram">
-                            <img src="images/icon-ig.png" alt="Instagram">
-                        </a>
-                        <a href="https://www.threads.com/@shyuan0901" target="_blank" title="Threads">
-                            <img src="images/icon-threads.png" alt="Threads">
-                        </a>
-                    </div>
-                </div>
-
-                <h3>祥鉞餐飲設備股份有限公司</h3>
-                <p>地址：406 台中市北屯區水景里水景街8號</p>
-                <p>電話：04-2436-5774</p>
-                <p>傳真：04-2437-4738</p>
-                <p>統一編號：89872485</p>
-		<p>E-mail：service@shyuan.com.tw</p>
-            </div>
-            
-            <div class="footer-map">
-               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.03991188224!2d120.7116465!3d24.170333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346917f62933555d%3A0x8c0a1081bbe04a3c!2z56Wl6Yme5LiN6Y-96Yu86aSQ6aOy6Kit5YKZL-S4jemPvemLvOijveWTgeWuouijveWMlg!5e0!3m2!1szh-TW!2stw!4v1758519111833!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2025 祥鉞餐飲設備股份有限公司. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <a id="back-to-top-btn" href="#top" title="回到頂端">
-    <img src="images/arrow-up.png" alt="回到頂端">
-    </a>
-
-    <script>
-        // --- 漢堡選單控制 ---
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('nav-active');
-        });
-
-        // --- 回到頂端按鈕控制 ---
-        const backToTopButton = document.querySelector('#back-to-top-btn');
-
-window.addEventListener('scroll', () => {
-    // 當垂直滾動超過 100px 時
-    if (window.scrollY > 100) {
-        backToTopButton.classList.add('show');
-    } else {
-        backToTopButton.classList.remove('show');
-    }
-});
-
-        backToTopButton.addEventListener('click', (e) => {
-            e.preventDefault(); // 防止 a 標籤的預設跳轉行為
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-// ... 原本的漢堡選單和回到頂端按鈕的 JS ...
-
-// Swiper 初始化
-var swiper = new Swiper('.swiper-container', {
-    loop: true,
-    autoplay: {
-        delay: 5000, // 5秒切換一次
-    },
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-});
-    </script>
-
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
 </body>
-
 </html>
-
-
-
-
