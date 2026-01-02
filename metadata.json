@@ -1,7 +1,0 @@
-{
-  "name": "Smart Attendance System",
-  "description": "A modern, AI-powered employee attendance and leave management system.",
-  "requestFramePermissions": [
-    "geolocation"
-  ]
-}
