@@ -54,8 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let filteredRecords = [];
     let currentPage = 1;
 
-    // --- Airtable API URL (保持不變) ---
-    const url = `https://api.airtable.com/v0/${BASE_ID}/${encodeURIComponent(TABLE_NAME)}?filterByFormula={狀態 (Status)}='發布 (Published)'&sort%5B0%5D%5Bfield%5D=排序 (SortOrder)&sort%5B0%5D%5Bdirection%5D=asc`;
+    // --- Airtable API URL：只抓取已發布作品，排序改由前端依 Airtable 建立時間處理 ---
+    const url = `https://api.airtable.com/v0/${BASE_ID}/${encodeURIComponent(TABLE_NAME)}?filterByFormula={狀態 (Status)}='發布 (Published)'`;
 
     // --- 函式：fetchPortfolioData (保持不變) ---
     async function fetchPortfolioData() { /* ... 內容不變 ... */ }
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // --- (此處省略 renderCards, renderFilterButtons, addFilterEventListeners, Modal 相關, 漢堡選單, 回到頂端按鈕的程式碼，因為它們內容不變) ---
-    async function fetchPortfolioData() { if (!portfolioGrid) return; portfolioGrid.innerHTML = '<p class="loading-text">作品載入中，請稍候...</p>'; try { const response = await fetch(url, { headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}` } }); if (!response.ok) throw new Error(`HTTP 錯誤！ 狀態: ${response.status}`); const data = await response.json(); allRecords = data.records; filteredRecords = allRecords; renderFilterButtons(); displayPage(1); } catch (error) { console.error('無法從 Airtable 取得資料:', error); portfolioGrid.innerHTML = '<p>作品載入失敗，請檢查 F12 Console。</p>'; } }
+    async function fetchPortfolioData() { if (!portfolioGrid) return; portfolioGrid.innerHTML = '<p class="loading-text">作品載入中，請稍候...</p>'; try { const response = await fetch(url, { headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}` } }); if (!response.ok) throw new Error(`HTTP 錯誤！ 狀態: ${response.status}`); const data = await response.json(); allRecords = data.records.sort((a, b) => new Date(b.createdTime) - new Date(a.createdTime)); filteredRecords = allRecords; renderFilterButtons(); displayPage(1); } catch (error) { console.error('無法從 Airtable 取得資料:', error); portfolioGrid.innerHTML = '<p>作品載入失敗，請檢查 F12 Console。</p>'; } }
     function displayPage(page) { window.scrollTo({ top: 0, behavior: 'smooth' }); currentPage = page; portfolioGrid.innerHTML = ''; const itemsPerPage = window.innerWidth <= 992 ? 6 : 9; const startIndex = (currentPage - 1) * itemsPerPage; const endIndex = startIndex + itemsPerPage; const paginatedItems = filteredRecords.slice(startIndex, endIndex); renderCards(paginatedItems); setupPagination(); }
     function renderCards(records) { if (records.length === 0) { portfolioGrid.innerHTML = '<p>此分類下尚無作品。</p>'; return; } records.forEach(record => { const fields = record.fields; if (!fields['專案名稱 (ProjectName)'] || !fields['專案主圖 (MainImage)']) return; const card = document.createElement('div'); card.className = 'card'; card.setAttribute('data-category', fields['分類 (Category)'] || '未分類'); card.innerHTML = `<img src="${fields['專案主圖 (MainImage)'][0].thumbnails.large.url}" alt="${fields['專案名稱 (ProjectName)']}"><div class="card-content"><h3>${fields['專案名稱 (ProjectName)']}</h3><p>${fields['專案簡介 (Description)'] || ''}</p></div>`; card.addEventListener('click', () => openModalGallery(fields)); portfolioGrid.appendChild(card); }); }
     function renderFilterButtons() { const categories = ['所有作品', ...new Set(allRecords.map(r => r.fields['分類 (Category)']).filter(Boolean))]; filterButtonsContainer.innerHTML = categories.map(category => `<button class="filter-btn ${category === '所有作品' ? 'active' : ''}" data-filter="${category}">${category}</button>`).join(''); addFilterEventListeners(); }
@@ -242,7 +242,6 @@ document.addEventListener('DOMContentLoaded', () => {
 </body>
 
 </html>
-
 
 
 
