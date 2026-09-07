@@ -128,8 +128,29 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fetchPortfolioData() { if (!portfolioGrid) return; portfolioGrid.innerHTML = '<p class="loading-text">作品載入中，請稍候...</p>'; try { const response = await fetch(url, { headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}` } }); if (!response.ok) throw new Error(`HTTP 錯誤！ 狀態: ${response.status}`); const data = await response.json(); allRecords = data.records.sort((a, b) => new Date(b.createdTime) - new Date(a.createdTime)); filteredRecords = allRecords; renderFilterButtons(); displayPage(1); } catch (error) { console.error('無法從 Airtable 取得資料:', error); portfolioGrid.innerHTML = '<p>作品載入失敗，請檢查 F12 Console。</p>'; } }
     function displayPage(page) { window.scrollTo({ top: 0, behavior: 'smooth' }); currentPage = page; portfolioGrid.innerHTML = ''; const itemsPerPage = window.innerWidth <= 992 ? 6 : 9; const startIndex = (currentPage - 1) * itemsPerPage; const endIndex = startIndex + itemsPerPage; const paginatedItems = filteredRecords.slice(startIndex, endIndex); renderCards(paginatedItems); setupPagination(); }
     function renderCards(records) { if (records.length === 0) { portfolioGrid.innerHTML = '<p>此分類下尚無作品。</p>'; return; } records.forEach(record => { const fields = record.fields; if (!fields['專案名稱 (ProjectName)'] || !fields['專案主圖 (MainImage)']) return; const card = document.createElement('div'); card.className = 'card'; card.setAttribute('data-category', fields['分類 (Category)'] || '未分類'); card.innerHTML = `<img src="${fields['專案主圖 (MainImage)'][0].thumbnails.large.url}" alt="${fields['專案名稱 (ProjectName)']}"><div class="card-content"><h3>${fields['專案名稱 (ProjectName)']}</h3><p>${fields['專案簡介 (Description)'] || ''}</p></div>`; card.addEventListener('click', () => openModalGallery(fields)); portfolioGrid.appendChild(card); }); }
-    function renderFilterButtons() { const categories = ['所有作品', ...new Set(allRecords.map(r => r.fields['分類 (Category)']).filter(Boolean))]; filterButtonsContainer.innerHTML = categories.map(category => `<button class="filter-btn ${category === '所有作品' ? 'active' : ''}" data-filter="${category}">${category}</button>`).join(''); addFilterEventListeners(); }
-    function addFilterEventListeners() { const buttons = document.querySelectorAll('.filter-btn'); buttons.forEach(button => { button.addEventListener('click', () => { buttons.forEach(btn => btn.classList.remove('active')); button.classList.add('active'); const filter = button.getAttribute('data-filter'); if (filter === '所有作品') { filteredRecords = allRecords; } else { filteredRecords = allRecords.filter(record => record.fields['分類 (Category)'] === filter); } displayPage(1); }); }); }
+    function renderFilterButtons() {
+    let categories = [...new Set(
+        allRecords
+            .map(r => r.fields['分類 (Category)'])
+            .filter(Boolean)
+    )];
+
+    // 將「客製品」移到最後
+    categories = categories.filter(category => category !== '客製品');
+
+    if (allRecords.some(r => r.fields['分類 (Category)'] === '客製品')) {
+        categories.push('客製品');
+    }
+
+    // 「所有作品」固定最前面
+    categories.unshift('所有作品');
+
+    filterButtonsContainer.innerHTML = categories.map(category =>
+        `<button class="filter-btn ${category === '所有作品' ? 'active' : ''}" data-filter="${category}">${category}</button>`
+    ).join('');
+
+    addFilterEventListeners();
+}function addFilterEventListeners() { const buttons = document.querySelectorAll('.filter-btn'); buttons.forEach(button => { button.addEventListener('click', () => { buttons.forEach(btn => btn.classList.remove('active')); button.classList.add('active'); const filter = button.getAttribute('data-filter'); if (filter === '所有作品') { filteredRecords = allRecords; } else { filteredRecords = allRecords.filter(record => record.fields['分類 (Category)'] === filter); } displayPage(1); }); }); }
     const modal = document.getElementById('modal-gallery'); const modalCloseBtn = document.getElementById('modal-close'); const modalOverlay = document.getElementById('modal-overlay'); const swiperWrapper = document.getElementById('swiper-wrapper'); let modalSwiper = null;
     function openModalGallery(fields) { const images = fields['專案主圖 (MainImage)']; if (!images || images.length === 0) return; swiperWrapper.innerHTML = images.map(img => `<div class="swiper-slide"><img src="${img.url}" alt="${fields['專案名稱 (ProjectName)']}"></div>`).join(''); modal.classList.add('active'); if (modalSwiper) { modalSwiper.destroy(true, true); } modalSwiper = new Swiper('.main-swiper', { loop: true, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, pagination: { el: '.swiper-pagination', clickable: true }, }); modalSwiper.update(); }
     function closeModal() { modal.classList.remove('active'); if (modalSwiper) { modalSwiper.destroy(true, true); modalSwiper = null; } }
