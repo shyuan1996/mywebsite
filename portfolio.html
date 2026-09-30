@@ -1,271 +1,226 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>客戶案例 |連鎖餐廳、連鎖飲料店、客製化作品、咖啡廳成功案例 |台中不鏽鋼、客製化、全台服務、廚房規劃、30年經驗</title>
-    <link rel="icon" type="image/png" href="images/logo.png">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-    <meta name="description" content="與多家全台知名連鎖飲料店、餐飲店合作，百貨美食街專櫃施工，帶給客戶滿意的服務">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-	<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "祥鉞餐飲設備股份有限公司",
-  "url": "https://www.shyuan.com.tw/"
-}
-</script>
-<script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "name": "首頁",
-        "item": "https://www.shyuan.com.tw/"
-      },{
-        "@type": "ListItem",
-        "position": 2,
-        "name": "客戶案例",
-        "item": "https://www.shyuan.com.tw/portfolio"
-      }]
-    }
-</script>
-</head>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-
-    // --- Airtable 設定 (保持不變) ---
-    const AIRTABLE_TOKEN = 'patPNmpA7lKl117x1.d884e411d90c73761fcd2aeb399502f9b9bd12d3ea4f21088405420ac0e222c7';
-    const BASE_ID = 'appWtvyd8MgJ3cmrW';
-    const TABLE_NAME = 'Table 1';
-
-    // --- DOM 元素 (保持不變) ---
-    const portfolioGrid = document.getElementById('portfolio-grid');
-    const filterButtonsContainer = document.getElementById('filter-buttons');
-    const paginationContainer = document.getElementById('pagination-list');
-    
-    // --- 全域變數 (保持不變) ---
-    let allRecords = [];
-    let filteredRecords = [];
-    let currentPage = 1;
-
-    // --- Airtable API URL：只抓取已發布作品，排序改由前端依 Airtable 建立時間處理 ---
-    const url = `https://api.airtable.com/v0/${BASE_ID}/${encodeURIComponent(TABLE_NAME)}?filterByFormula={狀態 (Status)}='發布 (Published)'`;
-
-    // --- 函式：fetchPortfolioData (保持不變) ---
-    async function fetchPortfolioData() { /* ... 內容不變 ... */ }
-
-    // --- 函式：displayPage (保持不變) ---
-    function displayPage(page) { /* ... 內容不變 ... */ }
-
-    // --- 函式：setupPagination (保持不變) ---
-    function setupPagination() {
-        paginationContainer.innerHTML = '';
-        const itemsPerPage = window.innerWidth <= 992 ? 6 : 9;
-        const totalPages = Math.ceil(filteredRecords.length / itemsPerPage);
-
-        if (totalPages <= 1) return;
-
-        const maxPagesToShow = window.innerWidth <= 768 ? 3 : 5;
-        const paginationHTML = createPagination(totalPages, currentPage, maxPagesToShow);
-        paginationContainer.innerHTML = paginationHTML;
-
-        paginationContainer.querySelectorAll('a').forEach(a => {
-            a.addEventListener('click', (e) => {
-                e.preventDefault();
-                const page = parseInt(a.getAttribute('data-page'));
-                if (page !== currentPage) {
-                    displayPage(page);
-                }
-            });
-        });
-    }
-
-    // --- 【關鍵修正】函式：createPagination (已替換按鈕) ---
-    function createPagination(totalPages, page, maxPagesToShow) {
-        let liTag = '';
-        let active;
-
-        // === 1. 按鈕：【已換成】最前頁 ===
-        liTag += `<li class="${(page > 1) ? '' : 'disabled'}">
-                    <a href="#" data-page="1" aria-label="最前頁">&laquo;</a>
-                  </li>`;
-
-        // === 2. 中間的數字頁碼 (邏輯不變) ===
-        let start, end;
-        if (totalPages <= maxPagesToShow) {
-            start = 1;
-            end = totalPages;
-        } else {
-            start = Math.max(1, page - Math.floor(maxPagesToShow / 2));
-            end = Math.min(totalPages, start + maxPagesToShow - 1);
-            if (end - start < maxPagesToShow - 1) {
-                start = Math.max(1, end - maxPagesToShow + 1);
-            }
-        }
-        for (let i = start; i <= end; i++) {
-            active = (i === page) ? 'active' : '';
-            liTag += `<li class="numb ${active}"><a href="#" data-page="${i}">${i}</a></li>`;
-        }
-        // === 數字頁碼結束 ===
-
-        // === 3. 按鈕：【已換成】最後頁 ===
-        liTag += `<li class="${(page < totalPages) ? '' : 'disabled'}">
-                    <a href="#" data-page="${totalPages}" aria-label="最後頁">&raquo;</a>
-                  </li>`;
-
-        return liTag;
-    }
-    // --- 【關鍵修正完畢】 ---
-
-
-    // --- (此處省略 renderCards, renderFilterButtons, addFilterEventListeners, Modal 相關, 漢堡選單, 回到頂端按鈕的程式碼，因為它們內容不變) ---
-    async function fetchPortfolioData() { if (!portfolioGrid) return; portfolioGrid.innerHTML = '<p class="loading-text">作品載入中，請稍候...</p>'; try { const response = await fetch(url, { headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}` } }); if (!response.ok) throw new Error(`HTTP 錯誤！ 狀態: ${response.status}`); const data = await response.json(); allRecords = data.records.sort((a, b) => new Date(b.createdTime) - new Date(a.createdTime)); filteredRecords = allRecords; renderFilterButtons(); displayPage(1); } catch (error) { console.error('無法從 Airtable 取得資料:', error); portfolioGrid.innerHTML = '<p>作品載入失敗，請檢查 F12 Console。</p>'; } }
-    function displayPage(page) { window.scrollTo({ top: 0, behavior: 'smooth' }); currentPage = page; portfolioGrid.innerHTML = ''; const itemsPerPage = window.innerWidth <= 992 ? 6 : 9; const startIndex = (currentPage - 1) * itemsPerPage; const endIndex = startIndex + itemsPerPage; const paginatedItems = filteredRecords.slice(startIndex, endIndex); renderCards(paginatedItems); setupPagination(); }
-    function renderCards(records) { if (records.length === 0) { portfolioGrid.innerHTML = '<p>此分類下尚無作品。</p>'; return; } records.forEach(record => { const fields = record.fields; if (!fields['專案名稱 (ProjectName)'] || !fields['專案主圖 (MainImage)']) return; const card = document.createElement('div'); card.className = 'card'; card.setAttribute('data-category', fields['分類 (Category)'] || '未分類'); card.innerHTML = `<img src="${fields['專案主圖 (MainImage)'][0].thumbnails.large.url}" alt="${fields['專案名稱 (ProjectName)']}"><div class="card-content"><h3>${fields['專案名稱 (ProjectName)']}</h3><p>${fields['專案簡介 (Description)'] || ''}</p></div>`; card.addEventListener('click', () => openModalGallery(fields)); portfolioGrid.appendChild(card); }); }
-    function renderFilterButtons() {
-    let categories = [...new Set(
-        allRecords
-            .map(r => r.fields['分類 (Category)'])
-            .filter(Boolean)
-    )];
-
-    // 將「客製品」移到最後
-    categories = categories.filter(category => category !== '客製品');
-
-    if (allRecords.some(r => r.fields['分類 (Category)'] === '客製品')) {
-        categories.push('客製品');
-    }
-
-    // 「所有作品」固定最前面
-    categories.unshift('所有作品');
-
-    filterButtonsContainer.innerHTML = categories.map(category =>
-        `<button class="filter-btn ${category === '所有作品' ? 'active' : ''}" data-filter="${category}">${category}</button>`
-    ).join('');
-
-    addFilterEventListeners();
-}function addFilterEventListeners() { const buttons = document.querySelectorAll('.filter-btn'); buttons.forEach(button => { button.addEventListener('click', () => { buttons.forEach(btn => btn.classList.remove('active')); button.classList.add('active'); const filter = button.getAttribute('data-filter'); if (filter === '所有作品') { filteredRecords = allRecords; } else { filteredRecords = allRecords.filter(record => record.fields['分類 (Category)'] === filter); } displayPage(1); }); }); }
-    const modal = document.getElementById('modal-gallery'); const modalCloseBtn = document.getElementById('modal-close'); const modalOverlay = document.getElementById('modal-overlay'); const swiperWrapper = document.getElementById('swiper-wrapper'); let modalSwiper = null;
-    function openModalGallery(fields) { const images = fields['專案主圖 (MainImage)']; if (!images || images.length === 0) return; swiperWrapper.innerHTML = images.map(img => `<div class="swiper-slide"><img src="${img.url}" alt="${fields['專案名稱 (ProjectName)']}"></div>`).join(''); modal.classList.add('active'); if (modalSwiper) { modalSwiper.destroy(true, true); } modalSwiper = new Swiper('.main-swiper', { loop: true, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, pagination: { el: '.swiper-pagination', clickable: true }, }); modalSwiper.update(); }
-    function closeModal() { modal.classList.remove('active'); if (modalSwiper) { modalSwiper.destroy(true, true); modalSwiper = null; } }
-    modalCloseBtn.addEventListener('click', closeModal); modalOverlay.addEventListener('click', closeModal);
-    const hamburger = document.querySelector('.hamburger'); const navLinks = document.querySelector('.nav-links'); if (hamburger) { hamburger.addEventListener('click', () => { navLinks.classList.toggle('nav-active'); }); }
-    const backToTopButton = document.querySelector('#back-to-top-btn'); if (backToTopButton) { window.addEventListener('scroll', () => { if (window.scrollY > 200) { backToTopButton.classList.add('show'); } else { backToTopButton.classList.remove('show'); } }); backToTopButton.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }); }
-
-    // --- 執行主程式 ---
-    fetchPortfolioData();
-});
-</script>
-<body>
-
-<header class="navbar">
-    <div class="container">
-            <a href="https://www.shyuan.com.tw/" class="logo-container">
-                <img src="images/logo.png" alt="祥鉞餐飲設備 Logo" class="logo-img">
-                <span class="logo-text"></span>
-            </a>
-	    <ul class="nav-links">
-            <li><a href="https://www.shyuan.com.tw/">首頁</a></li>
-            <li><a href="https://www.shyuan.com.tw/about">關於我們</a></li>
-            <li><a href="https://www.shyuan.com.tw/services">服務項目</a></li>
-            <li><a href="https://www.shyuan.com.tw/portfolio" class="active">客戶案例</a></li>
-            <li><a href="https://www.shyuan.com.tw/contact">聯絡我們</a></li>
-        </ul>
-        <div class="hamburger">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
+<!doctype html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#173c35" />
+    <title>精選作品｜祥鉞餐飲設備</title>
+    <meta
+      name="description"
+      content="探索祥鉞全台餐飲空間、連鎖飲料店與不鏽鋼客製化案例，瀏覽作品照片與製作細節。"
+    />
+    <link rel="canonical" href="https://www.shyuan.com.tw/portfolio" />
+    <link rel="icon" href="images/logo.png" />
+    <link rel="stylesheet" href="fonts/fonts.css" />
+    <link rel="stylesheet" href="style.css" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:title" content="精選作品｜祥鉞餐飲設備" />
+    <meta
+      property="og:description"
+      content="探索祥鉞全台餐飲空間、連鎖飲料店與不鏽鋼客製化案例，瀏覽作品照片與製作細節。"
+    />
+    <meta property="og:url" content="https://www.shyuan.com.tw/portfolio" />
+    <meta
+      property="og:image"
+      content="https://www.shyuan.com.tw/images/social-cover.jpg"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "祥鉞餐飲設備股份有限公司",
+        "url": "https://www.shyuan.com.tw/",
+        "telephone": "+886-4-2436-5774",
+        "email": "service@shyuan.com.tw",
+        "foundingDate": "1996",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "水景里水景街8號",
+          "addressLocality": "台中市北屯區",
+          "postalCode": "406",
+          "addressCountry": "TW"
+        },
+        "openingHours": "Mo-Fr 08:30-17:30"
+      }
+    </script>
+    <script src="js/main.js" defer></script>
+  </head>
+  <body id="top" data-page="portfolio">
+    <a class="skip-link" href="#main">跳至主要內容</a>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="祥鉞餐飲設備股份有限公司 首頁"
+        ><img src="images/logo.png" width="64" height="52" alt="" /><span
+          ><span class="brand-name">祥鉞餐飲設備<span class="brand-legal">股份有限公司</span></span><span class="brand-en">SHYUAN · SINCE 1996</span></span
+        ></a
+      ><button
+        class="menu-toggle"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <span class="menu-label">選單</span
+        ><span class="menu-lines" aria-hidden="true"></span>
+      </button>
+      <nav id="site-nav" aria-label="主要導覽">
+        <a href="index.html">首頁</a><a href="about.html">關於祥鉞</a
+        ><a href="services.html">服務項目</a
+        ><a href="portfolio.html" aria-current="page">精選作品</a
+        ><a class="nav-contact" href="contact.html"
+          >開始你的計畫
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 19 19 5M5 5h14v14" /></svg
+        ></a>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="page-intro wrap">
+        <p class="eyebrow">03 / PROJECT ARCHIVE</p>
+        <div class="intro-grid">
+          <h1>好的細節，<br />在現場<span class="muted">說話</span>。</h1>
+          <p>
+            不同的場域、不同的需求。每一件作品，都是對使用者日常的一次回應。
+          </p>
         </div>
-    </div>
-</header>
-<main>
-    <section class="page-header">
-        <h1>祥鉞客戶案例</h1>
+        <div class="section-rule">
+          <span>MADE TO FIT. BUILT TO LAST.</span
+          ><span>SHYUAN / TAICHUNG, TAIWAN</span>
+        </div>
+      </section>
+      <section class="portfolio-section wrap">
+        <div class="archive-toolbar">
+          <div
+            id="filter-buttons"
+            class="filter-buttons"
+            role="group"
+            aria-label="作品分類"
+          ></div>
+          <label class="project-search"
+            >搜尋作品<input
+              id="project-search"
+              type="search"
+              placeholder="名稱、地區或需求"
+              autocomplete="off"
+            /><span aria-hidden="true">⌕</span></label
+          >
+        </div>
+        <div class="archive-status">
+          <p id="project-status" role="status" aria-live="polite">
+            正在整理作品…
+          </p>
+          <span class="eyebrow">SELECT A PROJECT TO EXPLORE</span>
+        </div>
+        <div id="portfolio-grid" class="portfolio-grid"></div>
+        <nav id="pagination" class="pagination" aria-label="作品分頁"></nav>
+        <p id="archive-error" hidden>
+          作品暫時無法載入，請稍後重新整理，或直接與我們聯繫。
+        </p>
+        <noscript
+          ><p>
+            請開啟 JavaScript
+            以瀏覽完整作品與相簿。也可透過電話或電子郵件，向我們索取相關案例。
+          </p></noscript
+        >
+      </section>
+    </main>
+    <section class="contact-cta wrap">
+      <p class="eyebrow">LET’S MAKE IT WORK.</p>
+      <div class="cta-line">
+        <h2>你的不鏽鋼需求，<br />我們全力支持。</h2>
+        <a
+          class="circle-link"
+          href="contact.html"
+          aria-label="聯絡祥鉞，開始你的計畫"
+          ><svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 19 19 5M5 5h14v14" /></svg
+          ><span>聊聊你的需求</span></a
+        >
+      </div>
+      <div class="cta-bottom">
+        <p>從需求討論、客製製作到後續維護，給你可靠的支持。</p>
+      </div>
     </section>
-
-    <section class="content-section">
-        <div class="container">
-            <div id="filter-buttons" class="filter-buttons"></div>
-
-            <div id="portfolio-grid" class="grid-layout">
-                <p class="loading-text">作品載入中，請稍候...</p>
-            </div>
-				<nav class="pagination-container" aria-label="作品集分頁導覽">
-                <ul id="pagination-list" class="pagination-list">
-                    </ul>
-            </nav>			
-            </div>
-    </section>
-
-</main>
- <footer class="footer">
-        <div class="footer-main">
-            <div class="footer-info">
-                <div class="footer-info-top">
-                    <img src="images/logo.png" alt="祥鉞餐飲設備 Logo" class="footer-logo">
-                    
-                    <div class="footer-social">
- 			<a href="line://ti/p/@001qownn" target="_blank" title="Line">
-   		    	    <img src="images/icon-line.png" alt="Line">
-			</a>
-                        <a href="https://www.facebook.com/1996shyuan/" target="_blank" title="Facebook">
-                            <img src="images/icon-fb.png" alt="Facebook">
-                        </a>
-                        <a href="https://www.instagram.com/sy19921014" target="_blank" title="Instagram">
-                            <img src="images/icon-ig.png" alt="Instagram">
-                        </a>
-                        <a href="https://www.threads.com/@shyuan0901" target="_blank" title="Threads">
-                            <img src="images/icon-threads.png" alt="Threads">
-                        </a>
-                    </div>
-                </div>
-
-                <h3>祥鉞餐飲設備股份有限公司</h3>
-                <p>地址：406 台中市北屯區水景里水景街8號</p>
-                <p>電話：04-2436-5774</p>
-                <p>傳真：04-2437-4738</p>
-                <p>統一編號：89872485</p>
-		<p>E-mail：service@shyuan.com.tw</p>
-            </div>
-            
-            <div class="footer-map">
-               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.03991188224!2d120.7116465!3d24.170333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346917f62933555d%3A0x8c0a1081bbe04a3c!2z56Wl6Yme5LiN6Y-96Yu86aSQ6aOy6Kit5YKZL-S4jemPvemLvOijveWTgeWuouijveWMlg!5e0!3m2!1szh-TW!2stw!4v1758519111833!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+    <footer class="site-footer">
+      <div class="wrap footer-grid">
+        <div>
+          <a class="footer-wordmark" href="index.html"
+            >SHYUAN<span>祥鉞餐飲設備股份有限公司</span></a
+          >
+          <p>把工藝，做進日常。</p>
         </div>
-        <div class="footer-bottom">
-            <p>© 2026 祥鉞餐飲設備股份有限公司. All Rights Reserved.</p>
+        <div>
+          <p class="eyebrow">VISIT / 台中製造・全台服務</p>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=台中市北屯區水景街8號"
+            target="_blank"
+            rel="noopener noreferrer"
+            >406 台中市北屯區水景里水景街8號 ↗</a
+          >
+          <p>週一至週五 08:30–17:30</p>
+          <p class="footer-contact-row">
+            <a href="tel:+886424365774"><span class="footer-contact-label">電話 </span><span>04–2436–5774</span></a>
+            <span><span class="footer-contact-label">傳真 </span><span>04–2437–4738</span></span>
+          </p>
+          <p>統一編號 89872485</p>
         </div>
+        <div>
+          <p class="eyebrow">CONTACT / 保持聯繫</p>
+          <a href="mailto:service@shyuan.com.tw">service@shyuan.com.tw</a>
+          <div class="social-links">
+            <a
+              href="https://line.me/R/ti/p/@001qownn"
+              target="_blank"
+              rel="noopener noreferrer"
+              >LINE ↗</a
+            ><a
+              href="https://www.facebook.com/1996shyuan/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Facebook ↗</a
+            ><a
+              href="https://www.instagram.com/sy19921014"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Instagram ↗</a
+            ><a
+              href="https://www.threads.com/@shyuan0901"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Threads ↗</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="wrap footer-bottom">
+        <span>© <span data-year>2026</span> SHYUAN. ALL RIGHTS RESERVED.</span
+        ><a href="#top">回到頂端 ↑</a><span>DESIGNED AROUND YOUR WORK.</span>
+      </div>
     </footer>
-    <a id="back-to-top-btn" href="#top" title="回到頂端">
-    <img src="images/arrow-up.png" alt="回到頂端">
-    </a>
-<div id="modal-gallery" class="modal-gallery">
-  <div class="modal-overlay" id="modal-overlay"></div>
-  <div class="modal-content">
-    <button id="modal-close" class="modal-close">&times;</button>
-    <div class="swiper-container main-swiper">
-      <div class="swiper-wrapper" id="swiper-wrapper"></div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </div>
-  </div>
-</div>
-
-
-
-</body>
-
+    <dialog class="project-dialog" aria-labelledby="gallery-title">
+      <div class="dialog-bar">
+        <div>
+          <p id="gallery-category" class="eyebrow"></p>
+          <h2 id="gallery-title"></h2>
+        </div>
+        <button class="dialog-close" aria-label="關閉相簿">關閉 ✕</button>
+      </div>
+      <div class="gallery-stage">
+        <button class="gallery-prev" aria-label="上一張照片">←</button
+        ><img id="gallery-image" alt="" /><button
+          class="gallery-next"
+          aria-label="下一張照片"
+        >
+          →
+        </button>
+      </div>
+      <div class="gallery-caption">
+        <p id="gallery-description"></p>
+        <p id="gallery-count" aria-live="polite"></p>
+      </div>
+      <div
+        id="gallery-thumbs"
+        class="gallery-thumbs"
+        aria-label="選擇相簿照片"
+      ></div>
+    </dialog>
+  </body>
 </html>
-
-
-
-
-
-
