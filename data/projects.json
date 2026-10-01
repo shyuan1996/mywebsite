@@ -1,1204 +1,1218 @@
 [
   {
-    "id": "recblhcITxNUZRRnV",
-    "name": "大學宿舍盥洗室洗衣房水槽",
+    "category": "客製品",
+    "description": "",
+    "id": "recwBZ0LAgDwulaNJ",
+    "images": [
+      "images/projects/recwBZ0LAgDwulaNJ-atteOa0x4pT2412qm-afa527c2c6c5.webp",
+      "images/projects/recwBZ0LAgDwulaNJ-atthrJD00YgOj10mn-5636ddd7054c.webp",
+      "images/projects/recwBZ0LAgDwulaNJ-attnY92aEcfrTJybW-3da182325f84.webp",
+      "images/projects/recwBZ0LAgDwulaNJ-attLA2td903G0xBvV-cec2f12a8b16.webp",
+      "images/projects/recwBZ0LAgDwulaNJ-atttzmJ4ui42rTIp9-fbcfb6794644.webp",
+      "images/projects/recwBZ0LAgDwulaNJ-attcwqrmMG7kAODAS-82f15d9249cd.webp"
+    ],
+    "name": "快拆式餐車"
+  },
+  {
     "category": "中彰投",
     "description": "彰師大/彰化",
+    "id": "recblhcITxNUZRRnV",
     "images": [
-      "images/projects/recblhcITxNUZRRnV-1.webp",
-      "images/projects/recblhcITxNUZRRnV-2.webp",
-      "images/projects/recblhcITxNUZRRnV-3.webp",
-      "images/projects/recblhcITxNUZRRnV-4.webp",
-      "images/projects/recblhcITxNUZRRnV-5.webp",
-      "images/projects/recblhcITxNUZRRnV-6.webp",
-      "images/projects/recblhcITxNUZRRnV-7.webp",
-      "images/projects/recblhcITxNUZRRnV-8.webp",
-      "images/projects/recblhcITxNUZRRnV-9.webp",
-      "images/projects/recblhcITxNUZRRnV-10.webp",
-      "images/projects/recblhcITxNUZRRnV-11.webp",
-      "images/projects/recblhcITxNUZRRnV-12.webp",
-      "images/projects/recblhcITxNUZRRnV-13.webp",
-      "images/projects/recblhcITxNUZRRnV-14.webp",
-      "images/projects/recblhcITxNUZRRnV-15.webp",
-      "images/projects/recblhcITxNUZRRnV-16.webp",
-      "images/projects/recblhcITxNUZRRnV-17.webp",
-      "images/projects/recblhcITxNUZRRnV-18.webp",
-      "images/projects/recblhcITxNUZRRnV-19.webp"
-    ]
+      "images/projects/recblhcITxNUZRRnV-attBtUTmIq6uGM5DK-da3672d751a2.webp",
+      "images/projects/recblhcITxNUZRRnV-attPze3S2XUFdtU2z-fdb22470ec80.webp",
+      "images/projects/recblhcITxNUZRRnV-attum5Pyble4GockO-8a72eaa79e5a.webp",
+      "images/projects/recblhcITxNUZRRnV-att67VnH0i99B00G1-6ab30b27bf5e.webp",
+      "images/projects/recblhcITxNUZRRnV-attRhlj8MG0l7YG9I-d086e524ac33.webp",
+      "images/projects/recblhcITxNUZRRnV-attIiGOiEryFnQCXd-8a7988c76fb8.webp",
+      "images/projects/recblhcITxNUZRRnV-atthlBfZ0ktCClpsf-717d1fe37f5d.webp",
+      "images/projects/recblhcITxNUZRRnV-attd2Ec9sEU8gzTv9-2ad7816d46c0.webp",
+      "images/projects/recblhcITxNUZRRnV-attgiARJM8vQp7jr4-022460f4bae3.webp",
+      "images/projects/recblhcITxNUZRRnV-attbjkbPDydcJmaiI-51bac094c80b.webp",
+      "images/projects/recblhcITxNUZRRnV-attsszwkf8Ufk2Tln-a581144376bd.webp",
+      "images/projects/recblhcITxNUZRRnV-attapRJ51q3STkTQH-2bbb8da1d109.webp",
+      "images/projects/recblhcITxNUZRRnV-attbZTjb1bsOWJ5nK-594495040845.webp",
+      "images/projects/recblhcITxNUZRRnV-attRouyyteYDlHrhx-6c4602f92a5a.webp",
+      "images/projects/recblhcITxNUZRRnV-attHshk6kQxxN8waA-bff1f90a4ce1.webp",
+      "images/projects/recblhcITxNUZRRnV-attOlu9WLSeOduZnG-c43126cfd583.webp",
+      "images/projects/recblhcITxNUZRRnV-att4t0iQyAZ7cPnso-1b8502b01447.webp",
+      "images/projects/recblhcITxNUZRRnV-attHqbaZeimY3qEv5-5174d9c558c1.webp",
+      "images/projects/recblhcITxNUZRRnV-attKHIXNn2807lFQm-9f4abb8e123b.webp"
+    ],
+    "name": "大學宿舍盥洗室洗衣房水槽"
   },
   {
-    "id": "recSie7Sqd1hbA5vq",
-    "name": "幼稚園餐車",
     "category": "中彰投",
     "description": "幼稚園餐車/台中",
+    "id": "recSie7Sqd1hbA5vq",
     "images": [
-      "images/projects/recSie7Sqd1hbA5vq-1.webp",
-      "images/projects/recSie7Sqd1hbA5vq-2.webp",
-      "images/projects/recSie7Sqd1hbA5vq-3.webp"
-    ]
+      "images/projects/recSie7Sqd1hbA5vq-attqpLSWlIg5U7KQI-32ea725815b0.webp",
+      "images/projects/recSie7Sqd1hbA5vq-attcs8tQTeYPFwQmn-83f81fea3740.webp",
+      "images/projects/recSie7Sqd1hbA5vq-attozRRYp85WeeCcM-482768f2a6d5.webp"
+    ],
+    "name": "幼稚園餐車"
   },
   {
-    "id": "recds9h1FmJATufwF",
-    "name": "不鏽鋼烤漆裝潢件",
     "category": "中彰投",
     "description": "餐飲業/台中",
+    "id": "recds9h1FmJATufwF",
     "images": [
-      "images/projects/recds9h1FmJATufwF-1.webp"
-    ]
+      "images/projects/recds9h1FmJATufwF-attMbYGO42ozi3QTj-b50525c3eeac.webp"
+    ],
+    "name": "不鏽鋼烤漆裝潢件"
   },
   {
-    "id": "recAlKtnRszvkOXte",
-    "name": "工作平檯含層架、抽屜、水槽",
     "category": "中彰投",
     "description": "連鎖餐飲業/台中",
+    "id": "recAlKtnRszvkOXte",
     "images": [
-      "images/projects/recAlKtnRszvkOXte-1.webp",
-      "images/projects/recAlKtnRszvkOXte-2.webp",
-      "images/projects/recAlKtnRszvkOXte-3.webp",
-      "images/projects/recAlKtnRszvkOXte-4.webp"
-    ]
+      "images/projects/recAlKtnRszvkOXte-atteUuCuKFjw9kt1J-23eb3a09120d.webp",
+      "images/projects/recAlKtnRszvkOXte-attnjrVWPYaJRUjKR-86295f8a9b3f.webp",
+      "images/projects/recAlKtnRszvkOXte-att2aJUNgLfBkURth-47a5fe3d9a82.webp",
+      "images/projects/recAlKtnRszvkOXte-attLdfA6KzxvnHwkF-c270de0a4af7.webp"
+    ],
+    "name": "工作平檯含層架、抽屜、水槽"
   },
   {
-    "id": "recBbmJpZw9OeJ7k7",
-    "name": "餅乾模具",
-    "category": "客製品",
-    "description": "",
-    "images": [
-      "images/projects/recBbmJpZw9OeJ7k7-1.webp",
-      "images/projects/recBbmJpZw9OeJ7k7-2.webp",
-      "images/projects/recBbmJpZw9OeJ7k7-3.webp",
-      "images/projects/recBbmJpZw9OeJ7k7-4.webp",
-      "images/projects/recBbmJpZw9OeJ7k7-5.webp"
-    ]
-  },
-  {
-    "id": "recka3KiLVoKbdp18",
-    "name": "吧檯、工作平檯",
     "category": "北北基",
     "description": "連鎖飲料店/新北",
+    "id": "recka3KiLVoKbdp18",
     "images": [
-      "images/projects/recka3KiLVoKbdp18-1.webp",
-      "images/projects/recka3KiLVoKbdp18-2.webp",
-      "images/projects/recka3KiLVoKbdp18-3.webp",
-      "images/projects/recka3KiLVoKbdp18-4.webp"
-    ]
+      "images/projects/recka3KiLVoKbdp18-attqWnPt6evUUxlRZ-b618a8c6586a.webp",
+      "images/projects/recka3KiLVoKbdp18-attV5nKdnGDS5aFmT-120a8c0a95ad.webp",
+      "images/projects/recka3KiLVoKbdp18-attuQ9vRddeMyegmO-52a097ddb5c9.webp",
+      "images/projects/recka3KiLVoKbdp18-attdGN7l0z1Aqx96C-c9b935e1f12a.webp"
+    ],
+    "name": "吧檯、工作平檯"
   },
   {
-    "id": "recQFdtr8kfW1e4EY",
-    "name": "工作平檯含層架",
+    "category": "客製品",
+    "description": "",
+    "id": "recBbmJpZw9OeJ7k7",
+    "images": [
+      "images/projects/recBbmJpZw9OeJ7k7-attrZfw8dGI0cloQH-6d54042b29e5.webp",
+      "images/projects/recBbmJpZw9OeJ7k7-attSZbuIRVqxY8HhE-ce947406e77b.webp",
+      "images/projects/recBbmJpZw9OeJ7k7-atts1GT9e505zqRKN-28f1a848c081.webp",
+      "images/projects/recBbmJpZw9OeJ7k7-attURODESpvHTf2Tw-9581b76fbef0.webp",
+      "images/projects/recBbmJpZw9OeJ7k7-attpadePVUi5OxElC-0947b95237be.webp"
+    ],
+    "name": "餅乾模具"
+  },
+  {
     "category": "中彰投",
     "description": "藥膳排骨/台中",
+    "id": "recQFdtr8kfW1e4EY",
     "images": [
-      "images/projects/recQFdtr8kfW1e4EY-1.webp",
-      "images/projects/recQFdtr8kfW1e4EY-2.webp",
-      "images/projects/recQFdtr8kfW1e4EY-3.webp"
-    ]
+      "images/projects/recQFdtr8kfW1e4EY-attZf8m4o19XjUYCn-34e1cc4e121b.webp",
+      "images/projects/recQFdtr8kfW1e4EY-attW6vOlxXLoUaLsc-3f3d75d3cf02.webp",
+      "images/projects/recQFdtr8kfW1e4EY-attE5XuML5jLSbwMF-0ce89aaf638b.webp"
+    ],
+    "name": "工作平檯含層架"
   },
   {
+    "category": "客製品",
+    "description": "",
     "id": "recwAa7LmZ6fhAxs0",
-    "name": "SUS304 10mm零件",
-    "category": "客製品",
-    "description": "",
     "images": [
-      "images/projects/recwAa7LmZ6fhAxs0-1.webp",
-      "images/projects/recwAa7LmZ6fhAxs0-2.webp"
-    ]
+      "images/projects/recwAa7LmZ6fhAxs0-attG0HVoxu52yKNd5-1d274d3506be.webp",
+      "images/projects/recwAa7LmZ6fhAxs0-attXCM4WK77LD5Bxo-919d76f89275.webp"
+    ],
+    "name": "SUS304 10mm零件"
   },
   {
+    "category": "客製品",
+    "description": "",
     "id": "recz0jznTyX588fIP",
-    "name": "水槽",
-    "category": "客製品",
-    "description": "",
     "images": [
-      "images/projects/recz0jznTyX588fIP-1.webp",
-      "images/projects/recz0jznTyX588fIP-2.webp",
-      "images/projects/recz0jznTyX588fIP-3.webp",
-      "images/projects/recz0jznTyX588fIP-4.webp",
-      "images/projects/recz0jznTyX588fIP-5.webp"
-    ]
+      "images/projects/recz0jznTyX588fIP-attBnv0Ryl6xU73Dw-97291b4aedd8.webp",
+      "images/projects/recz0jznTyX588fIP-attHnCppEJAm6oFum-b3368cf4509c.webp",
+      "images/projects/recz0jznTyX588fIP-attXRVhlNpTwRdiNR-c472d5592cd2.webp",
+      "images/projects/recz0jznTyX588fIP-att1CJmlH4ZjqZp3Y-7a2a273952e2.webp",
+      "images/projects/recz0jznTyX588fIP-attYKMCICr548kEvF-95b8cb9f83c5.webp"
+    ],
+    "name": "水槽"
   },
   {
-    "id": "recmNmhGqBQ7Jvzra",
-    "name": "牛排館煎台",
     "category": "中彰投",
     "description": "牛排館/台中",
+    "id": "recmNmhGqBQ7Jvzra",
     "images": [
-      "images/projects/recmNmhGqBQ7Jvzra-1.webp",
-      "images/projects/recmNmhGqBQ7Jvzra-2.webp",
-      "images/projects/recmNmhGqBQ7Jvzra-3.webp"
-    ]
+      "images/projects/recmNmhGqBQ7Jvzra-attSDFBflrvRDN1PR-b519e69b59fc.webp",
+      "images/projects/recmNmhGqBQ7Jvzra-attqNA9AZQozMg8qY-8c823bf1e85c.webp",
+      "images/projects/recmNmhGqBQ7Jvzra-attpACyxxpQg1Eb7l-2bd3829a1ad6.webp"
+    ],
+    "name": "牛排館煎台"
   },
   {
+    "category": "客製品",
+    "description": "",
     "id": "recl26J6nKqHuPipT",
-    "name": "過濾網",
-    "category": "客製品",
-    "description": "",
     "images": [
-      "images/projects/recl26J6nKqHuPipT-1.webp",
-      "images/projects/recl26J6nKqHuPipT-2.webp"
-    ]
+      "images/projects/recl26J6nKqHuPipT-att48t7GCGvQ8XrL1-f6e5df0f354c.webp",
+      "images/projects/recl26J6nKqHuPipT-attayUjHlTKMAukTD-6470007a303e.webp"
+    ],
+    "name": "過濾網"
   },
   {
+    "category": "客製品",
+    "description": "",
     "id": "recuT3Cskz4uVvHo3",
-    "name": "可拆式不鏽鋼油炸網籃",
-    "category": "客製品",
-    "description": "",
     "images": [
-      "images/projects/recuT3Cskz4uVvHo3-1.webp",
-      "images/projects/recuT3Cskz4uVvHo3-2.webp",
-      "images/projects/recuT3Cskz4uVvHo3-3.webp",
-      "images/projects/recuT3Cskz4uVvHo3-4.webp"
-    ]
+      "images/projects/recuT3Cskz4uVvHo3-attsNAa0XXN7I6HBt-7e1b7d74a0bd.webp",
+      "images/projects/recuT3Cskz4uVvHo3-attBztEG2Ys3hlyQZ-86c1d532a827.webp",
+      "images/projects/recuT3Cskz4uVvHo3-attyp7q616M6l1Pa2-03d8c0751e1d.webp",
+      "images/projects/recuT3Cskz4uVvHo3-attzATQuMV32pTobK-0a3e21c83b61.webp"
+    ],
+    "name": "可拆式不鏽鋼油炸網籃"
   },
   {
+    "category": "客製品",
+    "description": "",
     "id": "rec20DIC8G71VTrjZ",
-    "name": "桌上式層架",
-    "category": "客製品",
-    "description": "",
     "images": [
-      "images/projects/rec20DIC8G71VTrjZ-1.webp",
-      "images/projects/rec20DIC8G71VTrjZ-2.webp",
-      "images/projects/rec20DIC8G71VTrjZ-3.webp",
-      "images/projects/rec20DIC8G71VTrjZ-4.webp"
-    ]
+      "images/projects/rec20DIC8G71VTrjZ-attkUNeGJduUz4RWt-9b2c54aca8bc.webp",
+      "images/projects/rec20DIC8G71VTrjZ-attV3iZ4HP5kPRBPC-e8ef11a2f636.webp",
+      "images/projects/rec20DIC8G71VTrjZ-attYH9tVPW3rlYZxw-01e98d464c18.webp",
+      "images/projects/rec20DIC8G71VTrjZ-attzj6u9KAoLYZVHq-29e44c391456.webp"
+    ],
+    "name": "桌上式層架"
   },
   {
-    "id": "recYzkjoMEv3rtuvP",
-    "name": "吧檯、工作平檯",
-    "category": "桃竹苗",
-    "description": "連鎖飲料店/新竹",
-    "images": [
-      "images/projects/recYzkjoMEv3rtuvP-1.webp",
-      "images/projects/recYzkjoMEv3rtuvP-2.webp",
-      "images/projects/recYzkjoMEv3rtuvP-3.webp",
-      "images/projects/recYzkjoMEv3rtuvP-4.webp",
-      "images/projects/recYzkjoMEv3rtuvP-5.webp"
-    ]
-  },
-  {
-    "id": "recrbbrQdlfTYxVnR",
-    "name": "滑軌水槽、大水槽",
     "category": "中彰投",
     "description": "發電廠/台中",
+    "id": "recrbbrQdlfTYxVnR",
     "images": [
-      "images/projects/recrbbrQdlfTYxVnR-1.webp",
-      "images/projects/recrbbrQdlfTYxVnR-2.webp",
-      "images/projects/recrbbrQdlfTYxVnR-3.webp",
-      "images/projects/recrbbrQdlfTYxVnR-4.webp",
-      "images/projects/recrbbrQdlfTYxVnR-5.webp"
-    ]
+      "images/projects/recrbbrQdlfTYxVnR-attt6mtXgM3UoY74O-2102a1c82870.webp",
+      "images/projects/recrbbrQdlfTYxVnR-attCi1kr77LNwsFI2-9684b0ef64dc.webp",
+      "images/projects/recrbbrQdlfTYxVnR-attqrJOXHMcySiJ1P-f6f76c69d53a.webp",
+      "images/projects/recrbbrQdlfTYxVnR-attvgwv9ixLh7TZSZ-ae6f613817b2.webp",
+      "images/projects/recrbbrQdlfTYxVnR-attFigxar5PlBak9M-fd6e2e12e1b9.webp"
+    ],
+    "name": "滑軌水槽、大水槽"
   },
   {
-    "id": "recx7kYpMvHwJDUPi",
-    "name": "工作平檯",
+    "category": "桃竹苗",
+    "description": "連鎖飲料店/新竹",
+    "id": "recYzkjoMEv3rtuvP",
+    "images": [
+      "images/projects/recYzkjoMEv3rtuvP-attMoAsNRP9Oazvri-f24cc401e700.webp",
+      "images/projects/recYzkjoMEv3rtuvP-attb06f1kyA35Qkn1-9d555b18c3dc.webp",
+      "images/projects/recYzkjoMEv3rtuvP-atty1b2zfkkdDz3TD-067b131e0771.webp",
+      "images/projects/recYzkjoMEv3rtuvP-attAZeJDlkomLGhPc-6a4877b08ff9.webp",
+      "images/projects/recYzkjoMEv3rtuvP-attaPaIdyOLbGD7Zr-14130d87bb25.webp"
+    ],
+    "name": "吧檯、工作平檯"
+  },
+  {
     "category": "桃竹苗",
     "description": "市場肉攤/新竹",
+    "id": "recx7kYpMvHwJDUPi",
     "images": [
-      "images/projects/recx7kYpMvHwJDUPi-1.webp",
-      "images/projects/recx7kYpMvHwJDUPi-2.webp",
-      "images/projects/recx7kYpMvHwJDUPi-3.webp",
-      "images/projects/recx7kYpMvHwJDUPi-4.webp"
-    ]
+      "images/projects/recx7kYpMvHwJDUPi-att9AFk9JYniskqdr-c11655e7b5e3.webp",
+      "images/projects/recx7kYpMvHwJDUPi-attZv5nnFTu31VHDd-142d9bb37ec6.webp",
+      "images/projects/recx7kYpMvHwJDUPi-attYTnNFfBFB9rqE2-c1cee09591e5.webp",
+      "images/projects/recx7kYpMvHwJDUPi-att1LJZkKtiz1SvDV-d0a5a84bb412.webp"
+    ],
+    "name": "工作平檯"
   },
   {
-    "id": "recG8CiuL1HE4tGPS",
-    "name": "倒茶架",
     "category": "客製品",
     "description": "",
+    "id": "recG8CiuL1HE4tGPS",
     "images": [
-      "images/projects/recG8CiuL1HE4tGPS-1.webp",
-      "images/projects/recG8CiuL1HE4tGPS-2.webp",
-      "images/projects/recG8CiuL1HE4tGPS-3.webp",
-      "images/projects/recG8CiuL1HE4tGPS-4.webp",
-      "images/projects/recG8CiuL1HE4tGPS-5.webp",
-      "images/projects/recG8CiuL1HE4tGPS-6.webp",
-      "images/projects/recG8CiuL1HE4tGPS-7.webp",
-      "images/projects/recG8CiuL1HE4tGPS-8.webp",
-      "images/projects/recG8CiuL1HE4tGPS-9.webp",
-      "images/projects/recG8CiuL1HE4tGPS-10.webp",
-      "images/projects/recG8CiuL1HE4tGPS-11.webp",
-      "images/projects/recG8CiuL1HE4tGPS-12.webp"
-    ]
+      "images/projects/recG8CiuL1HE4tGPS-attnPsVVRCce3haPJ-5b403a349ba4.webp",
+      "images/projects/recG8CiuL1HE4tGPS-attjsTh1E310OTWNf-a0f96a1d1c0c.webp",
+      "images/projects/recG8CiuL1HE4tGPS-att7SccXQhhbSwoCH-8e9f6aa31641.webp",
+      "images/projects/recG8CiuL1HE4tGPS-attVlQLgn38QP0dJe-e87cfc194a4e.webp",
+      "images/projects/recG8CiuL1HE4tGPS-attbR1mQ3fgSdnveN-3aa8e728075d.webp",
+      "images/projects/recG8CiuL1HE4tGPS-attqKOmP0AlbOITAU-c7084a3c7826.webp",
+      "images/projects/recG8CiuL1HE4tGPS-attpLV38VHniuX1Up-50ffa9c73141.webp",
+      "images/projects/recG8CiuL1HE4tGPS-attUbWamKXg7dibMT-fcf332c30c36.webp",
+      "images/projects/recG8CiuL1HE4tGPS-attn8FeKHiy3OJcHe-e14135e8f97f.webp",
+      "images/projects/recG8CiuL1HE4tGPS-attZTkdrrtv8ttba8-1aa271b00b8f.webp",
+      "images/projects/recG8CiuL1HE4tGPS-att7ABnbMekhfzvKk-31f2667614ac.webp",
+      "images/projects/recG8CiuL1HE4tGPS-attDpf2fEvzDCn9ze-ce3f7432d2a2.webp"
+    ],
+    "name": "倒茶架"
   },
   {
-    "id": "recfBRTqed438eXUq",
-    "name": "工作平檯、水槽",
-    "category": "中彰投",
-    "description": "遊客中心餐廳/台中",
-    "images": [
-      "images/projects/recfBRTqed438eXUq-1.webp",
-      "images/projects/recfBRTqed438eXUq-2.webp",
-      "images/projects/recfBRTqed438eXUq-3.webp",
-      "images/projects/recfBRTqed438eXUq-4.webp",
-      "images/projects/recfBRTqed438eXUq-5.webp"
-    ]
-  },
-  {
-    "id": "recvlnFDTLhYDfSeT",
-    "name": "工作平檯、水槽",
     "category": "中彰投",
     "description": "居酒屋/台中",
+    "id": "recvlnFDTLhYDfSeT",
     "images": [
-      "images/projects/recvlnFDTLhYDfSeT-1.webp",
-      "images/projects/recvlnFDTLhYDfSeT-2.webp",
-      "images/projects/recvlnFDTLhYDfSeT-3.webp",
-      "images/projects/recvlnFDTLhYDfSeT-4.webp",
-      "images/projects/recvlnFDTLhYDfSeT-5.webp"
-    ]
+      "images/projects/recvlnFDTLhYDfSeT-attDGOfdug424cFyn-38a148f07bb8.webp",
+      "images/projects/recvlnFDTLhYDfSeT-attVWRiGfmPKbSG5y-32da860e94c1.webp",
+      "images/projects/recvlnFDTLhYDfSeT-attotEqHlGeu4MfNP-5aa73264d72f.webp",
+      "images/projects/recvlnFDTLhYDfSeT-attQsZ9iriD46UoTt-2f4978ca81f7.webp",
+      "images/projects/recvlnFDTLhYDfSeT-att7111um8IXOFaUD-b29fec456c8b.webp"
+    ],
+    "name": "工作平檯、水槽"
   },
   {
-    "id": "recfZNjApCnYZP2dr",
-    "name": "不鏽鋼神明桌",
+    "category": "中彰投",
+    "description": "遊客中心餐廳/台中",
+    "id": "recfBRTqed438eXUq",
+    "images": [
+      "images/projects/recfBRTqed438eXUq-attUbYDiKTIhJ5fOV-6f3c234420b4.webp",
+      "images/projects/recfBRTqed438eXUq-att5KKqoR1lOWFTAh-ce457a2b86d7.webp",
+      "images/projects/recfBRTqed438eXUq-attFhkvbFUoSmdVUI-58f550571ccb.webp",
+      "images/projects/recfBRTqed438eXUq-attlN1KO6KNzO2FCt-a5a05ecaafa0.webp",
+      "images/projects/recfBRTqed438eXUq-attsoy7URVMdP35Lz-f4834dece4eb.webp"
+    ],
+    "name": "工作平檯、水槽"
+  },
+  {
     "category": "客製品",
     "description": "",
+    "id": "recfZNjApCnYZP2dr",
     "images": [
-      "images/projects/recfZNjApCnYZP2dr-1.webp",
-      "images/projects/recfZNjApCnYZP2dr-2.webp",
-      "images/projects/recfZNjApCnYZP2dr-3.webp",
-      "images/projects/recfZNjApCnYZP2dr-4.webp",
-      "images/projects/recfZNjApCnYZP2dr-5.webp",
-      "images/projects/recfZNjApCnYZP2dr-6.webp"
-    ]
+      "images/projects/recfZNjApCnYZP2dr-attbRTNdwussNaKo4-c08733cd6514.webp",
+      "images/projects/recfZNjApCnYZP2dr-attoYKl4XiEwFOdoP-467a711100cf.webp",
+      "images/projects/recfZNjApCnYZP2dr-attBeBXE6U9v0tUh4-ee77d587ab4b.webp",
+      "images/projects/recfZNjApCnYZP2dr-attCONYYIvl1zIB6P-04e0af51a579.webp",
+      "images/projects/recfZNjApCnYZP2dr-attLsFGwKcSykHaFJ-bf87f6489d8a.webp",
+      "images/projects/recfZNjApCnYZP2dr-att0gIWljIcIrBy2x-702998eb6d6f.webp"
+    ],
+    "name": "不鏽鋼神明桌"
   },
   {
-    "id": "recW7bODlqgACJAhO",
-    "name": "吧檯、水槽",
     "category": "北北基",
     "description": "連鎖飲料店/台北",
+    "id": "recW7bODlqgACJAhO",
     "images": [
-      "images/projects/recW7bODlqgACJAhO-1.webp",
-      "images/projects/recW7bODlqgACJAhO-2.webp",
-      "images/projects/recW7bODlqgACJAhO-3.webp",
-      "images/projects/recW7bODlqgACJAhO-4.webp"
-    ]
+      "images/projects/recW7bODlqgACJAhO-attwNjS2eJBGAbktG-f1e7b88f2691.webp",
+      "images/projects/recW7bODlqgACJAhO-attNCDXa6w5jqWRPN-407fa3fcbe71.webp",
+      "images/projects/recW7bODlqgACJAhO-att1wGd4ant1UlaHM-c3553f39376e.webp",
+      "images/projects/recW7bODlqgACJAhO-attdcEC2d6mQFt1ry-1d98c19d6be7.webp"
+    ],
+    "name": "吧檯、水槽"
   },
   {
-    "id": "recEMlzJ6IMVGBJQ3",
-    "name": "吧檯、水槽、煮茶檯",
-    "category": "雲嘉南",
-    "description": "連鎖飲料店/雲林",
-    "images": [
-      "images/projects/recEMlzJ6IMVGBJQ3-1.webp",
-      "images/projects/recEMlzJ6IMVGBJQ3-2.webp",
-      "images/projects/recEMlzJ6IMVGBJQ3-3.webp",
-      "images/projects/recEMlzJ6IMVGBJQ3-4.webp",
-      "images/projects/recEMlzJ6IMVGBJQ3-5.webp",
-      "images/projects/recEMlzJ6IMVGBJQ3-6.webp"
-    ]
-  },
-  {
-    "id": "recHSxnriaVWdpIdT",
-    "name": "市場豬肉攤販車",
     "category": "中彰投",
     "description": "市場攤販/台中",
+    "id": "recHSxnriaVWdpIdT",
     "images": [
-      "images/projects/recHSxnriaVWdpIdT-1.webp",
-      "images/projects/recHSxnriaVWdpIdT-2.webp",
-      "images/projects/recHSxnriaVWdpIdT-3.webp",
-      "images/projects/recHSxnriaVWdpIdT-4.webp",
-      "images/projects/recHSxnriaVWdpIdT-5.webp",
-      "images/projects/recHSxnriaVWdpIdT-6.webp",
-      "images/projects/recHSxnriaVWdpIdT-7.webp",
-      "images/projects/recHSxnriaVWdpIdT-8.webp",
-      "images/projects/recHSxnriaVWdpIdT-9.webp"
-    ]
+      "images/projects/recHSxnriaVWdpIdT-attynejJiO7wakrPE-5920276ba908.webp",
+      "images/projects/recHSxnriaVWdpIdT-attGpHH9H3yUgBhjL-c74666978440.webp",
+      "images/projects/recHSxnriaVWdpIdT-attXPNs00gKZD1SEt-9c9dddb361f8.webp",
+      "images/projects/recHSxnriaVWdpIdT-attMRJN4ZRF6A6c1N-bc1bd6299250.webp",
+      "images/projects/recHSxnriaVWdpIdT-attMFWEWEXAoSzR06-aedd96887602.webp",
+      "images/projects/recHSxnriaVWdpIdT-attcGCnCLhz61mLsL-da8160cd29bb.webp",
+      "images/projects/recHSxnriaVWdpIdT-attyihfCh0ll7FmZ7-5750245e6420.webp",
+      "images/projects/recHSxnriaVWdpIdT-att3NTR2sfOr1E6sh-5fbfe2c9238c.webp",
+      "images/projects/recHSxnriaVWdpIdT-attvcUKPO8A2yi3Y5-09190a9e1f6c.webp"
+    ],
+    "name": "市場豬肉攤販車"
   },
   {
-    "id": "recMenTTtqIeQWKc2",
-    "name": "物料防護網",
+    "category": "雲嘉南",
+    "description": "連鎖飲料店/雲林",
+    "id": "recEMlzJ6IMVGBJQ3",
+    "images": [
+      "images/projects/recEMlzJ6IMVGBJQ3-attqz3YP1HxE1ufRv-b13499c2af49.webp",
+      "images/projects/recEMlzJ6IMVGBJQ3-attvMxotLtVWZJa58-141fd59b1076.webp",
+      "images/projects/recEMlzJ6IMVGBJQ3-att6q5p9pXNAL0Ti7-1c5f2a6f5171.webp",
+      "images/projects/recEMlzJ6IMVGBJQ3-attxtHUzl3vnFMQec-4777aba06a97.webp",
+      "images/projects/recEMlzJ6IMVGBJQ3-attXB8aTvGpMHMr2s-d0ca50c66794.webp",
+      "images/projects/recEMlzJ6IMVGBJQ3-attmrzM08HXE4OujF-5eebf66dff65.webp"
+    ],
+    "name": "吧檯、水槽、煮茶檯"
+  },
+  {
     "category": "客製品",
     "description": "",
-    "images": [
-      "images/projects/recMenTTtqIeQWKc2-1.webp",
-      "images/projects/recMenTTtqIeQWKc2-2.webp"
-    ]
-  },
-  {
     "id": "recZ7Z48gjvIeUamt",
-    "name": "小餐車",
-    "category": "客製品",
-    "description": "",
     "images": [
-      "images/projects/recZ7Z48gjvIeUamt-1.webp",
-      "images/projects/recZ7Z48gjvIeUamt-2.webp",
-      "images/projects/recZ7Z48gjvIeUamt-3.webp",
-      "images/projects/recZ7Z48gjvIeUamt-4.webp",
-      "images/projects/recZ7Z48gjvIeUamt-5.webp",
-      "images/projects/recZ7Z48gjvIeUamt-6.webp",
-      "images/projects/recZ7Z48gjvIeUamt-7.webp"
-    ]
+      "images/projects/recZ7Z48gjvIeUamt-attarW1O5IoDG3WL0-3377ecea5803.webp",
+      "images/projects/recZ7Z48gjvIeUamt-att5MD2Qpr5u1hT4P-f38bd7df651e.webp",
+      "images/projects/recZ7Z48gjvIeUamt-attkl2GpBiZrYNhrh-e2b5f95c1e5d.webp",
+      "images/projects/recZ7Z48gjvIeUamt-attRO2KHsQUC4ZUK7-24dd4f02722e.webp",
+      "images/projects/recZ7Z48gjvIeUamt-attc2GzlgY1KZSm96-948b8dd13d10.webp",
+      "images/projects/recZ7Z48gjvIeUamt-attQR8Q1y1lteZqU0-6001faebc605.webp",
+      "images/projects/recZ7Z48gjvIeUamt-att51nueX7W0Nrz5E-846a56a703ed.webp"
+    ],
+    "name": "小餐車"
   },
   {
-    "id": "reckBGCzawCuYNW16",
-    "name": "棧板(含洩水坡度，排水口)",
     "category": "客製品",
     "description": "",
+    "id": "recMenTTtqIeQWKc2",
     "images": [
-      "images/projects/reckBGCzawCuYNW16-1.webp",
-      "images/projects/reckBGCzawCuYNW16-2.webp",
-      "images/projects/reckBGCzawCuYNW16-3.webp",
-      "images/projects/reckBGCzawCuYNW16-4.webp",
-      "images/projects/reckBGCzawCuYNW16-5.webp",
-      "images/projects/reckBGCzawCuYNW16-6.webp"
-    ]
+      "images/projects/recMenTTtqIeQWKc2-attGaSVlQTHKe3aw4-095d62f4d56d.webp",
+      "images/projects/recMenTTtqIeQWKc2-attCBIlzbKA3Cw9yl-3f3dcfe1392a.webp"
+    ],
+    "name": "物料防護網"
   },
   {
-    "id": "recqjCf6k5ZRgu98z",
-    "name": "吧檯、工作平檯",
     "category": "桃竹苗",
     "description": "連鎖飲料店/新竹",
+    "id": "recqjCf6k5ZRgu98z",
     "images": [
-      "images/projects/recqjCf6k5ZRgu98z-1.webp",
-      "images/projects/recqjCf6k5ZRgu98z-2.webp",
-      "images/projects/recqjCf6k5ZRgu98z-3.webp",
-      "images/projects/recqjCf6k5ZRgu98z-4.webp"
-    ]
+      "images/projects/recqjCf6k5ZRgu98z-attIY7Qesg1JLh2OE-65f14d16dbac.webp",
+      "images/projects/recqjCf6k5ZRgu98z-attqfsbLWSVHcLSzl-6712eb671718.webp",
+      "images/projects/recqjCf6k5ZRgu98z-attra0VCqWxsYDuW2-98453e368ec2.webp",
+      "images/projects/recqjCf6k5ZRgu98z-attT96nyG3DWLRA0q-b87e889c9488.webp"
+    ],
+    "name": "吧檯、工作平檯"
   },
   {
-    "id": "recY96vnbtl72PAtX",
-    "name": "吧檯、煮茶檯",
+    "category": "客製品",
+    "description": "",
+    "id": "reckBGCzawCuYNW16",
+    "images": [
+      "images/projects/reckBGCzawCuYNW16-attO9WRNimxTULyho-684433e6f8af.webp",
+      "images/projects/reckBGCzawCuYNW16-attUxsuDg5HtwWphh-3e95fa651bd7.webp",
+      "images/projects/reckBGCzawCuYNW16-attSPA4gQZDbQdk72-04cd4ca957b2.webp",
+      "images/projects/reckBGCzawCuYNW16-attFkNWbgqCedMLJV-74b256c2a641.webp",
+      "images/projects/reckBGCzawCuYNW16-attGEhg97MI5bmS0O-4d3bece09900.webp",
+      "images/projects/reckBGCzawCuYNW16-attxOKunW8olLGNkd-b09d63275e30.webp"
+    ],
+    "name": "棧板(含洩水坡度，排水口)"
+  },
+  {
+    "category": "客製品",
+    "description": "",
+    "id": "recdWBlOQvbRChlde",
+    "images": [
+      "images/projects/recdWBlOQvbRChlde-attvHRl4tmMBzy2Zb-760a2b4bd469.webp",
+      "images/projects/recdWBlOQvbRChlde-attV6vgrvG50EnM89-1ef50492a145.webp"
+    ],
+    "name": "活動式層架工作平檯"
+  },
+  {
     "category": "高屏",
     "description": "連鎖飲料店/高雄",
+    "id": "recY96vnbtl72PAtX",
     "images": [
-      "images/projects/recY96vnbtl72PAtX-1.webp",
-      "images/projects/recY96vnbtl72PAtX-2.webp",
-      "images/projects/recY96vnbtl72PAtX-3.webp"
-    ]
+      "images/projects/recY96vnbtl72PAtX-attLls5FesZYIFzXw-a5496c2ced2a.webp",
+      "images/projects/recY96vnbtl72PAtX-attSKVjMaBS2pRNG7-afe348663edf.webp",
+      "images/projects/recY96vnbtl72PAtX-atte45BY0nUSBp2yU-6a3def31c0b6.webp"
+    ],
+    "name": "吧檯、煮茶檯"
   },
   {
-    "id": "recdWBlOQvbRChlde",
-    "name": "活動式層架工作平檯",
-    "category": "客製品",
-    "description": "",
-    "images": [
-      "images/projects/recdWBlOQvbRChlde-1.webp",
-      "images/projects/recdWBlOQvbRChlde-2.webp"
-    ]
-  },
-  {
-    "id": "recpY88Mvb5epjJ44",
-    "name": "吧檯、水槽、煮茶檯",
     "category": "雲嘉南",
     "description": "連鎖飲料店/雲林",
+    "id": "recpY88Mvb5epjJ44",
     "images": [
-      "images/projects/recpY88Mvb5epjJ44-1.webp",
-      "images/projects/recpY88Mvb5epjJ44-2.webp",
-      "images/projects/recpY88Mvb5epjJ44-3.webp"
-    ]
+      "images/projects/recpY88Mvb5epjJ44-atth8uGE8sNbgPMZ5-2918a7d72af0.webp",
+      "images/projects/recpY88Mvb5epjJ44-attHrvwzwxPNQGi1c-7b0ccdc5e85a.webp",
+      "images/projects/recpY88Mvb5epjJ44-attMnofK29ldhvil6-7855175de156.webp"
+    ],
+    "name": "吧檯、水槽、煮茶檯"
   },
   {
-    "id": "rec5Dd1IzzPpFHGJ0",
-    "name": "鞋櫃",
     "category": "客製品",
     "description": "",
-    "images": [
-      "images/projects/rec5Dd1IzzPpFHGJ0-1.webp",
-      "images/projects/rec5Dd1IzzPpFHGJ0-2.webp",
-      "images/projects/rec5Dd1IzzPpFHGJ0-3.webp",
-      "images/projects/rec5Dd1IzzPpFHGJ0-4.webp"
-    ]
-  },
-  {
     "id": "reck6dDB4f5yreKh7",
-    "name": "生鏽白鐵刻字",
-    "category": "客製品",
-    "description": "",
     "images": [
-      "images/projects/reck6dDB4f5yreKh7-1.webp",
-      "images/projects/reck6dDB4f5yreKh7-2.webp",
-      "images/projects/reck6dDB4f5yreKh7-3.webp"
-    ]
+      "images/projects/reck6dDB4f5yreKh7-attZHrvOoJopitdZy-43a541f31ee8.webp",
+      "images/projects/reck6dDB4f5yreKh7-attfNUe2gQfteChEY-f2c47feac15a.webp",
+      "images/projects/reck6dDB4f5yreKh7-attzNMG2H17HlbYDJ-136711416c21.webp"
+    ],
+    "name": "生鏽白鐵刻字"
   },
   {
+    "category": "客製品",
+    "description": "",
+    "id": "rec5Dd1IzzPpFHGJ0",
+    "images": [
+      "images/projects/rec5Dd1IzzPpFHGJ0-att90yXrqOIIszcmF-36a943205057.webp",
+      "images/projects/rec5Dd1IzzPpFHGJ0-attLylUAUa4K1KstW-20fe8a5e57ad.webp",
+      "images/projects/rec5Dd1IzzPpFHGJ0-attyZcgHSpSNYXuID-6cbf77145075.webp",
+      "images/projects/rec5Dd1IzzPpFHGJ0-att8cDncN2UTlJyO5-13bd40cf57ce.webp"
+    ],
+    "name": "鞋櫃"
+  },
+  {
+    "category": "客製品",
+    "description": "",
     "id": "recNfSaQhtMilQTta",
-    "name": "過濾茶葉槽",
-    "category": "客製品",
-    "description": "",
     "images": [
-      "images/projects/recNfSaQhtMilQTta-1.webp",
-      "images/projects/recNfSaQhtMilQTta-2.webp",
-      "images/projects/recNfSaQhtMilQTta-3.webp"
-    ]
+      "images/projects/recNfSaQhtMilQTta-atts2y9r2r0OPjOgf-bd260a94c6f3.webp",
+      "images/projects/recNfSaQhtMilQTta-att6AAJrDDqdzJ9Bc-1a1c72a41d93.webp",
+      "images/projects/recNfSaQhtMilQTta-attyif7sa1UUoZLhr-5b5750018871.webp"
+    ],
+    "name": "過濾茶葉槽"
   },
   {
+    "category": "客製品",
+    "description": "",
     "id": "recJT2U7mcbzrhhCN",
-    "name": "烤箱置檯",
-    "category": "客製品",
-    "description": "",
     "images": [
-      "images/projects/recJT2U7mcbzrhhCN-1.webp",
-      "images/projects/recJT2U7mcbzrhhCN-2.webp"
-    ]
+      "images/projects/recJT2U7mcbzrhhCN-attJ2IpngoFJpDlXK-80a3b9709707.webp",
+      "images/projects/recJT2U7mcbzrhhCN-attesfg7YrFhSinr6-34fb48e2457f.webp"
+    ],
+    "name": "烤箱置檯"
   },
   {
+    "category": "客製品",
+    "description": "",
     "id": "recaeYzsozK92YBtN",
-    "name": "四層置物架",
-    "category": "客製品",
-    "description": "",
     "images": [
-      "images/projects/recaeYzsozK92YBtN-1.webp",
-      "images/projects/recaeYzsozK92YBtN-2.webp",
-      "images/projects/recaeYzsozK92YBtN-3.webp"
-    ]
+      "images/projects/recaeYzsozK92YBtN-attbTFQWgAlUJkjVe-4fd2d8a617ae.webp",
+      "images/projects/recaeYzsozK92YBtN-attIjKLhz29wllZLZ-42e5e9e1c5a1.webp",
+      "images/projects/recaeYzsozK92YBtN-attgf8Y175RMobdxA-bc7ad02454ef.webp"
+    ],
+    "name": "四層置物架"
   },
   {
-    "id": "recUce4fOVHOmPxwl",
-    "name": "儲冰槽、煮茶檯、工作平檯",
     "category": "桃竹苗",
     "description": "連鎖飲料店/桃園",
+    "id": "recUce4fOVHOmPxwl",
     "images": [
-      "images/projects/recUce4fOVHOmPxwl-1.webp",
-      "images/projects/recUce4fOVHOmPxwl-2.webp",
-      "images/projects/recUce4fOVHOmPxwl-3.webp",
-      "images/projects/recUce4fOVHOmPxwl-4.webp",
-      "images/projects/recUce4fOVHOmPxwl-5.webp",
-      "images/projects/recUce4fOVHOmPxwl-6.webp"
-    ]
+      "images/projects/recUce4fOVHOmPxwl-attHCiIE05nwy0t0v-e9c8dca5672d.webp",
+      "images/projects/recUce4fOVHOmPxwl-attIhAWwtK01ygrNp-57a1ed6e7f11.webp",
+      "images/projects/recUce4fOVHOmPxwl-attnSMsXcTU8dBKNn-66cbd66aabbb.webp",
+      "images/projects/recUce4fOVHOmPxwl-attonjiTxmhg36ENR-4bd398de31d8.webp",
+      "images/projects/recUce4fOVHOmPxwl-attJVBhOI16PcuOT1-da5649cbab6f.webp",
+      "images/projects/recUce4fOVHOmPxwl-atttAwfjqhp0sdaYh-5338c1ae8ba6.webp"
+    ],
+    "name": "儲冰槽、煮茶檯、工作平檯"
   },
   {
-    "id": "recb5yjtSaWVZAJoU",
-    "name": "櫃體、小平檯",
+    "category": "客製品",
+    "description": "",
+    "id": "recf8I8QeWhudTKvn",
+    "images": [
+      "images/projects/recf8I8QeWhudTKvn-attoeV0UTGD0W46VK-aac7edc810e6.webp",
+      "images/projects/recf8I8QeWhudTKvn-attbQMZ28O2AxMGCL-84673ee76979.webp",
+      "images/projects/recf8I8QeWhudTKvn-attThJvBgBKbi2k3R-b8e2331f6634.webp",
+      "images/projects/recf8I8QeWhudTKvn-att3pTipEu8GMwTZq-e2dd88de021e.webp"
+    ],
+    "name": "餐車"
+  },
+  {
     "category": "中彰投",
     "description": "連鎖早餐店/台中",
+    "id": "recb5yjtSaWVZAJoU",
     "images": [
-      "images/projects/recb5yjtSaWVZAJoU-1.webp",
-      "images/projects/recb5yjtSaWVZAJoU-2.webp",
-      "images/projects/recb5yjtSaWVZAJoU-3.webp"
-    ]
+      "images/projects/recb5yjtSaWVZAJoU-attOHzEDyrASHiWtI-7c0b05dc4949.webp",
+      "images/projects/recb5yjtSaWVZAJoU-attHFLjVtcDhOELFo-1cc33ee98186.webp",
+      "images/projects/recb5yjtSaWVZAJoU-attOVTPHHG4qpBxL2-f602e0a0a376.webp"
+    ],
+    "name": "櫃體、小平檯"
   },
   {
-    "id": "recf8I8QeWhudTKvn",
-    "name": "餐車",
-    "category": "客製品",
-    "description": "",
-    "images": [
-      "images/projects/recf8I8QeWhudTKvn-1.webp",
-      "images/projects/recf8I8QeWhudTKvn-2.webp",
-      "images/projects/recf8I8QeWhudTKvn-3.webp",
-      "images/projects/recf8I8QeWhudTKvn-4.webp"
-    ]
-  },
-  {
-    "id": "recAR9ZdpQgSpgXm3",
-    "name": "水槽、小設備",
     "category": "雲嘉南",
     "description": "連鎖炸雞店/台南",
+    "id": "recAR9ZdpQgSpgXm3",
     "images": [
-      "images/projects/recAR9ZdpQgSpgXm3-1.webp",
-      "images/projects/recAR9ZdpQgSpgXm3-2.webp",
-      "images/projects/recAR9ZdpQgSpgXm3-3.webp"
-    ]
+      "images/projects/recAR9ZdpQgSpgXm3-attomTrPAqAmcyo0W-d2c50cbef49d.webp",
+      "images/projects/recAR9ZdpQgSpgXm3-attcCIAbJbi3cQMny-8ee12a44bdb2.webp",
+      "images/projects/recAR9ZdpQgSpgXm3-attVZEhWlXTmHjO3O-984ecf5ab35b.webp"
+    ],
+    "name": "水槽、小設備"
   },
   {
-    "id": "recFK0sQ4bLC1gu8p",
-    "name": "吧檯、水槽、工作平檯",
-    "category": "桃竹苗",
-    "description": "連鎖飲料店/桃園",
-    "images": [
-      "images/projects/recFK0sQ4bLC1gu8p-1.webp",
-      "images/projects/recFK0sQ4bLC1gu8p-2.webp",
-      "images/projects/recFK0sQ4bLC1gu8p-3.webp",
-      "images/projects/recFK0sQ4bLC1gu8p-4.webp",
-      "images/projects/recFK0sQ4bLC1gu8p-5.webp"
-    ]
-  },
-  {
-    "id": "recM76DROFjpGBU1B",
-    "name": "廚房推車",
     "category": "中彰投",
     "description": "知名餐廳/台中",
+    "id": "recM76DROFjpGBU1B",
     "images": [
-      "images/projects/recM76DROFjpGBU1B-1.webp",
-      "images/projects/recM76DROFjpGBU1B-2.webp"
-    ]
+      "images/projects/recM76DROFjpGBU1B-attsN3HFBLVW81Txo-a5c2b57a97dc.webp",
+      "images/projects/recM76DROFjpGBU1B-att2olZp4oGSaXWOj-131268b4e444.webp"
+    ],
+    "name": "廚房推車"
   },
   {
-    "id": "rec7F2kzAw0hU8QJs",
-    "name": "大平檯",
-    "category": "中彰投",
-    "description": "連鎖店中央工廠/台中",
-    "images": [
-      "images/projects/rec7F2kzAw0hU8QJs-1.webp",
-      "images/projects/rec7F2kzAw0hU8QJs-2.webp",
-      "images/projects/rec7F2kzAw0hU8QJs-3.webp",
-      "images/projects/rec7F2kzAw0hU8QJs-4.webp",
-      "images/projects/rec7F2kzAw0hU8QJs-5.webp"
-    ]
-  },
-  {
-    "id": "recSNny12qlImYl62",
-    "name": "剉冰檯",
-    "category": "客製品",
-    "description": "",
-    "images": [
-      "images/projects/recSNny12qlImYl62-1.webp",
-      "images/projects/recSNny12qlImYl62-2.webp",
-      "images/projects/recSNny12qlImYl62-3.webp",
-      "images/projects/recSNny12qlImYl62-4.webp"
-    ]
-  },
-  {
-    "id": "rec0LBKOUP85evZNQ",
-    "name": "吧檯、水槽、煮茶檯",
-    "category": "北北基",
-    "description": "連鎖飲料店/台北",
-    "images": [
-      "images/projects/rec0LBKOUP85evZNQ-1.webp",
-      "images/projects/rec0LBKOUP85evZNQ-2.webp",
-      "images/projects/rec0LBKOUP85evZNQ-3.webp",
-      "images/projects/rec0LBKOUP85evZNQ-4.webp",
-      "images/projects/rec0LBKOUP85evZNQ-5.webp",
-      "images/projects/rec0LBKOUP85evZNQ-6.webp"
-    ]
-  },
-  {
-    "id": "recdLH3WxnLtBIg1H",
-    "name": "吧檯、水槽、煮茶檯、工作平檯",
-    "category": "北北基",
-    "description": "連鎖飲料店/台北",
-    "images": [
-      "images/projects/recdLH3WxnLtBIg1H-1.webp",
-      "images/projects/recdLH3WxnLtBIg1H-2.webp",
-      "images/projects/recdLH3WxnLtBIg1H-3.webp",
-      "images/projects/recdLH3WxnLtBIg1H-4.webp",
-      "images/projects/recdLH3WxnLtBIg1H-5.webp",
-      "images/projects/recdLH3WxnLtBIg1H-6.webp"
-    ]
-  },
-  {
-    "id": "recJexMzJrKx2g884",
-    "name": "分離式吧檯",
-    "category": "北北基",
-    "description": "連鎖飲料店/台北",
-    "images": [
-      "images/projects/recJexMzJrKx2g884-1.webp",
-      "images/projects/recJexMzJrKx2g884-2.webp",
-      "images/projects/recJexMzJrKx2g884-3.webp",
-      "images/projects/recJexMzJrKx2g884-4.webp"
-    ]
-  },
-  {
-    "id": "recBPSiCSSFn8dBJ0",
-    "name": "貨架",
-    "category": "中彰投",
-    "description": "連鎖店中央工廠/台中",
-    "images": [
-      "images/projects/recBPSiCSSFn8dBJ0-1.webp",
-      "images/projects/recBPSiCSSFn8dBJ0-2.webp",
-      "images/projects/recBPSiCSSFn8dBJ0-3.webp"
-    ]
-  },
-  {
-    "id": "reclh8mBzooSv0ghX",
-    "name": "吧檯、水槽、工作平檯",
-    "category": "雲嘉南",
-    "description": "連鎖飲料店/雲林",
-    "images": [
-      "images/projects/reclh8mBzooSv0ghX-1.webp",
-      "images/projects/reclh8mBzooSv0ghX-2.webp",
-      "images/projects/reclh8mBzooSv0ghX-3.webp",
-      "images/projects/reclh8mBzooSv0ghX-4.webp",
-      "images/projects/reclh8mBzooSv0ghX-5.webp"
-    ]
-  },
-  {
-    "id": "recDVV5L9xGAask4o",
-    "name": "連鎖店公規配件、單水槽",
-    "category": "宜花東",
-    "description": "連鎖炸雞店/花蓮",
-    "images": [
-      "images/projects/recDVV5L9xGAask4o-1.webp",
-      "images/projects/recDVV5L9xGAask4o-2.webp",
-      "images/projects/recDVV5L9xGAask4o-3.webp",
-      "images/projects/recDVV5L9xGAask4o-4.webp",
-      "images/projects/recDVV5L9xGAask4o-5.webp"
-    ]
-  },
-  {
-    "id": "receCmswbUXUFEhxM",
-    "name": "吧檯、水槽",
-    "category": "北北基",
-    "description": "連鎖飲料店/台北",
-    "images": [
-      "images/projects/receCmswbUXUFEhxM-1.webp",
-      "images/projects/receCmswbUXUFEhxM-2.webp"
-    ]
-  },
-  {
-    "id": "recUwndAQL1kokPNP",
-    "name": "配膳檯",
-    "category": "中彰投",
-    "description": "素食店/台中",
-    "images": [
-      "images/projects/recUwndAQL1kokPNP-1.webp",
-      "images/projects/recUwndAQL1kokPNP-2.webp",
-      "images/projects/recUwndAQL1kokPNP-3.webp",
-      "images/projects/recUwndAQL1kokPNP-4.webp",
-      "images/projects/recUwndAQL1kokPNP-5.webp"
-    ]
-  },
-  {
-    "id": "recGQP2hqXI0Go3LN",
-    "name": "吧檯、水槽、工作平檯",
-    "category": "中彰投",
-    "description": "自有品牌/台中",
-    "images": [
-      "images/projects/recGQP2hqXI0Go3LN-1.webp",
-      "images/projects/recGQP2hqXI0Go3LN-2.webp",
-      "images/projects/recGQP2hqXI0Go3LN-3.webp",
-      "images/projects/recGQP2hqXI0Go3LN-4.webp"
-    ]
-  },
-  {
-    "id": "recSQBmRcUtU9rVSa",
-    "name": "吧檯、水槽、工作平檯",
-    "category": "北北基",
-    "description": "連鎖飲料店/台北",
-    "images": [
-      "images/projects/recSQBmRcUtU9rVSa-1.webp",
-      "images/projects/recSQBmRcUtU9rVSa-2.webp",
-      "images/projects/recSQBmRcUtU9rVSa-3.webp",
-      "images/projects/recSQBmRcUtU9rVSa-4.webp",
-      "images/projects/recSQBmRcUtU9rVSa-5.webp",
-      "images/projects/recSQBmRcUtU9rVSa-6.webp"
-    ]
-  },
-  {
-    "id": "recCEVRljQzkrS28W",
-    "name": "吧檯、水槽、工作平檯",
-    "category": "雲嘉南",
-    "description": "連鎖飲料店/台南",
-    "images": [
-      "images/projects/recCEVRljQzkrS28W-1.webp",
-      "images/projects/recCEVRljQzkrS28W-2.webp",
-      "images/projects/recCEVRljQzkrS28W-3.webp",
-      "images/projects/recCEVRljQzkrS28W-4.webp",
-      "images/projects/recCEVRljQzkrS28W-5.webp",
-      "images/projects/recCEVRljQzkrS28W-6.webp"
-    ]
-  },
-  {
-    "id": "recyYKUPTtcGzfD4H",
-    "name": "防盜櫃式水槽平檯",
-    "category": "客製品",
-    "description": "",
-    "images": [
-      "images/projects/recyYKUPTtcGzfD4H-1.webp",
-      "images/projects/recyYKUPTtcGzfD4H-2.webp",
-      "images/projects/recyYKUPTtcGzfD4H-3.webp"
-    ]
-  },
-  {
-    "id": "rec0zHv35jBDOab4G",
-    "name": "櫃式工作檯附水槽",
-    "category": "中彰投",
-    "description": "連鎖炸雞店/台中",
-    "images": [
-      "images/projects/rec0zHv35jBDOab4G-1.webp",
-      "images/projects/rec0zHv35jBDOab4G-2.webp"
-    ]
-  },
-  {
-    "id": "reczDusntpzXJZ5nq",
-    "name": "吧檯、工作平檯",
-    "category": "北北基",
-    "description": "連鎖飲料店/台北",
-    "images": [
-      "images/projects/reczDusntpzXJZ5nq-1.webp",
-      "images/projects/reczDusntpzXJZ5nq-2.webp",
-      "images/projects/reczDusntpzXJZ5nq-3.webp",
-      "images/projects/reczDusntpzXJZ5nq-4.webp",
-      "images/projects/reczDusntpzXJZ5nq-5.webp"
-    ]
-  },
-  {
-    "id": "recoUB1J57Km9T3XK",
-    "name": "吧檯",
-    "category": "中彰投",
-    "description": "連鎖飲料店/彰化",
-    "images": [
-      "images/projects/recoUB1J57Km9T3XK-1.webp",
-      "images/projects/recoUB1J57Km9T3XK-2.webp",
-      "images/projects/recoUB1J57Km9T3XK-3.webp",
-      "images/projects/recoUB1J57Km9T3XK-4.webp"
-    ]
-  },
-  {
-    "id": "rectS6uXMWtQqKShk",
-    "name": "吧檯",
-    "category": "中彰投",
-    "description": "自有飲料店/台中",
-    "images": [
-      "images/projects/rectS6uXMWtQqKShk-1.webp",
-      "images/projects/rectS6uXMWtQqKShk-2.webp"
-    ]
-  },
-  {
-    "id": "recMoDn6CBD212kvN",
-    "name": "花盆架",
-    "category": "客製品",
-    "description": "",
-    "images": [
-      "images/projects/recMoDn6CBD212kvN-1.webp",
-      "images/projects/recMoDn6CBD212kvN-2.webp",
-      "images/projects/recMoDn6CBD212kvN-3.webp",
-      "images/projects/recMoDn6CBD212kvN-4.webp"
-    ]
-  },
-  {
-    "id": "recqBcNgkuF3dXdnR",
-    "name": "吧檯、水槽、工作平檯",
-    "category": "中彰投",
-    "description": "連鎖飲料店/台中",
-    "images": [
-      "images/projects/recqBcNgkuF3dXdnR-1.webp",
-      "images/projects/recqBcNgkuF3dXdnR-2.webp",
-      "images/projects/recqBcNgkuF3dXdnR-3.webp",
-      "images/projects/recqBcNgkuF3dXdnR-4.webp",
-      "images/projects/recqBcNgkuF3dXdnR-5.webp",
-      "images/projects/recqBcNgkuF3dXdnR-6.webp",
-      "images/projects/recqBcNgkuF3dXdnR-7.webp"
-    ]
-  },
-  {
-    "id": "rec2VhrBxW7NgqTmB",
-    "name": "吧檯、水槽",
-    "category": "中彰投",
-    "description": "連鎖飲料店/台中",
-    "images": [
-      "images/projects/rec2VhrBxW7NgqTmB-1.webp",
-      "images/projects/rec2VhrBxW7NgqTmB-2.webp",
-      "images/projects/rec2VhrBxW7NgqTmB-3.webp",
-      "images/projects/rec2VhrBxW7NgqTmB-4.webp"
-    ]
-  },
-  {
-    "id": "recI6FRqiXVJpqa8p",
-    "name": "煎檯",
-    "category": "中彰投",
-    "description": "連鎖便當店/台中",
-    "images": [
-      "images/projects/recI6FRqiXVJpqa8p-1.webp",
-      "images/projects/recI6FRqiXVJpqa8p-2.webp",
-      "images/projects/recI6FRqiXVJpqa8p-3.webp",
-      "images/projects/recI6FRqiXVJpqa8p-4.webp",
-      "images/projects/recI6FRqiXVJpqa8p-5.webp"
-    ]
-  },
-  {
-    "id": "recpH8LCTyXtgrqKT",
-    "name": "吧檯、水槽、工作平檯",
     "category": "桃竹苗",
     "description": "連鎖飲料店/桃園",
+    "id": "recFK0sQ4bLC1gu8p",
     "images": [
-      "images/projects/recpH8LCTyXtgrqKT-1.webp",
-      "images/projects/recpH8LCTyXtgrqKT-2.webp",
-      "images/projects/recpH8LCTyXtgrqKT-3.webp",
-      "images/projects/recpH8LCTyXtgrqKT-4.webp",
-      "images/projects/recpH8LCTyXtgrqKT-5.webp"
-    ]
+      "images/projects/recFK0sQ4bLC1gu8p-att4kf7COqlrwj4v5-722e38e1f346.webp",
+      "images/projects/recFK0sQ4bLC1gu8p-attH6TFUoLjhxDLKw-00cddb28e665.webp",
+      "images/projects/recFK0sQ4bLC1gu8p-attXCJJIMImTVYbeR-2662e8c71ae2.webp",
+      "images/projects/recFK0sQ4bLC1gu8p-attCJag8e6xJxS55M-7e55c1c27966.webp",
+      "images/projects/recFK0sQ4bLC1gu8p-atttm0uD3HG81fkQy-1d66c65d1742.webp"
+    ],
+    "name": "吧檯、水槽、工作平檯"
   },
   {
-    "id": "recznWOi8cKSC2QNy",
-    "name": "吧檯、工作平檯",
-    "category": "桃竹苗",
-    "description": "連鎖飲料店/新竹",
-    "images": [
-      "images/projects/recznWOi8cKSC2QNy-1.webp",
-      "images/projects/recznWOi8cKSC2QNy-2.webp"
-    ]
-  },
-  {
-    "id": "recjGfrB0Y1L5pDqq",
-    "name": "櫃式工作檯附水槽",
-    "category": "中彰投",
-    "description": "東來米糕/台中",
-    "images": [
-      "images/projects/recjGfrB0Y1L5pDqq-1.webp",
-      "images/projects/recjGfrB0Y1L5pDqq-2.webp"
-    ]
-  },
-  {
-    "id": "rec3hFGHoDEru1Fy8",
-    "name": "平口火爐",
     "category": "客製品",
     "description": "",
+    "id": "recSNny12qlImYl62",
     "images": [
-      "images/projects/rec3hFGHoDEru1Fy8-1.webp",
-      "images/projects/rec3hFGHoDEru1Fy8-2.webp"
-    ]
+      "images/projects/recSNny12qlImYl62-attmsA32hMRcHmhNl-a596bc545e26.webp",
+      "images/projects/recSNny12qlImYl62-attsEwJ8fE61sBtgJ-8ae37eb62f3c.webp",
+      "images/projects/recSNny12qlImYl62-att3Luew6xHkneXVC-e301b80eaf9c.webp",
+      "images/projects/recSNny12qlImYl62-attLhQarGwWkZiIUy-5de45a273fe8.webp"
+    ],
+    "name": "剉冰檯"
   },
   {
-    "id": "rec7V7NW6P9d2G5LU",
-    "name": "杯籃架工作平檯",
-    "category": "客製品",
-    "description": "",
-    "images": [
-      "images/projects/rec7V7NW6P9d2G5LU-1.webp",
-      "images/projects/rec7V7NW6P9d2G5LU-2.webp",
-      "images/projects/rec7V7NW6P9d2G5LU-3.webp"
-    ]
-  },
-  {
-    "id": "recrPITq4BOjctqXX",
-    "name": "洗衣機堆高架",
-    "category": "客製品",
-    "description": "",
-    "images": [
-      "images/projects/recrPITq4BOjctqXX-1.webp",
-      "images/projects/recrPITq4BOjctqXX-2.webp"
-    ]
-  },
-  {
-    "id": "rec3q171XlQ4BfXUM",
-    "name": "水槽、工作平檯、層架",
-    "category": "桃竹苗",
-    "description": "連鎖火鍋店/桃園",
-    "images": [
-      "images/projects/rec3q171XlQ4BfXUM-1.webp",
-      "images/projects/rec3q171XlQ4BfXUM-2.webp",
-      "images/projects/rec3q171XlQ4BfXUM-3.webp",
-      "images/projects/rec3q171XlQ4BfXUM-4.webp"
-    ]
-  },
-  {
-    "id": "rec6EOVS7BPEIemnI",
-    "name": "地面式截油槽",
-    "category": "中彰投",
-    "description": "餐飲業/台中",
-    "images": [
-      "images/projects/rec6EOVS7BPEIemnI-1.webp",
-      "images/projects/rec6EOVS7BPEIemnI-2.webp",
-      "images/projects/rec6EOVS7BPEIemnI-3.webp"
-    ]
-  },
-  {
-    "id": "recQ38f2hybQaf9jr",
-    "name": "加熱豆花檯",
-    "category": "中彰投",
-    "description": "連鎖甜湯店/台中",
-    "images": [
-      "images/projects/recQ38f2hybQaf9jr-1.webp",
-      "images/projects/recQ38f2hybQaf9jr-2.webp",
-      "images/projects/recQ38f2hybQaf9jr-3.webp",
-      "images/projects/recQ38f2hybQaf9jr-4.webp"
-    ]
-  },
-  {
-    "id": "recuKfjnCjdLFXMPQ",
-    "name": "湯桶車",
-    "category": "客製品",
-    "description": "",
-    "images": [
-      "images/projects/recuKfjnCjdLFXMPQ-1.webp",
-      "images/projects/recuKfjnCjdLFXMPQ-2.webp",
-      "images/projects/recuKfjnCjdLFXMPQ-3.webp"
-    ]
-  },
-  {
-    "id": "rec2hSUlRrx5yxJvx",
-    "name": "吧檯",
-    "category": "中彰投",
-    "description": "工程行/台中",
-    "images": [
-      "images/projects/rec2hSUlRrx5yxJvx-1.webp",
-      "images/projects/rec2hSUlRrx5yxJvx-2.webp",
-      "images/projects/rec2hSUlRrx5yxJvx-3.webp"
-    ]
-  },
-  {
-    "id": "recbKe5hPaUV9orV3",
-    "name": "不規則工作平檯",
-    "category": "客製品",
-    "description": "",
-    "images": [
-      "images/projects/recbKe5hPaUV9orV3-1.webp",
-      "images/projects/recbKe5hPaUV9orV3-2.webp"
-    ]
-  },
-  {
-    "id": "recj8w1xMaMGTQ5NB",
-    "name": "收納架",
-    "category": "北北基",
-    "description": "連鎖蛋糕店/台北",
-    "images": [
-      "images/projects/recj8w1xMaMGTQ5NB-1.webp",
-      "images/projects/recj8w1xMaMGTQ5NB-2.webp"
-    ]
-  },
-  {
-    "id": "recDLDUXpAUCHZ2qn",
-    "name": "櫃式工作檯、工作平檯",
-    "category": "中彰投",
-    "description": "潭子區公所/台中",
-    "images": [
-      "images/projects/recDLDUXpAUCHZ2qn-1.webp",
-      "images/projects/recDLDUXpAUCHZ2qn-2.webp",
-      "images/projects/recDLDUXpAUCHZ2qn-3.webp",
-      "images/projects/recDLDUXpAUCHZ2qn-4.webp",
-      "images/projects/recDLDUXpAUCHZ2qn-5.webp"
-    ]
-  },
-  {
-    "id": "recWcPUeJx4FcnaID",
-    "name": "吧檯、水槽、工作平檯",
-    "category": "中彰投",
-    "description": "連鎖飲料店/台中",
-    "images": [
-      "images/projects/recWcPUeJx4FcnaID-1.webp",
-      "images/projects/recWcPUeJx4FcnaID-2.webp",
-      "images/projects/recWcPUeJx4FcnaID-3.webp"
-    ]
-  },
-  {
-    "id": "recqIUENdvxWm69oV",
-    "name": "牆壁封板",
-    "category": "中彰投",
-    "description": "餐飲業/台中",
-    "images": [
-      "images/projects/recqIUENdvxWm69oV-1.webp",
-      "images/projects/recqIUENdvxWm69oV-2.webp",
-      "images/projects/recqIUENdvxWm69oV-3.webp",
-      "images/projects/recqIUENdvxWm69oV-4.webp"
-    ]
-  },
-  {
-    "id": "rec6syZW4ParYJez6",
-    "name": "湯桶推車",
-    "category": "客製品",
-    "description": "",
-    "images": [
-      "images/projects/rec6syZW4ParYJez6-1.webp",
-      "images/projects/rec6syZW4ParYJez6-2.webp",
-      "images/projects/rec6syZW4ParYJez6-3.webp"
-    ]
-  },
-  {
-    "id": "recFsTTAPIUnFGPHe",
-    "name": "攪拌機防護網",
-    "category": "客製品",
-    "description": "",
-    "images": [
-      "images/projects/recFsTTAPIUnFGPHe-1.webp",
-      "images/projects/recFsTTAPIUnFGPHe-2.webp",
-      "images/projects/recFsTTAPIUnFGPHe-3.webp",
-      "images/projects/recFsTTAPIUnFGPHe-4.webp"
-    ]
-  },
-  {
-    "id": "recGxDb8SZNHElYs0",
-    "name": "吧檯、水槽、工作平檯",
-    "category": "高屏",
-    "description": "連鎖飲料店/屏東",
-    "images": [
-      "images/projects/recGxDb8SZNHElYs0-1.webp",
-      "images/projects/recGxDb8SZNHElYs0-2.webp",
-      "images/projects/recGxDb8SZNHElYs0-3.webp",
-      "images/projects/recGxDb8SZNHElYs0-4.webp",
-      "images/projects/recGxDb8SZNHElYs0-5.webp"
-    ]
-  },
-  {
-    "id": "recgIwxOKp0esBUZI",
-    "name": "雙口平頭湯爐",
-    "category": "中彰投",
-    "description": "連鎖超市/台中",
-    "images": [
-      "images/projects/recgIwxOKp0esBUZI-1.webp",
-      "images/projects/recgIwxOKp0esBUZI-2.webp",
-      "images/projects/recgIwxOKp0esBUZI-3.webp",
-      "images/projects/recgIwxOKp0esBUZI-4.webp",
-      "images/projects/recgIwxOKp0esBUZI-5.webp"
-    ]
-  },
-  {
-    "id": "rec9E3BPKh1nfnKoD",
-    "name": "白鐵斜坡",
-    "category": "客製品",
-    "description": "",
-    "images": [
-      "images/projects/rec9E3BPKh1nfnKoD-1.webp"
-    ]
-  },
-  {
-    "id": "recfpqEFWG7EiYQj3",
-    "name": "攪拌桶車",
-    "category": "客製品",
-    "description": "",
-    "images": [
-      "images/projects/recfpqEFWG7EiYQj3-1.webp",
-      "images/projects/recfpqEFWG7EiYQj3-2.webp"
-    ]
-  },
-  {
-    "id": "recIx9hnLrFD04XIf",
-    "name": "層架、活動式工作平檯",
     "category": "中彰投",
     "description": "連鎖店中央工廠/台中",
+    "id": "rec7F2kzAw0hU8QJs",
     "images": [
-      "images/projects/recIx9hnLrFD04XIf-1.webp",
-      "images/projects/recIx9hnLrFD04XIf-2.webp",
-      "images/projects/recIx9hnLrFD04XIf-3.webp",
-      "images/projects/recIx9hnLrFD04XIf-4.webp",
-      "images/projects/recIx9hnLrFD04XIf-5.webp",
-      "images/projects/recIx9hnLrFD04XIf-6.webp"
-    ]
+      "images/projects/rec7F2kzAw0hU8QJs-attNeqXkc0En7WQlJ-c7e2e50a47fb.webp",
+      "images/projects/rec7F2kzAw0hU8QJs-attUuiCFy1pGr8Xoq-a7df677334b0.webp",
+      "images/projects/rec7F2kzAw0hU8QJs-attF0sNlSGZQKa5Vx-379e5b0c1aee.webp",
+      "images/projects/rec7F2kzAw0hU8QJs-att5FP1aEZhbqVrhN-3e428df15d2d.webp",
+      "images/projects/rec7F2kzAw0hU8QJs-attFRO6oOH30nezB7-ed64599d93bc.webp"
+    ],
+    "name": "大平檯"
   },
   {
-    "id": "recIxnORRlWNaWv9G",
-    "name": "地面式截油槽",
-    "category": "中彰投",
-    "description": "聖愛山莊/台中",
-    "images": [
-      "images/projects/recIxnORRlWNaWv9G-1.webp",
-      "images/projects/recIxnORRlWNaWv9G-2.webp"
-    ]
-  },
-  {
-    "id": "recL1aJw4coZ0Mzjw",
-    "name": "垃圾桶移動車",
-    "category": "客製品",
-    "description": "",
-    "images": [
-      "images/projects/recL1aJw4coZ0Mzjw-1.webp",
-      "images/projects/recL1aJw4coZ0Mzjw-2.webp"
-    ]
-  },
-  {
-    "id": "rec8L5QVp1u3aZ6Z8",
-    "name": "水槽櫃式工作檯、工作平檯",
-    "category": "中彰投",
-    "description": "齒模製造所/台中",
-    "images": [
-      "images/projects/rec8L5QVp1u3aZ6Z8-1.webp",
-      "images/projects/rec8L5QVp1u3aZ6Z8-2.webp",
-      "images/projects/rec8L5QVp1u3aZ6Z8-3.webp",
-      "images/projects/rec8L5QVp1u3aZ6Z8-4.webp",
-      "images/projects/rec8L5QVp1u3aZ6Z8-5.webp",
-      "images/projects/rec8L5QVp1u3aZ6Z8-6.webp"
-    ]
-  },
-  {
-    "id": "recu8LeUEWHBZc50C",
-    "name": "濾渣網",
-    "category": "客製品",
-    "description": "",
-    "images": [
-      "images/projects/recu8LeUEWHBZc50C-1.webp",
-      "images/projects/recu8LeUEWHBZc50C-2.webp",
-      "images/projects/recu8LeUEWHBZc50C-3.webp",
-      "images/projects/recu8LeUEWHBZc50C-4.webp"
-    ]
-  },
-  {
-    "id": "recMmleamVkGJGbzf",
-    "name": "活動式儲冰槽",
-    "category": "中彰投",
-    "description": "夜市/台中",
-    "images": [
-      "images/projects/recMmleamVkGJGbzf-1.webp",
-      "images/projects/recMmleamVkGJGbzf-2.webp"
-    ]
-  },
-  {
-    "id": "rec8GBBDuigZFLdEY",
-    "name": "餐車",
-    "category": "中彰投",
-    "description": "夜市/台中",
-    "images": [
-      "images/projects/rec8GBBDuigZFLdEY-1.webp",
-      "images/projects/rec8GBBDuigZFLdEY-2.webp",
-      "images/projects/rec8GBBDuigZFLdEY-3.webp",
-      "images/projects/rec8GBBDuigZFLdEY-4.webp"
-    ]
-  },
-  {
-    "id": "recQFeAZKhcgl82zV",
-    "name": "倒糖檯",
-    "category": "客製品",
-    "description": "",
-    "images": [
-      "images/projects/recQFeAZKhcgl82zV-1.webp",
-      "images/projects/recQFeAZKhcgl82zV-2.webp"
-    ]
-  },
-  {
-    "id": "recAQvJGPhWDaaymt",
-    "name": "水槽櫃式工作檯",
-    "category": "中彰投",
-    "description": "明道中學/台中",
-    "images": [
-      "images/projects/recAQvJGPhWDaaymt-1.webp",
-      "images/projects/recAQvJGPhWDaaymt-2.webp"
-    ]
-  },
-  {
-    "id": "recbyXn1QBw2KiA9B",
-    "name": "吧檯、水槽、櫃式工作檯",
     "category": "北北基",
     "description": "連鎖飲料店/台北",
+    "id": "recdLH3WxnLtBIg1H",
     "images": [
-      "images/projects/recbyXn1QBw2KiA9B-1.webp",
-      "images/projects/recbyXn1QBw2KiA9B-2.webp",
-      "images/projects/recbyXn1QBw2KiA9B-3.webp",
-      "images/projects/recbyXn1QBw2KiA9B-4.webp",
-      "images/projects/recbyXn1QBw2KiA9B-5.webp",
-      "images/projects/recbyXn1QBw2KiA9B-6.webp",
-      "images/projects/recbyXn1QBw2KiA9B-7.webp",
-      "images/projects/recbyXn1QBw2KiA9B-8.webp"
-    ]
+      "images/projects/recdLH3WxnLtBIg1H-attHjTecyg7mIYAsP-8f261d84566c.webp",
+      "images/projects/recdLH3WxnLtBIg1H-attsaNpmT6P83IZix-61ee0f4c3626.webp",
+      "images/projects/recdLH3WxnLtBIg1H-attlniPtxQPGfmuFh-fc1e036e4e72.webp",
+      "images/projects/recdLH3WxnLtBIg1H-attja2AfuZgP0izG1-4ba7e214a6b4.webp",
+      "images/projects/recdLH3WxnLtBIg1H-attevdJGCgMt92DEM-db3a3e585300.webp",
+      "images/projects/recdLH3WxnLtBIg1H-attDIZXEcQybQm7yO-c55dc5800f37.webp"
+    ],
+    "name": "吧檯、水槽、煮茶檯、工作平檯"
   },
   {
-    "id": "recvJFIvEbNRX7EqB",
-    "name": "吧檯、水槽、櫃式工作檯",
+    "category": "北北基",
+    "description": "連鎖飲料店/台北",
+    "id": "rec0LBKOUP85evZNQ",
+    "images": [
+      "images/projects/rec0LBKOUP85evZNQ-att8kNvTdtZGobU7J-aa5fa2502218.webp",
+      "images/projects/rec0LBKOUP85evZNQ-attmr9Eq6bzAfRpqi-74f72e5757c4.webp",
+      "images/projects/rec0LBKOUP85evZNQ-att6slPnXaUMtmDsL-af1c1ff3893f.webp",
+      "images/projects/rec0LBKOUP85evZNQ-attBkmonhHFMUQYeg-12ea799f3c2c.webp",
+      "images/projects/rec0LBKOUP85evZNQ-attCY93HrO9kOPDhs-b19638927c93.webp",
+      "images/projects/rec0LBKOUP85evZNQ-attyTISD8vUg86ww0-d2aeca9b754d.webp"
+    ],
+    "name": "吧檯、水槽、煮茶檯"
+  },
+  {
+    "category": "北北基",
+    "description": "連鎖飲料店/台北",
+    "id": "recJexMzJrKx2g884",
+    "images": [
+      "images/projects/recJexMzJrKx2g884-attWyqNwsnMJHo9Ma-3f31def0f9d5.webp",
+      "images/projects/recJexMzJrKx2g884-attopDnIq6wl4Shg0-1b71b7a41032.webp",
+      "images/projects/recJexMzJrKx2g884-atteRRgwONDy0ePAt-b7303a0926df.webp",
+      "images/projects/recJexMzJrKx2g884-att3FD7WU5uvNx86N-877cffe5cbc9.webp"
+    ],
+    "name": "分離式吧檯"
+  },
+  {
     "category": "中彰投",
-    "description": "自有飲料店/台中",
+    "description": "連鎖店中央工廠/台中",
+    "id": "recBPSiCSSFn8dBJ0",
     "images": [
-      "images/projects/recvJFIvEbNRX7EqB-1.webp",
-      "images/projects/recvJFIvEbNRX7EqB-2.webp",
-      "images/projects/recvJFIvEbNRX7EqB-3.webp",
-      "images/projects/recvJFIvEbNRX7EqB-4.webp",
-      "images/projects/recvJFIvEbNRX7EqB-5.webp",
-      "images/projects/recvJFIvEbNRX7EqB-6.webp"
-    ]
+      "images/projects/recBPSiCSSFn8dBJ0-attj5L5z1Bex2gKRU-1d16b5be0915.webp",
+      "images/projects/recBPSiCSSFn8dBJ0-attaWyh1DYb9zyoXE-245aca01bc39.webp",
+      "images/projects/recBPSiCSSFn8dBJ0-atth1nCYjEUUloZgl-a9a62476d2dc.webp"
+    ],
+    "name": "貨架"
   },
   {
-    "id": "recwLH0DQ7rcFBrTX",
-    "name": "幼兒洗手檯",
+    "category": "雲嘉南",
+    "description": "連鎖飲料店/雲林",
+    "id": "reclh8mBzooSv0ghX",
+    "images": [
+      "images/projects/reclh8mBzooSv0ghX-att51cfjbtjJbLKW0-ba7cc06b4eca.webp",
+      "images/projects/reclh8mBzooSv0ghX-attwL8yfRsmmeh0ly-ca32794b8035.webp",
+      "images/projects/reclh8mBzooSv0ghX-att8mpKhw6fTkgUav-8c2c92fbd96e.webp",
+      "images/projects/reclh8mBzooSv0ghX-attq4T4dvBeU5FUsl-20358161cc6f.webp",
+      "images/projects/reclh8mBzooSv0ghX-attx2POXUtfH4w1C8-bf4627e00f50.webp"
+    ],
+    "name": "吧檯、水槽、工作平檯"
+  },
+  {
+    "category": "北北基",
+    "description": "連鎖飲料店/台北",
+    "id": "receCmswbUXUFEhxM",
+    "images": [
+      "images/projects/receCmswbUXUFEhxM-attLCzgLe4D3HAhcm-69f1f50fbffb.webp",
+      "images/projects/receCmswbUXUFEhxM-attacXWMsGBKRmk10-e9db31e6afd3.webp"
+    ],
+    "name": "吧檯、水槽"
+  },
+  {
+    "category": "宜花東",
+    "description": "連鎖炸雞店/花蓮",
+    "id": "recDVV5L9xGAask4o",
+    "images": [
+      "images/projects/recDVV5L9xGAask4o-att7jQggMuJWpOOE8-da676422fdbc.webp",
+      "images/projects/recDVV5L9xGAask4o-atttsvUm58c2SFixs-e61ac78f6321.webp",
+      "images/projects/recDVV5L9xGAask4o-attWVj4y7RAdLdTeh-e140483e1c19.webp",
+      "images/projects/recDVV5L9xGAask4o-attr0G3iQqqH1Ga3D-bade19769c69.webp",
+      "images/projects/recDVV5L9xGAask4o-attp3rN0CpcF4DyKq-814c1a895f89.webp"
+    ],
+    "name": "連鎖店公規配件、單水槽"
+  },
+  {
     "category": "中彰投",
-    "description": "幼兒園/台中",
+    "description": "素食店/台中",
+    "id": "recUwndAQL1kokPNP",
     "images": [
-      "images/projects/recwLH0DQ7rcFBrTX-1.webp",
-      "images/projects/recwLH0DQ7rcFBrTX-2.webp",
-      "images/projects/recwLH0DQ7rcFBrTX-3.webp",
-      "images/projects/recwLH0DQ7rcFBrTX-4.webp",
-      "images/projects/recwLH0DQ7rcFBrTX-5.webp",
-      "images/projects/recwLH0DQ7rcFBrTX-6.webp"
-    ]
+      "images/projects/recUwndAQL1kokPNP-attjF8Jmd5i4M5GSj-f5afbd288aa8.webp",
+      "images/projects/recUwndAQL1kokPNP-atteK3Jsk9zvion5i-38be965b605d.webp",
+      "images/projects/recUwndAQL1kokPNP-att3u5aBzDJc1y72W-95a97e13895e.webp",
+      "images/projects/recUwndAQL1kokPNP-atth5jSxilm6btoIR-6c820673d814.webp",
+      "images/projects/recUwndAQL1kokPNP-attLBfMQTOmqAfhDY-168d6fa5189c.webp"
+    ],
+    "name": "配膳檯"
   },
   {
-    "id": "recBw0agOHPddumL7",
-    "name": "吧檯、水槽、工作平檯",
-    "category": "桃竹苗",
-    "description": "連鎖飲料店/新竹",
+    "category": "北北基",
+    "description": "連鎖飲料店/台北",
+    "id": "recSQBmRcUtU9rVSa",
     "images": [
-      "images/projects/recBw0agOHPddumL7-1.webp",
-      "images/projects/recBw0agOHPddumL7-2.webp",
-      "images/projects/recBw0agOHPddumL7-3.webp",
-      "images/projects/recBw0agOHPddumL7-4.webp",
-      "images/projects/recBw0agOHPddumL7-5.webp",
-      "images/projects/recBw0agOHPddumL7-6.webp"
-    ]
+      "images/projects/recSQBmRcUtU9rVSa-attdvNHdARgHSLJYR-344b6a669683.webp",
+      "images/projects/recSQBmRcUtU9rVSa-atteruqltLSzXlsPV-6413d77d821e.webp",
+      "images/projects/recSQBmRcUtU9rVSa-attgXAzpmBzkuCMfX-6d22110fb749.webp",
+      "images/projects/recSQBmRcUtU9rVSa-attFaaEJiwXpV7ePm-0ead95991ce3.webp",
+      "images/projects/recSQBmRcUtU9rVSa-attJa1NMsUSsBwpts-1aef6d28ec56.webp",
+      "images/projects/recSQBmRcUtU9rVSa-attrInFsEsXCXMZR9-71833b6c6302.webp"
+    ],
+    "name": "吧檯、水槽、工作平檯"
   },
   {
-    "id": "recoDHgTcK0Jnhh9M",
-    "name": "風扇架",
+    "category": "中彰投",
+    "description": "自有品牌/台中",
+    "id": "recGQP2hqXI0Go3LN",
+    "images": [
+      "images/projects/recGQP2hqXI0Go3LN-attACNHWQhaotMt5X-241f0844103b.webp",
+      "images/projects/recGQP2hqXI0Go3LN-attDAlFoq1mINeNHz-e830d8bc7e05.webp",
+      "images/projects/recGQP2hqXI0Go3LN-attRYQIWXkMaZVAGM-b81d685edae9.webp",
+      "images/projects/recGQP2hqXI0Go3LN-attL35h8TtH93ahAL-9bdf7e9bc5fc.webp"
+    ],
+    "name": "吧檯、水槽、工作平檯"
+  },
+  {
+    "category": "雲嘉南",
+    "description": "連鎖飲料店/台南",
+    "id": "recCEVRljQzkrS28W",
+    "images": [
+      "images/projects/recCEVRljQzkrS28W-attlKkhfg7lEDt6qq-8c1da778fe18.webp",
+      "images/projects/recCEVRljQzkrS28W-attNrQydb86Pz8ELT-35dc55663430.webp",
+      "images/projects/recCEVRljQzkrS28W-attcU6NX3CoS3ddeB-52c76056b636.webp",
+      "images/projects/recCEVRljQzkrS28W-attEfKJtnJqHrJTG8-ed4953d94c03.webp",
+      "images/projects/recCEVRljQzkrS28W-atte8u5enA67PP6Wi-dd2444945a88.webp",
+      "images/projects/recCEVRljQzkrS28W-attogYxIjlc7K35KT-61bbf722138c.webp"
+    ],
+    "name": "吧檯、水槽、工作平檯"
+  },
+  {
     "category": "客製品",
     "description": "",
+    "id": "recyYKUPTtcGzfD4H",
     "images": [
-      "images/projects/recoDHgTcK0Jnhh9M-1.webp",
-      "images/projects/recoDHgTcK0Jnhh9M-2.webp",
-      "images/projects/recoDHgTcK0Jnhh9M-3.webp"
-    ]
+      "images/projects/recyYKUPTtcGzfD4H-attcWHAYUxvA7trAM-0c3c055f40ad.webp",
+      "images/projects/recyYKUPTtcGzfD4H-attmLoeFOv7Xhjx6X-6ff97f1018af.webp",
+      "images/projects/recyYKUPTtcGzfD4H-attHyaiwloYPRKk9O-e48e4b8d7a2a.webp"
+    ],
+    "name": "防盜櫃式水槽平檯"
+  },
+  {
+    "category": "北北基",
+    "description": "連鎖飲料店/台北",
+    "id": "reczDusntpzXJZ5nq",
+    "images": [
+      "images/projects/reczDusntpzXJZ5nq-atthJNiOsaEoOXT2P-73e4de9297ca.webp",
+      "images/projects/reczDusntpzXJZ5nq-attzWMMaFA7YKjjTI-739aeeef4c7e.webp",
+      "images/projects/reczDusntpzXJZ5nq-attGhBtMApHuRr0eF-714acc28ede0.webp",
+      "images/projects/reczDusntpzXJZ5nq-attncBzLUdWaRwv3L-4d32d8d8e07f.webp",
+      "images/projects/reczDusntpzXJZ5nq-attF7qNwsrKi6A63f-700df40d1325.webp"
+    ],
+    "name": "吧檯、工作平檯"
+  },
+  {
+    "category": "中彰投",
+    "description": "連鎖炸雞店/台中",
+    "id": "rec0zHv35jBDOab4G",
+    "images": [
+      "images/projects/rec0zHv35jBDOab4G-atthjn8V2Z2SuHHg0-d9f3aff8a68f.webp",
+      "images/projects/rec0zHv35jBDOab4G-attYTG0nvjiBTNkcp-d560c17418e9.webp"
+    ],
+    "name": "櫃式工作檯附水槽"
+  },
+  {
+    "category": "中彰投",
+    "description": "自有飲料店/台中",
+    "id": "rectS6uXMWtQqKShk",
+    "images": [
+      "images/projects/rectS6uXMWtQqKShk-attJyOf92mITPmKrm-f7eeb4fbfe04.webp",
+      "images/projects/rectS6uXMWtQqKShk-atta3HhHsxZOnxewZ-abcf53b659ef.webp"
+    ],
+    "name": "吧檯"
+  },
+  {
+    "category": "中彰投",
+    "description": "連鎖飲料店/彰化",
+    "id": "recoUB1J57Km9T3XK",
+    "images": [
+      "images/projects/recoUB1J57Km9T3XK-attD03zJ7LdPomeXn-b9b458defd8c.webp",
+      "images/projects/recoUB1J57Km9T3XK-attzDJWaFd2qq8u1K-ae54d818be87.webp",
+      "images/projects/recoUB1J57Km9T3XK-attQbioBnE6JErjyB-1b1a393e1f7d.webp",
+      "images/projects/recoUB1J57Km9T3XK-attoMDr2AVfX5qq5u-bc994985fecb.webp"
+    ],
+    "name": "吧檯"
+  },
+  {
+    "category": "客製品",
+    "description": "",
+    "id": "recMoDn6CBD212kvN",
+    "images": [
+      "images/projects/recMoDn6CBD212kvN-attumVanxqhNRTRCo-4ecde3555d9b.webp",
+      "images/projects/recMoDn6CBD212kvN-att4LumfHGtOhvOif-f9b5878abea0.webp",
+      "images/projects/recMoDn6CBD212kvN-attjahJ8S8FawwXqS-8697adad5699.webp",
+      "images/projects/recMoDn6CBD212kvN-attuH1WXOhM4ZqrfS-8c7e07f8eaba.webp"
+    ],
+    "name": "花盆架"
+  },
+  {
+    "category": "中彰投",
+    "description": "連鎖飲料店/台中",
+    "id": "recqBcNgkuF3dXdnR",
+    "images": [
+      "images/projects/recqBcNgkuF3dXdnR-attGxoZUkF8DockQi-5e2e2089e641.webp",
+      "images/projects/recqBcNgkuF3dXdnR-attU5FdYAANAoXvGX-6d9062f13eb1.webp",
+      "images/projects/recqBcNgkuF3dXdnR-attN4O0DIdDfC0MhJ-61a4a4a2c83e.webp",
+      "images/projects/recqBcNgkuF3dXdnR-attJymWcyZyJaqmkp-8da96ba8e133.webp",
+      "images/projects/recqBcNgkuF3dXdnR-attymSznzTnFV2H9w-5b7ea463944e.webp",
+      "images/projects/recqBcNgkuF3dXdnR-attUwPenKz8RjWuNR-584f53a02f5d.webp",
+      "images/projects/recqBcNgkuF3dXdnR-attyoYMGR58tkrhrb-71f0c640d7e7.webp"
+    ],
+    "name": "吧檯、水槽、工作平檯"
+  },
+  {
+    "category": "中彰投",
+    "description": "連鎖便當店/台中",
+    "id": "recI6FRqiXVJpqa8p",
+    "images": [
+      "images/projects/recI6FRqiXVJpqa8p-att8HDdaTTAEKPXl6-2ea47653eef0.webp",
+      "images/projects/recI6FRqiXVJpqa8p-attQA53pYg89tw5UI-9439804e5797.webp",
+      "images/projects/recI6FRqiXVJpqa8p-att53Di3TGg7GGlSI-6a79048240d2.webp",
+      "images/projects/recI6FRqiXVJpqa8p-attEYQBavAd5EmlI3-1fb441900aa8.webp",
+      "images/projects/recI6FRqiXVJpqa8p-attwL5Gxo0eY5Zl99-7440a3f301b6.webp"
+    ],
+    "name": "煎檯"
+  },
+  {
+    "category": "中彰投",
+    "description": "連鎖飲料店/台中",
+    "id": "rec2VhrBxW7NgqTmB",
+    "images": [
+      "images/projects/rec2VhrBxW7NgqTmB-attlBw2iMX9G8Pdy3-b62a50db4cc6.webp",
+      "images/projects/rec2VhrBxW7NgqTmB-attfje7OvJFqm8DRc-a04742d36ec4.webp",
+      "images/projects/rec2VhrBxW7NgqTmB-att9ZMaYqeJYHxCwQ-39e702e51669.webp",
+      "images/projects/rec2VhrBxW7NgqTmB-attbQr7b6Ok6KTnG5-bb02cd648d83.webp"
+    ],
+    "name": "吧檯、水槽"
+  },
+  {
+    "category": "桃竹苗",
+    "description": "連鎖飲料店/桃園",
+    "id": "recpH8LCTyXtgrqKT",
+    "images": [
+      "images/projects/recpH8LCTyXtgrqKT-attY3a2j7ELEhG9Xx-0b773a6f63f6.webp",
+      "images/projects/recpH8LCTyXtgrqKT-attbkwhsHSRN9YGe1-c91c343ee4f6.webp",
+      "images/projects/recpH8LCTyXtgrqKT-atthDShd6vQNIIq81-ab2e8828fdc5.webp",
+      "images/projects/recpH8LCTyXtgrqKT-attPREOSrMTJtpEvv-c102e1ea3f0f.webp",
+      "images/projects/recpH8LCTyXtgrqKT-attKFMcChr39HQ9s4-1ed16e2bd643.webp"
+    ],
+    "name": "吧檯、水槽、工作平檯"
+  },
+  {
+    "category": "桃竹苗",
+    "description": "連鎖飲料店/新竹",
+    "id": "recznWOi8cKSC2QNy",
+    "images": [
+      "images/projects/recznWOi8cKSC2QNy-attle139kTgCAUw8c-e9a3860d74b7.webp",
+      "images/projects/recznWOi8cKSC2QNy-attyezS3uOEnnsD4e-9dea64768b3c.webp"
+    ],
+    "name": "吧檯、工作平檯"
+  },
+  {
+    "category": "中彰投",
+    "description": "東來米糕/台中",
+    "id": "recjGfrB0Y1L5pDqq",
+    "images": [
+      "images/projects/recjGfrB0Y1L5pDqq-attTFb0ew8FERirpW-49b9ae791545.webp",
+      "images/projects/recjGfrB0Y1L5pDqq-att0E0q91eIhCznQM-a4a3721c70f5.webp"
+    ],
+    "name": "櫃式工作檯附水槽"
+  },
+  {
+    "category": "客製品",
+    "description": "",
+    "id": "rec3hFGHoDEru1Fy8",
+    "images": [
+      "images/projects/rec3hFGHoDEru1Fy8-attBs2XmVxZy3FSOB-3cf588783dea.webp",
+      "images/projects/rec3hFGHoDEru1Fy8-attCsmnEYGDmEZncR-83e235946320.webp"
+    ],
+    "name": "平口火爐"
+  },
+  {
+    "category": "客製品",
+    "description": "",
+    "id": "recrPITq4BOjctqXX",
+    "images": [
+      "images/projects/recrPITq4BOjctqXX-attxuMLXxADhCRXJc-cb4e26aa839f.webp",
+      "images/projects/recrPITq4BOjctqXX-att1KVn7O8fwjG2My-72e08617a94e.webp"
+    ],
+    "name": "洗衣機堆高架"
+  },
+  {
+    "category": "客製品",
+    "description": "",
+    "id": "rec7V7NW6P9d2G5LU",
+    "images": [
+      "images/projects/rec7V7NW6P9d2G5LU-attZG73Eh9XwOp8sO-3befa40faac3.webp",
+      "images/projects/rec7V7NW6P9d2G5LU-atti9J871Xz9Gva4N-cc52201db064.webp",
+      "images/projects/rec7V7NW6P9d2G5LU-att8Z1CqQDXStuK2E-e0e18066f44a.webp"
+    ],
+    "name": "杯籃架工作平檯"
+  },
+  {
+    "category": "桃竹苗",
+    "description": "連鎖火鍋店/桃園",
+    "id": "rec3q171XlQ4BfXUM",
+    "images": [
+      "images/projects/rec3q171XlQ4BfXUM-attZrMGPTwBvv1Lk4-256f4fa971fb.webp",
+      "images/projects/rec3q171XlQ4BfXUM-attUHH4ifdDd5pqdx-c745c773c15e.webp",
+      "images/projects/rec3q171XlQ4BfXUM-att9YzDANuC38qf9P-2b89860418c9.webp",
+      "images/projects/rec3q171XlQ4BfXUM-attww4cTPNgfozwbY-78321c9c133e.webp"
+    ],
+    "name": "水槽、工作平檯、層架"
+  },
+  {
+    "category": "中彰投",
+    "description": "餐飲業/台中",
+    "id": "rec6EOVS7BPEIemnI",
+    "images": [
+      "images/projects/rec6EOVS7BPEIemnI-attSUKgWjeLTaEhoW-bd6c55a08bbb.webp",
+      "images/projects/rec6EOVS7BPEIemnI-atttRwNMOQa6WLyZB-7d012492ec5f.webp",
+      "images/projects/rec6EOVS7BPEIemnI-attHGlyAStUi1Ygll-bee7dc603d35.webp"
+    ],
+    "name": "地面式截油槽"
+  },
+  {
+    "category": "客製品",
+    "description": "",
+    "id": "recuKfjnCjdLFXMPQ",
+    "images": [
+      "images/projects/recuKfjnCjdLFXMPQ-att6no3Y3mpx0PoLq-bdd71ca02dd5.webp",
+      "images/projects/recuKfjnCjdLFXMPQ-attMhrctCfEjfBmgr-e4d3b951095d.webp",
+      "images/projects/recuKfjnCjdLFXMPQ-attvwoRC6bh85ReyO-e785eb0dd023.webp"
+    ],
+    "name": "湯桶車"
+  },
+  {
+    "category": "中彰投",
+    "description": "連鎖甜湯店/台中",
+    "id": "recQ38f2hybQaf9jr",
+    "images": [
+      "images/projects/recQ38f2hybQaf9jr-attWMFejQYE6knBuh-7a5edd51ef03.webp",
+      "images/projects/recQ38f2hybQaf9jr-attNkL08HX5FWULxu-e397f7a80f94.webp",
+      "images/projects/recQ38f2hybQaf9jr-attpInTFH5AYXqWLZ-bb477381f977.webp",
+      "images/projects/recQ38f2hybQaf9jr-attJMEYzGI0f15PRh-4a7abaeb2be4.webp"
+    ],
+    "name": "加熱豆花檯"
+  },
+  {
+    "category": "中彰投",
+    "description": "工程行/台中",
+    "id": "rec2hSUlRrx5yxJvx",
+    "images": [
+      "images/projects/rec2hSUlRrx5yxJvx-attfLLMHBc4kKwicq-83e4aa3273fa.webp",
+      "images/projects/rec2hSUlRrx5yxJvx-attB6bXeRxEADQ6wF-0c84598b9a49.webp",
+      "images/projects/rec2hSUlRrx5yxJvx-attk50L8ZnJAOHZiF-5803cc904058.webp"
+    ],
+    "name": "吧檯"
+  },
+  {
+    "category": "北北基",
+    "description": "連鎖蛋糕店/台北",
+    "id": "recj8w1xMaMGTQ5NB",
+    "images": [
+      "images/projects/recj8w1xMaMGTQ5NB-attcYP3H8SEpYUU78-bb5d2db7e7f3.webp",
+      "images/projects/recj8w1xMaMGTQ5NB-attYdQpUSdUlEh7rW-38088ca64581.webp"
+    ],
+    "name": "收納架"
+  },
+  {
+    "category": "客製品",
+    "description": "",
+    "id": "recbKe5hPaUV9orV3",
+    "images": [
+      "images/projects/recbKe5hPaUV9orV3-attxuj9PtfITr1cTe-f6eb8413c833.webp",
+      "images/projects/recbKe5hPaUV9orV3-atthMmivvNWv6a50J-1ab1cc0a90ab.webp"
+    ],
+    "name": "不規則工作平檯"
+  },
+  {
+    "category": "中彰投",
+    "description": "餐飲業/台中",
+    "id": "recqIUENdvxWm69oV",
+    "images": [
+      "images/projects/recqIUENdvxWm69oV-attb9lLVCmVDGYTTc-73d6a356d308.webp",
+      "images/projects/recqIUENdvxWm69oV-attLpHgSf0J5Zooer-f26b9084f297.webp",
+      "images/projects/recqIUENdvxWm69oV-attlepI6Yz0hHHhy4-84c45b935994.webp",
+      "images/projects/recqIUENdvxWm69oV-atttz2iA5quVMp4b1-f8e77c8fd6b3.webp"
+    ],
+    "name": "牆壁封板"
+  },
+  {
+    "category": "中彰投",
+    "description": "連鎖飲料店/台中",
+    "id": "recWcPUeJx4FcnaID",
+    "images": [
+      "images/projects/recWcPUeJx4FcnaID-att7iv7xb8FwemV0z-3953a5cf2dfa.webp",
+      "images/projects/recWcPUeJx4FcnaID-attnEub3vJ9D4Q4W4-35c68c758f4e.webp",
+      "images/projects/recWcPUeJx4FcnaID-attdTBPyZUnlS0yIY-a7d72e45f2c8.webp"
+    ],
+    "name": "吧檯、水槽、工作平檯"
+  },
+  {
+    "category": "中彰投",
+    "description": "潭子區公所/台中",
+    "id": "recDLDUXpAUCHZ2qn",
+    "images": [
+      "images/projects/recDLDUXpAUCHZ2qn-att8LqiSPLxM6r7LB-dcb2d2d320d4.webp",
+      "images/projects/recDLDUXpAUCHZ2qn-attKtQHWcYvh86S7U-6ae859c34619.webp",
+      "images/projects/recDLDUXpAUCHZ2qn-attwx4NfhK6rAuCg5-59853c6cdf09.webp",
+      "images/projects/recDLDUXpAUCHZ2qn-attYGLyHJlPhWokv2-7ee53eedf18a.webp",
+      "images/projects/recDLDUXpAUCHZ2qn-attFmBZ3zRf3uceNh-0df19a7644ae.webp"
+    ],
+    "name": "櫃式工作檯、工作平檯"
+  },
+  {
+    "category": "客製品",
+    "description": "",
+    "id": "recFsTTAPIUnFGPHe",
+    "images": [
+      "images/projects/recFsTTAPIUnFGPHe-attbeRaX4bVxPNIYE-6b7ed711d6c5.webp",
+      "images/projects/recFsTTAPIUnFGPHe-attgwA0LewL1fYB2A-b78bad0e3aa8.webp",
+      "images/projects/recFsTTAPIUnFGPHe-attby9ZyhD7OUXDVZ-ef3577853c44.webp",
+      "images/projects/recFsTTAPIUnFGPHe-attNH6bolS4EZHYi0-ea2f231c25b6.webp"
+    ],
+    "name": "攪拌機防護網"
+  },
+  {
+    "category": "客製品",
+    "description": "",
+    "id": "rec6syZW4ParYJez6",
+    "images": [
+      "images/projects/rec6syZW4ParYJez6-attOuS3ydiC8EV9BT-e87c8e1b7f23.webp",
+      "images/projects/rec6syZW4ParYJez6-attS81pzk61m69JO6-19ba95728fc9.webp",
+      "images/projects/rec6syZW4ParYJez6-atty5rTjhRkp1MNK1-f66a5e3df4fa.webp"
+    ],
+    "name": "湯桶推車"
+  },
+  {
+    "category": "中彰投",
+    "description": "連鎖超市/台中",
+    "id": "recgIwxOKp0esBUZI",
+    "images": [
+      "images/projects/recgIwxOKp0esBUZI-attsLuBn4VUgOQF7r-0df26667111a.webp",
+      "images/projects/recgIwxOKp0esBUZI-attOmWDX2GZONLVxp-1162b2523dff.webp",
+      "images/projects/recgIwxOKp0esBUZI-attOwlpWqaYCpbmw6-b976c5d7edfa.webp",
+      "images/projects/recgIwxOKp0esBUZI-attKVQSC1QKbqW4Sq-b12341649f10.webp",
+      "images/projects/recgIwxOKp0esBUZI-att1ckqlZb4Vtcukc-d4c1bdd83b73.webp"
+    ],
+    "name": "雙口平頭湯爐"
+  },
+  {
+    "category": "高屏",
+    "description": "連鎖飲料店/屏東",
+    "id": "recGxDb8SZNHElYs0",
+    "images": [
+      "images/projects/recGxDb8SZNHElYs0-attv76MFEGQJGg55R-c0fdb60b818a.webp",
+      "images/projects/recGxDb8SZNHElYs0-att6BBcgs5SJSNmIl-845f20f89240.webp",
+      "images/projects/recGxDb8SZNHElYs0-att12OjXqUh0Ew1MA-254d008e2a35.webp",
+      "images/projects/recGxDb8SZNHElYs0-att8iIXih0MuagTvf-6e240e83d92c.webp",
+      "images/projects/recGxDb8SZNHElYs0-attIv0a2UM6GauSRF-cfda83953861.webp"
+    ],
+    "name": "吧檯、水槽、工作平檯"
+  },
+  {
+    "category": "客製品",
+    "description": "",
+    "id": "rec9E3BPKh1nfnKoD",
+    "images": [
+      "images/projects/rec9E3BPKh1nfnKoD-attjo1G37TWazSQfU-7cf5282b32c7.webp"
+    ],
+    "name": "白鐵斜坡"
+  },
+  {
+    "category": "客製品",
+    "description": "",
+    "id": "recfpqEFWG7EiYQj3",
+    "images": [
+      "images/projects/recfpqEFWG7EiYQj3-attlmB7Z9LAeFrJxb-754f5c4362d9.webp",
+      "images/projects/recfpqEFWG7EiYQj3-attPbz8sjsL51eno3-f9bf8bbbea8e.webp"
+    ],
+    "name": "攪拌桶車"
+  },
+  {
+    "category": "客製品",
+    "description": "",
+    "id": "recL1aJw4coZ0Mzjw",
+    "images": [
+      "images/projects/recL1aJw4coZ0Mzjw-att22cPYUicLUvN1S-1a4c0607f18e.webp",
+      "images/projects/recL1aJw4coZ0Mzjw-attp9ccBrXIopiPLl-3000ce5cb874.webp"
+    ],
+    "name": "垃圾桶移動車"
+  },
+  {
+    "category": "中彰投",
+    "description": "聖愛山莊/台中",
+    "id": "recIxnORRlWNaWv9G",
+    "images": [
+      "images/projects/recIxnORRlWNaWv9G-attLPVrFQf9lEICT5-03558a15e3df.webp",
+      "images/projects/recIxnORRlWNaWv9G-attX7Ex2OZshiibTD-40c84bed6bd6.webp"
+    ],
+    "name": "地面式截油槽"
+  },
+  {
+    "category": "中彰投",
+    "description": "連鎖店中央工廠/台中",
+    "id": "recIx9hnLrFD04XIf",
+    "images": [
+      "images/projects/recIx9hnLrFD04XIf-attoJzU8RIal6S4wW-4b45dc1e8388.webp",
+      "images/projects/recIx9hnLrFD04XIf-att0e7e3CQMT4H4ZV-dacce2d8b8c2.webp",
+      "images/projects/recIx9hnLrFD04XIf-attYVKZ3UHSKmTo0d-1b17ac0096c4.webp",
+      "images/projects/recIx9hnLrFD04XIf-attG1EKppqH8C6hh9-829cf07374b7.webp",
+      "images/projects/recIx9hnLrFD04XIf-attm3UbuKqUBFb7KM-6e15efb3373e.webp",
+      "images/projects/recIx9hnLrFD04XIf-att5hyEtblHfeJ3Lv-d0aeb852c498.webp"
+    ],
+    "name": "層架、活動式工作平檯"
+  },
+  {
+    "category": "客製品",
+    "description": "",
+    "id": "recu8LeUEWHBZc50C",
+    "images": [
+      "images/projects/recu8LeUEWHBZc50C-att8fhRtfomvmZKaw-6ed1d822e3bc.webp",
+      "images/projects/recu8LeUEWHBZc50C-attB4l3NkzDLYpWaU-a0ffa048bb2e.webp",
+      "images/projects/recu8LeUEWHBZc50C-attNQ9xM6G3zNmceq-5a82b726d055.webp",
+      "images/projects/recu8LeUEWHBZc50C-attCca8wgqnKr5fV9-2dffcc584090.webp"
+    ],
+    "name": "濾渣網"
+  },
+  {
+    "category": "中彰投",
+    "description": "齒模製造所/台中",
+    "id": "rec8L5QVp1u3aZ6Z8",
+    "images": [
+      "images/projects/rec8L5QVp1u3aZ6Z8-attDxr15IzErHIH2C-000c66adae9d.webp",
+      "images/projects/rec8L5QVp1u3aZ6Z8-attekokZlFTrRqBdM-25512a43661c.webp",
+      "images/projects/rec8L5QVp1u3aZ6Z8-att4yTHndKnXA83D1-3cf4de146a65.webp",
+      "images/projects/rec8L5QVp1u3aZ6Z8-att2rB4FquDBqw9yV-511bb4916192.webp",
+      "images/projects/rec8L5QVp1u3aZ6Z8-attJahKtcT4ZeFtUk-637f24f9028b.webp",
+      "images/projects/rec8L5QVp1u3aZ6Z8-attYNy0J3UZKSgsi7-f1a81a0ea544.webp"
+    ],
+    "name": "水槽櫃式工作檯、工作平檯"
+  },
+  {
+    "category": "中彰投",
+    "description": "夜市/台中",
+    "id": "recMmleamVkGJGbzf",
+    "images": [
+      "images/projects/recMmleamVkGJGbzf-att6FTw0jV7sjp6c8-eb858ffbfc1a.webp",
+      "images/projects/recMmleamVkGJGbzf-attwaxlA6q80sufi9-59dadbbe4805.webp"
+    ],
+    "name": "活動式儲冰槽"
+  },
+  {
+    "category": "客製品",
+    "description": "",
+    "id": "recQFeAZKhcgl82zV",
+    "images": [
+      "images/projects/recQFeAZKhcgl82zV-attequozhrKe7VZke-40f5fc267b0f.webp",
+      "images/projects/recQFeAZKhcgl82zV-attOFVDlZOqWKhJEN-b34243da607d.webp"
+    ],
+    "name": "倒糖檯"
+  },
+  {
+    "category": "中彰投",
+    "description": "夜市/台中",
+    "id": "rec8GBBDuigZFLdEY",
+    "images": [
+      "images/projects/rec8GBBDuigZFLdEY-attTjSCIMx5wr0JrH-9267e9b6edbf.webp",
+      "images/projects/rec8GBBDuigZFLdEY-attqe6g4hx6mC0Tqw-2162d9866836.webp",
+      "images/projects/rec8GBBDuigZFLdEY-atttJfndBGMIxIFhI-6bd307b817e7.webp",
+      "images/projects/rec8GBBDuigZFLdEY-attEQiO5zU0SIlhLZ-9fb709fd14ef.webp"
+    ],
+    "name": "餐車"
+  },
+  {
+    "category": "北北基",
+    "description": "連鎖飲料店/台北",
+    "id": "recbyXn1QBw2KiA9B",
+    "images": [
+      "images/projects/recbyXn1QBw2KiA9B-attcYWcnbQO3qDgFJ-fce22dbfed7e.webp",
+      "images/projects/recbyXn1QBw2KiA9B-att3Ya72XLg5wS1zm-4b232087e75a.webp",
+      "images/projects/recbyXn1QBw2KiA9B-attwDwacHYPYraWaV-319556ffe4dd.webp",
+      "images/projects/recbyXn1QBw2KiA9B-attXgCCpqlviKnjLJ-eed20d025053.webp",
+      "images/projects/recbyXn1QBw2KiA9B-attU7dvmI6mQw6yuR-ab9693287200.webp",
+      "images/projects/recbyXn1QBw2KiA9B-attdlG600uTRLAk0T-2d88b3d7a1a4.webp",
+      "images/projects/recbyXn1QBw2KiA9B-attxtP4t9OP5zOmoL-fcb803a5fc62.webp",
+      "images/projects/recbyXn1QBw2KiA9B-attNJ69p1JPmJCUWE-93c573c20905.webp"
+    ],
+    "name": "吧檯、水槽、櫃式工作檯"
+  },
+  {
+    "category": "中彰投",
+    "description": "明道中學/台中",
+    "id": "recAQvJGPhWDaaymt",
+    "images": [
+      "images/projects/recAQvJGPhWDaaymt-atttHaFyNLrSTuh6M-2d5358a12d3d.webp",
+      "images/projects/recAQvJGPhWDaaymt-attb7PXInv3k6Mjri-467870578c48.webp"
+    ],
+    "name": "水槽櫃式工作檯"
+  },
+  {
+    "category": "中彰投",
+    "description": "幼兒園/台中",
+    "id": "recwLH0DQ7rcFBrTX",
+    "images": [
+      "images/projects/recwLH0DQ7rcFBrTX-att3RQGGFAzBQ3i6M-6dacea8a49b8.webp",
+      "images/projects/recwLH0DQ7rcFBrTX-attKMRJdUgVRya8Si-407be64d0d44.webp",
+      "images/projects/recwLH0DQ7rcFBrTX-attS4YeExH9qQKBdL-a1ecbf63072e.webp",
+      "images/projects/recwLH0DQ7rcFBrTX-attqTveuZ8QbXWc9z-9cb095203534.webp",
+      "images/projects/recwLH0DQ7rcFBrTX-attCuUFoYVghoDE03-1dff89dd2d20.webp",
+      "images/projects/recwLH0DQ7rcFBrTX-attUMyxWyWlc7uxXn-fcc73f509e9e.webp"
+    ],
+    "name": "幼兒洗手檯"
+  },
+  {
+    "category": "中彰投",
+    "description": "自有飲料店/台中",
+    "id": "recvJFIvEbNRX7EqB",
+    "images": [
+      "images/projects/recvJFIvEbNRX7EqB-attSt1EOfFwoADGRv-63fa4823c776.webp",
+      "images/projects/recvJFIvEbNRX7EqB-attQzNCUUFeDysFAq-4254064f5a5d.webp",
+      "images/projects/recvJFIvEbNRX7EqB-attRJUxhn9LdDms0t-10e751c3e1eb.webp",
+      "images/projects/recvJFIvEbNRX7EqB-att29RcFOhQepC533-d69ee2d40418.webp",
+      "images/projects/recvJFIvEbNRX7EqB-atto3PsUZsw23Em5P-36f6c09eb481.webp",
+      "images/projects/recvJFIvEbNRX7EqB-attxQ8gZasiB0Lw13-562b9b509f11.webp"
+    ],
+    "name": "吧檯、水槽、櫃式工作檯"
+  },
+  {
+    "category": "桃竹苗",
+    "description": "連鎖飲料店/新竹",
+    "id": "recBw0agOHPddumL7",
+    "images": [
+      "images/projects/recBw0agOHPddumL7-attHvhfFKH9eS8rLN-bfbb9f35498a.webp",
+      "images/projects/recBw0agOHPddumL7-att1FNVplPsTQmLnO-8039ea18ae1b.webp",
+      "images/projects/recBw0agOHPddumL7-att6UO3Diifq0eJlO-0c990ab064d5.webp",
+      "images/projects/recBw0agOHPddumL7-attM484e3L0v0sLDC-082b09b6c641.webp",
+      "images/projects/recBw0agOHPddumL7-att7N6miMsEgsFmfe-e2d0f97e8d3e.webp",
+      "images/projects/recBw0agOHPddumL7-att5iO8UoBAdmY5p0-bf2765ca9186.webp"
+    ],
+    "name": "吧檯、水槽、工作平檯"
+  },
+  {
+    "category": "客製品",
+    "description": "",
+    "id": "recoDHgTcK0Jnhh9M",
+    "images": [
+      "images/projects/recoDHgTcK0Jnhh9M-attTZLOiXTqvhqUto-5f93d66287bf.webp",
+      "images/projects/recoDHgTcK0Jnhh9M-attKM39tQsa3pgPpo-47529a76882f.webp",
+      "images/projects/recoDHgTcK0Jnhh9M-attKPWet1ddYIH4ZV-7af2e2b9fdb5.webp"
+    ],
+    "name": "風扇架"
   }
 ]
