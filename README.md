@@ -26,20 +26,26 @@ npm run check
 
 相簿支援左右方向鍵、Escape 關閉與焦點返回；手機選單支援焦點循環與 Escape；動畫尊重系統減少動態偏好。頁面保留不執行 JavaScript 時的主要內容和導覽。
 
-## 更新作品
+## 更新作品：每 4 小時＋手動立即更新
 
-此版本不再讓瀏覽器直接持有 Airtable 存取權，**Airtable 編輯不會自動即時出現在網站上**。使用公開快照發布，更新方式如下：
+自動化程式已備妥，尚未在 GitHub 啟用。首次設定及手動操作請見 **[Airtable 更新教學](docs/AIRTABLE-UPDATE-GUIDE.md)**。
 
-1. 撤銷原本出現在公開來源中的 Airtable token，建立僅能讀取所需資料表的新 token。
-2. 安裝 Python 3.10+ 與 Pillow，將新 token 放在終端環境變數 `AIRTABLE_TOKEN`，不要寫入 HTML、JS、Git 或本文件。
-3. 執行 `python3 scripts/sync_projects.py`，再執行 `npm run check`。
-4. 在審閱分支確認新增、下架、圖片與首頁精選作品，再透過 PR 核准發布。
+- 工作流程：`.github/workflows/airtable-sync.yml`，名稱 **Airtable Sync & Publish**。
+- 台灣時間每天約 00:17、04:17、08:17、12:17、16:17、20:17 同步；排程可能延遲。
+- 手動：GitHub → Actions → Airtable Sync & Publish → Run workflow → main → Run workflow。
+- 首次設定：Airtable 唯讀 Token 存為 GitHub Secret `AIRTABLE_TOKEN`；Settings → Pages → Source 改為 **GitHub Actions**，保留原網域。
+- 只公開「發布 (Published)」作品。正常新增、修改或部分下架，不需要重新上傳程式碼。
+- 首次同步會建立圖片快取；後續只處理新增、變動或損壞照片。快取不存下載網址或憑證。
+- 無變動且上次執行成功時不重複部署；同步、檢查或提交失敗時保留正式網站。
+- 若刻意下架全部作品，手動執行時勾選允許清空。一般情況不要勾選。
 
-匯出器支援 Airtable offset 分頁，完整下載完成後才替換 JSON；錯誤時保留既有資料。只匯出公開必要欄位。首頁照片和標題是人工編排，若精選案件變動，需一併更新首頁，不會由匯出器自動改動。
+首頁選定案例在部署時同步名稱、封面、說明與相簿，下架後隱藏；主視覺與品牌照片仍人工編排。公開網站由 `scripts/build_site.py` 產生到 `_site/`，不包含工作流程、同步程式、測試、快取或憑證。
+
+若開發者要在本機同步：先 `python3 -m pip install -r scripts/requirements.txt`，在環境變數提供 `AIRTABLE_TOKEN`，再執行 `python3 scripts/sync_projects.py`、`npm run check`、`python3 scripts/build_site.py`。沒有提供 Token 時不會發出 API 請求。
 
 ## 正式發布
 
-目前改版在本機的獨立 `design/craft-preview` 分支。GitHub 建立分支回傳 403（Resource not accessible by integration），尚未成功推送或建立 PR。**未核准前，不合併 main、不修改 DNS/CNAME、不觸發正式部署。** GitHub Pages 仍使用原靜態檔案結構。核准合併後再依既有 Pages 設定發布，沒有引入新主機。
+目前改版在本機的獨立 `design/craft-preview` 分支。GitHub 建立分支回傳 403（Resource not accessible by integration），尚未成功推送或建立 PR。**未核准前，不合併 main、不修改 DNS/CNAME、不觸發正式部署。** GitHub Pages 仍使用原靜態檔案結構。設計已獲確認；實際上傳後需依更新教學將 Pages 發布來源改為 GitHub Actions，沒有引入新主機。
 
 正式 HTML 仍送至原本的 `https://formspree.io/f/mvgwrvwv`，保留電話、LINE、社群與地圖連結。審閱時僅驗證預覽攔截，沒有送出測試信；正式上線前需由管理者確認 Formspree 收件與額度設定。
 
@@ -58,3 +64,7 @@ npm run check
 依公司確認，頁首顯示全名「祥鉞餐飲設備股份有限公司」；首頁右側設備更正為電磁爐台。頁尾公司中文全名增加 10pt，其餘文字增加 5pt，聯絡欄新增可撥號電話；作品副標題增加 2pt。服務頁移除配置示意圖及切換控制。聯絡頁改為 Google 嵌入式位置地圖（不需額外 API 金鑰），地圖需連網。全站文案以不鏽鋼製品、客製製作與可靠支援為主，不再宣稱全面後場廚房規劃能力；CTA 改為「你的不鏽鋼需求，我們全力支持」。
 
 頁尾排版追加修訂：電話與傳真移至中欄同排，統一編號獨立下一排。右欄社群固定兩排（LINE／Facebook、Instagram／Threads），移除 CTA 下方的電話按鈕。
+
+## 同步驗證（2026-09-30）
+
+9 項離線測試通過，涵蓋分頁、草稿排除、簽名網址更新不重複下載、附件重排與替換、快取修復、失敗保留快照、清空保護、首頁資料更新與公開檔案白名單。工作流程的排程、手動入口、分支限制、部署依賴及六個官方 action 的 commit 固定引用已檢查；尚未使用新 Token 或實際部署。
