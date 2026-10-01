@@ -1,0 +1,141 @@
+name: Airtable Sync & Publish
+run-name: Airtable 作品同步與網站發布
+
+on:
+  schedule:
+    # UTC and Taiwan both resolve to 00:17, 04:17, 08:17, 12:17, 16:17, 20:17.
+    - cron: '17 */4 * * *'
+  workflow_dispatch:
+    inputs:
+      allow_empty:
+        description: '允許清空全部作品（只有要下架所有作品時才勾選）'
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths:
+      - '*.html'
+      - 'style.css'
+      - 'js/**'
+      - 'data/**'
+      - 'images/**'
+      - 'fonts/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'package.json'
+      - 'CNAME'
+      - 'sitemap.xml'
+      - 'robots.txt'
+      - '.github/workflows/airtable-sync.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: shyuan-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      pages: read
+      actions: read
+    outputs:
+      publish: ${{ steps.snapshot.outputs.publish }}
+    steps:
+      - name: 取得 main 程式碼
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - name: 設定 Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - name: 設定 Node.js
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: 安裝圖片處理套件
+        run: python -m pip install --disable-pip-version-check -r scripts/requirements.txt
+      - name: 驗證同步程式
+        run: python -m unittest discover -s tests -v
+      - name: 同步 Airtable 已發布作品
+        env:
+          AIRTABLE_TOKEN: ${{ secrets.AIRTABLE_TOKEN }}
+          AIRTABLE_BASE_ID: ${{ vars.AIRTABLE_BASE_ID }}
+          AIRTABLE_TABLE: ${{ vars.AIRTABLE_TABLE }}
+          ALLOW_EMPTY: ${{ inputs.allow_empty && 'true' || 'false' }}
+        shell: bash
+        run: |
+          args=()
+          if [ "$ALLOW_EMPTY" = "true" ]; then args+=(--allow-empty); fi
+          python scripts/sync_projects.py "${args[@]}"
+      - name: 檢查完整網站並產生公開檔案
+        run: |
+          npm run check
+          python scripts/build_site.py
+      - name: 保存有變動的作品快照
+        id: snapshot
+        env:
+          TRIGGER: ${{ github.event_name }}
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          # Abort instead of overwriting a user commit made while this job was running.
+          git fetch origin main
+          if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
+            echo "::error::main 已有更新，請重新執行 Run workflow。這次不會覆寫或部署。"
+            exit 1
+          fi
+          git add data/projects.json data/sync-image-manifest.json images/projects
+          changed=false
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Sync published Airtable projects"
+            git push origin HEAD:main
+            changed=true
+          fi
+          # Retry a previous failed/cancelled deployment even when its snapshot was already committed.
+          previous="$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/airtable-sync.yml/runs?branch=main&status=completed&per_page=1" --jq '.workflow_runs[0].conclusion // "none"' || echo unknown)"
+          if [ "$changed" = "true" ] || [ "$TRIGGER" != "schedule" ] || [ "$previous" != "success" ]; then
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+            echo "作品沒有變更，保留目前網站，不重複部署。" >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: 確認 GitHub Pages 設定
+        if: steps.snapshot.outputs.publish == 'true'
+        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
+      - name: 上傳公開網站檔案
+        if: steps.snapshot.outputs.publish == 'true'
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        with:
+          path: '_site'
+          retention-days: 1
+
+  deploy:
+    needs: build
+    if: needs.build.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 發布 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+      - name: 顯示手動更新完成
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        shell: bash
+        run: |
+          echo "## 更新完成" >> "$GITHUB_STEP_SUMMARY"
+          echo "網站已發布：$PAGE_URL" >> "$GITHUB_STEP_SUMMARY"
