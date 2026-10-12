@@ -75,7 +75,8 @@ if (!reduceMotion && "IntersectionObserver" in window) {
 let projectPromise;
 function getProjects() {
   if (!projectPromise)
-    projectPromise = fetch("data/projects.json")
+    // Revalidate the archive on every page load; photo URLs keep normal caching.
+    projectPromise = fetch("data/projects.json", { cache: "no-cache" })
       .then((response) => {
         if (!response.ok) throw Error("Project archive unavailable");
         return response.json();
